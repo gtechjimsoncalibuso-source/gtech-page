@@ -1,0 +1,122 @@
+@import "tailwindcss";
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.05rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none; 
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; 
+}
+
+header{
+  border-radius: 0 0 0.8rem 0.8rem;
+  border-bottom: 0.2rem solid #fbfffcd7;
+}
+
+.nav-fb-btn {      
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 3rem;
+  background: rgba(0, 17, 255, 0.89);
+  border: 0.1rem solid rgba(255, 255, 255, 0.73);
+  cursor: pointer;
+  transition: all 300ms ease;
+  box-shadow: 0 0 0px #a25ff8; 
+}
+
+.nav-fb-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 4px #24dc35,
+    0 0 6px #24dc35,
+    0 0 8px #a25ff8,
+    0 0 10px #a25ff8,
+    0 0 12px #a25ff8;
+}
+
+.nav-link {
+  display: inline-block; 
+  font-size: calc(clamp(1.5rem, 2.5vw, 2.5rem) * 0.45);
+  color: #ffffffa6;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  transform: scale(1.2); 
+}
+
+#nav-cp {
+  display: none;
+  position: fixed;
+  top: 7rem;
+  right: 1rem;
+  border: 0.1rem solid rgb(201, 201, 201);
+}
+
+.nav-fb-btn-cp{
+  display: none
+}
+
+@media (max-width: 1000px) {
+
+    #nav-cp{
+      display: flex;
+
+      #nav-cp-ul{
+        display: none;
+      }
+
+    }
+
+    .nav-fb-btn-cp{
+      display: flex;
+      padding: 0 0;
+      background-color: rgb(255, 255, 255);
+
+      &:hover{
+        transform: scale(1.2);
+      }
+
+    }
+
+    .nav-fb-btn-pc{
+      display: none;
+    }
+
+    .head-links {
+        display: none; 
+    }
+}
+
+.floating-label{
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  background: black;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.3rem;
+  opacity: 0;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.group:hover .floating-label{
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

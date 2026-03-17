@@ -1,0 +1,28 @@
+
+
+body.home{
+  background-color: blue;
+}
+
+
+
+/* :root {
+  --text: clamp(1rem, 2.5vw, 2rem);
+  --h1-size: 1.6;
+}
+
+h1 {
+  font-size: calc(var(--text) * var(--h1-size));
+}
+
+h2 {
+  font-size: calc(var(--text) * 1.4);
+}
+
+h3 {
+  font-size: calc(var(--text) * 1.2);
+}
+
+h4 {
+  font-size: calc(var(--text) * 1);
+} */

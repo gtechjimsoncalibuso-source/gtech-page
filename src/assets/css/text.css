@@ -1,0 +1,16 @@
+
+h1{font-size: calc(clamp(1.4rem, 2.5vw, 3rem)*1.4);}
+h2{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*1.2);}
+h3{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*1);}
+h4{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*1);}
+h5{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.6);}
+h6{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.4);}
+
+/* HOME */
+.home-tagline{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*1.8);}
+
+/* SERVICES */
+.serv-h{font-size: calc(clamp(1rem, 2.5vw, 3.5rem)*1.8);}
+.serv-l{font-size: calc(clamp(1.5rem, 2.5vw, 3.5rem)*0.6);}
+.serv-card-h{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*0.65);}
+.serv-card-l{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*0.45);}
