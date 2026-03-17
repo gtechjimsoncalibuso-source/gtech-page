@@ -126,10 +126,6 @@ export default function services(){
                 </div>
             </section>
 
-            <footer className='flex items-center'>
-                <p className='text-center'>Copyright GTechnology.All Rights Reserved | Designed by GTechnology</p>
-            </footer>
-
         </main>
     )
 }

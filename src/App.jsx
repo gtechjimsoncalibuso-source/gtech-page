@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import './assets/imports.js';
 
 import Header from './components/Header.jsx';
+import Copyright from './components/copyright.jsx';
 import Home from './pages/Home.jsx';
 import Services from './pages/Services.jsx'
 import About from './pages/About.jsx'
@@ -24,7 +25,7 @@ export default function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    
+      <Copyright></Copyright>
     </BrowserRouter>
   )
 

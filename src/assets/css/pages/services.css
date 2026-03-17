@@ -9,6 +9,7 @@ body.services{
 .serv-h{
   background: linear-gradient(to right, rgb(29, 29, 29), rgb(146, 146, 146));
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
 }
