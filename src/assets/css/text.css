@@ -5,9 +5,11 @@ h3{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*1);}
 h4{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*1);}
 h5{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.6);}
 h6{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.4);}
+p{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.4);}
+li{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.3);}
 
 /* HOME */
-.home-tagline{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*1.8);}
+/* .home-tagline{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*1.8);} */
 
 /* SERVICES */
 .serv-h{font-size: calc(clamp(1.5rem, 2.5vw, 3.5rem)*1.8);}
@@ -17,6 +19,12 @@ h6{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.4);}
 
 /* ABOUT */
 .ab-h{font-size: calc(clamp(1.5rem, 2.5vw, 3rem)*1.8);}
+.ab-s2-l{font-size: calc(clamp(1.5rem, 2.5vw, 2.5rem)*0.6);} 
+.ab-s3-c-h{font-size: calc(clamp(1.5rem, 2.5vw, 2.5rem)*1.2);}
+.ab-s3-c-h-c-h{font-size: calc(clamp(1.5rem, 2.5vw, 3rem)*1);}
+.ab-s4-c-h-c-l{font-size: calc(clamp(1.5rem, 2.5vw, 3rem)*0.6);}
+.ab-s4-c-btn{font-size: calc(clamp(1rem, 2vw, 1.5rem)*0.8);}
+.ab-s4-c2-l{font-size: calc(clamp(1.7rem, 2.5vw, 2.5rem)*0.5);}
 
 /* FOOTER */
 .coppyright{font-size: calc(clamp(0.8rem, 2vw, 1.6rem)*0.8);}

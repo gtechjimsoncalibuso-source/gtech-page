@@ -14,3 +14,39 @@ body.about{
   background-clip: text;
   color: transparent;
 }
+
+.ab-s3-c {
+  background: linear-gradient(
+    to right,
+    rgba(49, 128, 73, 1),
+    rgba(0, 160, 160, 1)
+  );
+}
+
+.ab-s3-c-h{
+  background: linear-gradient(to right, rgb(214, 214, 214), rgb(255, 255, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.ab-s3-c-h-c-h{
+  background: linear-gradient(to right, rgb(214, 214, 214), rgb(255, 255, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: t
+}
+
+.ab-s3-c-h-c-l{
+  background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: t
+}
+
+.ab-s4-c2-l{
+  background: linear-gradient(to right, rgba(53, 53, 48, 0.27), rgba(53, 53, 48, 0.27));
+  color: rgb(0, 0, 0);
+}

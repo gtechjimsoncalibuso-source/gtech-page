@@ -53,3 +53,10 @@ export function characters(el, de = 0) {
     stagger: 0.04,
   });
 }
+
+// gsap.from('#leadC', {
+//     duration: 1.5,
+//     scale: 0,
+//     ease: "elastic.out(1, 0.6)",
+//     delay: 0.7
+// });
