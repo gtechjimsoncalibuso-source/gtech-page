@@ -60,3 +60,37 @@ export function characters(el, de = 0) {
 //     ease: "elastic.out(1, 0.6)",
 //     delay: 0.7
 // });
+
+
+
+export const initClientScroll = (rows) => {
+  rows.forEach((row, index) => {
+    const isLeft = index % 2 === 0;
+
+    if (isLeft) {
+      // LEFT 
+      gsap.fromTo(
+        row,
+        { xPercent: 0 },
+        {
+          xPercent: -50,
+          duration: 20,
+          ease: "linear",
+          repeat: -1,
+        }
+      );
+    } else {
+      // RIGHT 
+      gsap.fromTo(
+        row,
+        { xPercent: -50 },
+        {
+          xPercent: 0,
+          duration: 20,
+          ease: "linear",
+          repeat: -1,
+        }
+      );
+    }
+  });
+};

@@ -30,12 +30,13 @@ body.about{
   background-clip: text;
   color: transparent;
 }
+
 .ab-s3-c-h-c-h{
   background: linear-gradient(to right, rgb(214, 214, 214), rgb(255, 255, 255));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: t
+  color: white
 }
 
 .ab-s3-c-h-c-l{

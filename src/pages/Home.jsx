@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import "../assets/css/text.css";
-import flexibleDeals from '../assets/images/cb024f0eda92e93f72f8664c8848b80a03760cb2.png';
+import CardImage from '../assets/images/Card.png';
 import LaptopImage from '../assets/images/laptop-mockup.png';
 import PhoneImage from '../assets/images/phone-mockup.png';
-import CardImage from '../assets/images/cb024f0eda92e93f72f8664c8848b80a03760cb2.png'
+import ShieldImage from '../assets/images/shield.png';
 import { IoLogoWindows } from "react-icons/io";
 import { IoLogoAndroid } from "react-icons/io";
 import { FaLinux } from "react-icons/fa";
@@ -90,13 +90,14 @@ export default function Home() {
                         gap-10 
                         py-5 sm:py-5 md:py-10 lg:py-15 xl:py-15
                         ">
-          <div className="flex justify-center items-center">
-            <img src={LaptopImage} alt="Flexible Deals" className="h-full sm:h-64 md:h-72 lg:h-80 xl:h-[300px] w-auto"/>
-          </div>
+         <div className="flex justify-center items-center">
+          <img src={CardImage} alt="Flexible Deals" 
+          className="w-[100px] sm:w-[130px] md:w-[150px] lg:w-[200px] h-auto object-contain"/>
+        </div>
             <div className="flex flex-col justify-center text-center max-lg:text-center lg:text-left">
               <h3 className="font-extrabold 
                    text-2xl sm:text-4xl md:text-5xl lg:text-6xl
-                   bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
+                   bg-gradient-to-r from-[#22A570] to-[#585858] 
                    bg-clip-text text-transparent mb-3">
                     Flexible Deals
               </h3>
@@ -125,7 +126,8 @@ export default function Home() {
               </p>
             </div>
             <div className="flex justify-center items-center">
-            <img src={LaptopImage} alt="Flexible Deals" className="w-full sm:w-64 md:w-72 lg:w-80 xl:w-[400px] h-auto"/>
+            <img src={LaptopImage} alt="Flexible Deals" 
+             className="w-[150px] sm:w-[150px] md:w-[200px] lg:w-[350px] h-auto object-contain"/>
           </div>
         </div>
         {/* Legitimacy */}
@@ -134,7 +136,8 @@ export default function Home() {
                         py-5 sm:py-5 md:py-10 lg:py-15 xl:py-15
                         ">
           <div className="flex justify-center items-center">
-           <img src={LaptopImage} alt="Flexible Deals" className="w-full sm:w-64 md:w-72 lg:w-80 xl:w-[400px] h-auto"/>
+           <img src={ShieldImage} alt="Flexible Deals" 
+            className="w-[100px] sm:w-[150px] md:w-[200px] lg:w-[230px] h-auto object-contain"/>
           </div>
             <div className="flex flex-col justify-center text-center max-lg:text-center lg:text-left">
               <h3 className="font-extrabold py-[10px]
@@ -189,7 +192,7 @@ export default function Home() {
                         place-items-center
                         ">
             <div>
-              <img src={PhoneImage} className="w-full sm:w-20 md:w-28 lg:w-32 xl:w-[300px] h-auto" />
+              <img src={PhoneImage} className="w-[150px] sm:w-[150px] md:w-[200px] lg:w-[350px] h-auto object-contain" />
             </div>
             <div className="flex justify-center  py-[2rem]">
                <h2 className="flex items-center font-black text-center 
@@ -201,7 +204,7 @@ export default function Home() {
             </div>
 
             <div>
-              <img src={LaptopImage} className="w-full sm:w-20 md:w-28 lg:w-32 xl:w-[300px] h-auto" />
+              <img src={LaptopImage} className="w-[150px] sm:w-[150px] md:w-[200px] lg:w-[350px] h-auto object-contain" />
             </div>
         </div>
         {/* FAQ */}
@@ -300,7 +303,7 @@ export default function Home() {
 </div>
 
         </div>
-        <section className="px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
+        <section id="contact" className="px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
         py-10 sm:py-10 md:py-10 lg:py-15 xl:py-15 "
         >
           <h3 className="font-extrabold 
@@ -309,7 +312,15 @@ export default function Home() {
                    bg-clip-text text-transparent mb-3 text-center" >
                   Let's Connect</h3>
           <div className="grid grid-cols-2 max-lg:grid-cols-1  ">
-            <div className="bg-[#003224] p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 text-white text-sm">
+            <div className="
+  bg-[#003224] 
+  p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
+  text-white text-sm
+
+  rounded-t-2xl rounded-b-none        /* mobile (1 col) */
+  max-lg:rounded-t-2xl max-lg:rounded-b-none
+  lg:rounded-l-2xl lg:rounded-r-none  /* desktop (2 col) */
+">
               <h3>We’re here to connect and assist you</h3>
 
               <div className="grid grid-cols-2 max-lg:grid-cols-1 ">
@@ -345,7 +356,16 @@ export default function Home() {
                         ></iframe>
                         </div>
             </div>
-              <form className="bg-[#DEDEE0] max-lg:order-2 p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 flex flex-col gap-4">
+              <form className="
+  bg-[#DEDEE0] 
+  max-lg:order-2 
+  p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
+  flex flex-col gap-4
+
+  rounded-b-2xl rounded-t-none        /* mobile (1 col) */
+  max-lg:rounded-b-2xl max-lg:rounded-t-none
+  lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */
+">
                 <h3 className="text-lg md:text-xl lg:text-2xl font-bold">GET IN TOUCH</h3>
                 <p className="text-sm md:text-base lg:text-lg">Reach out with inquiries</p>
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
 import '../css/team.css';
 
@@ -25,9 +25,8 @@ const Card = ({ name, description, image }) => (
 );
 
 const Carousel = ({ children }) => {
-  const [active, setActive] = useState(2);
   const count = React.Children.count(children);
-
+  const [active, setActive] = useState(0);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -37,68 +36,72 @@ const Carousel = ({ children }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const next = () => setActive((prev) => (prev + 1) % count);
+  const prev = () => setActive((prev) => (prev - 1 + count) % count);
 
-  const [startX, setStartX] = useState(0);
-  const [endX, setEndX] = useState(0);
+  const startX = useRef(null);
 
   const handleTouchStart = (e) => {
-    setStartX(e.touches[0].clientX);
+    startX.current = e.touches[0].clientX;
   };
 
-  const handleTouchMove = (e) => {
-    setEndX(e.touches[0].clientX);
-  };
+  const handleTouchEnd = (e) => {
+    if (startX.current === null) return;
 
-  const handleTouchEnd = () => {
-    const diff = startX - endX;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX.current;
 
-    if (diff > 50 && active < count - 1) {
-      setActive((i) => i + 1); 
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        prev(); 
+      } else {
+        next(); 
+      }
     }
 
-    if (diff < -50 && active > 0) {
-      setActive((i) => i - 1); 
-    }
+    startX.current = null;
   };
 
   return (
     <div
       className="carousel"
       onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {active > 0 && (
-        <button className="nav left" onClick={() => setActive(i => i - 1)}>
-          <TiChevronLeftOutline />
-        </button>
-      )}
-      {React.Children.map(children, (child, i) => (
-        <div
-          className="card-container"
-          key={i}
-          style={{
-            transform: `
-              rotateY(${(active - i) * (isMobile ? 30 : 50)}deg)
-              scaleY(${1 - Math.abs(active - i) * (isMobile ? 0.2 : 0.4)})
-              translateZ(${-Math.abs(active - i) * (isMobile ? 15 : 30)}rem)
-              translateX(${(active - i) * (isMobile ? -2 : -5)}rem)
-            `,
-            filter: `blur(${Math.abs(active - i) * (isMobile ? 0.5 : 1)}rem)`,
-            opacity: Math.abs(active - i) >= MAX_VISIBILITY ? 0 : 1,
-            display: Math.abs(active - i) > MAX_VISIBILITY ? 'none' : 'block',
-            pointerEvents: active === i ? 'auto' : 'none',
-          }}
-        >
-          {child}
-        </div>
-      ))}
+      <button className="nav left" onClick={prev}>
+        <TiChevronLeftOutline />
+      </button>
 
-      {active < count - 1 && (
-        <button className="nav right" onClick={() => setActive(i => i + 1)}>
-          <TiChevronRightOutline />
-        </button>
-      )}
+      {React.Children.map(children, (child, i) => {
+        let offset = i - active;
+
+        if (offset > count / 2) offset -= count;
+        if (offset < -count / 2) offset += count;
+
+        return (
+          <div
+            className="card-container"
+            key={i}
+            style={{
+              transform: `
+                rotateY(${offset * (isMobile ? -30 : -50)}deg) 
+                scaleY(${1 - Math.abs(offset) * (isMobile ? 0.2 : 0.3)})
+                translateZ(${-Math.abs(offset) * (isMobile ? 5 : 20)}rem)
+                translateX(${offset * (isMobile ? 2 : 5)}rem) 
+              `,
+              filter: `blur(${Math.abs(offset) * (isMobile ? 0.5 : 1)}rem)`,
+              opacity: Math.abs(offset) > MAX_VISIBILITY ? 0 : 1,
+              display: Math.abs(offset) > MAX_VISIBILITY ? 'none' : 'block',
+              pointerEvents: offset === 0 ? 'auto' : 'none',
+            }}
+          >
+            {child}
+          </div>
+        );
+      })}
+      <button className="nav right" onClick={next}>
+        <TiChevronRightOutline />
+      </button>
     </div>
   );
 };
@@ -113,27 +116,25 @@ export default function Team() {
 
   return (
     <div className="team">
-          
-        <div className="team-content">
-           <h1 className="team-title">  We Are G.Technology </h1>
-           
-           <h2 className="team-subtitle"> Scaling Businesses, Exceeding Standards </h2>
+      <div className="team-content">
+        <h1 className="team-title">We Are G.Technology</h1>
+        <h2 className="team-subtitle">
+          Scaling Businesses, Exceeding Standards
+        </h2>
+
         <div className="team-container">
-            <Carousel>
-                {teamData.map((member, i) => (
-                    <Card
-                    key={i}
-                    name={member.name}
-                    description={member.description}
-                    image={member.image}
-                    />
-                    ))}
-            </Carousel>
+          <Carousel>
+            {teamData.map((member, i) => (
+              <Card
+                key={i}
+                name={member.name}
+                description={member.description}
+                image={member.image}
+              />
+            ))}
+          </Carousel>
         </div>
-             
-        </div>
-         
-     
+      </div>
     </div>
   );
 }

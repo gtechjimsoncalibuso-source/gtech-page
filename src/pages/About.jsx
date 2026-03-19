@@ -7,81 +7,81 @@ import ab_c11 from '../assets/images/ab-c11.png';
 import ab_c12 from '../assets/images/ab-c12.png';
 import '../css/About.css' 
 export default function about(){
-      const projects = [
-    {
-      description: "Checking System at Rural Bank Cauayan",
-      location: "Cauayan City, Isabela",
-      year: "2010",
-      side: "left",
-    },
-    {
-      description: "Scholarship Matrix of CHED (Commission on Higher Education) Region II",
-      location: "Isabela",
-      year: "2010",
-      side: "right",
-    },
-    {
-      description: "Record Management System for Dayos Hospital",
-      location: "Roxas, Isabela",
-      year: "2011",
-      side: "left",
-    },
-    {
-      description: "Attendance Monitoring System of Isabela State University-Roxas and Cabagan Campus",
-      location: "Roxas & Cabagan, Isabela",
-      year: "2011 - Present",
-      side: "right",
-    },
-    {
-      description: "SARIAS (Student Automated Registration Information and Accounting System) for Isabela State University Roxas and Cabagan Campus",
-      location: "Roxas & Cabagan, Isabela",
-      year: "2012 - Present",
-      side: "left",
-    },
-     {
-      description: "Online Grading, inquiry and evaluation system for ISU Cabagan and Roxas Campus",
-      location: "Roxas & Cabagan, Isabela",
-      year: "2013",
-      side: "right",
-    },
-    {
-      description: "Automated Voting System for SSC/SBO of Isabela State University Roxas Campus",
-      location: "Roxas, Isabela",
-      year: "2014",
-      side: "left",
-    },
-    {
-      description: "Technical Activity Board System",
-      location: "Isabela",
-      year: "2014",
-      side: "right",
-    },
-    {
-      description: "Attendance Monitoring System for Isabela State University Cauayan City Campus",
-      location: "Cauayan City, Isabela",
-      year: "2014",
-      side: "left",
-    },
-    {
-      description: "Hardware Sales and Inventory System of RJU Hardware",
-      location: "Jones, Isabela",
-      year: "2016",
-      side: "right",
-    },
-    {
-      description: "Human Resource Management System with Payroll at Rural Bank Cauayan",
-      location: "Cauayan City, Isabela",
-      year: "2019 - Present",
-      side: "left",
-    },
-    {
-      description: "Computer Parts Sales and Inventroy System of Tech Buddy Cauayan",
-      location: "Cauayan City, Isabela",
-      year: "2020",
-      side: "right",
-    },
-    
-];
+    const projects = [
+        {
+        description: "Checking System at Rural Bank Cauayan",
+        location: "Cauayan City, Isabela",
+        year: "2010",
+        side: "left",
+        },
+        {
+        description: "Scholarship Matrix of CHED (Commission on Higher Education) Region II",
+        location: "Isabela",
+        year: "2010",
+        side: "right",
+        },
+        {
+        description: "Record Management System for Dayos Hospital",
+        location: "Roxas, Isabela",
+        year: "2011",
+        side: "left",
+        },
+        {
+        description: "Attendance Monitoring System of Isabela State University-Roxas and Cabagan Campus",
+        location: "Roxas & Cabagan, Isabela",
+        year: "2011 - Present",
+        side: "right",
+        },
+        {
+        description: "SARIAS (Student Automated Registration Information and Accounting System) for Isabela State University Roxas and Cabagan Campus",
+        location: "Roxas & Cabagan, Isabela",
+        year: "2012 - Present",
+        side: "left",
+        },
+        {
+        description: "Online Grading, inquiry and evaluation system for ISU Cabagan and Roxas Campus",
+        location: "Roxas & Cabagan, Isabela",
+        year: "2013",
+        side: "right",
+        },
+        {
+        description: "Automated Voting System for SSC/SBO of Isabela State University Roxas Campus",
+        location: "Roxas, Isabela",
+        year: "2014",
+        side: "left",
+        },
+        {
+        description: "Technical Activity Board System",
+        location: "Isabela",
+        year: "2014",
+        side: "right",
+        },
+        {
+        description: "Attendance Monitoring System for Isabela State University Cauayan City Campus",
+        location: "Cauayan City, Isabela",
+        year: "2014",
+        side: "left",
+        },
+        {
+        description: "Hardware Sales and Inventory System of RJU Hardware",
+        location: "Jones, Isabela",
+        year: "2016",
+        side: "right",
+        },
+        {
+        description: "Human Resource Management System with Payroll at Rural Bank Cauayan",
+        location: "Cauayan City, Isabela",
+        year: "2019 - Present",
+        side: "left",
+        },
+        {
+        description: "Computer Parts Sales and Inventroy System of Tech Buddy Cauayan",
+        location: "Cauayan City, Isabela",
+        year: "2020",
+        side: "right",
+        },
+        
+    ];
 
     const [s4c, setS4c] = useState(0);
 
@@ -151,8 +151,24 @@ export default function about(){
         </div>
     );
 
+
     const protim = (
-        <>bbbbbbb</>
+        <div className="projects-timeline 
+        gap-[2.5rem] max-xl:gap-[2] max-lg:gap-[1.5] max-md:gap-[1] max-sm:gap-[0.5]">
+            <h3 className="ab-s4-c3-c-h">GTechnology projects through the time</h3>
+            <div className="timeline">
+                {projects.map((item, index) => (
+                    <div key={index} className={`timeline-item ${item.side}`}>
+                        <div className="timeline-content">
+                            <div className="timeline-dot"></div>
+                            <h4 className="ab-s4-c3-c-h-ch">{item.description}</h4>
+                            <p className="ab-s4-c3-c-h-cl location">{item.location}</p>
+                            <p className="ab-s4-c3-c-h-cp year">{item.year}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
     
     return(
@@ -266,22 +282,6 @@ export default function about(){
                 {s4c === 1 && protim}
                 
             </section>
-
-             <div className="projects-timeline">
-                <h3>GTechnology projects through the time</h3>
-                <div className="timeline">
-                    {projects.map((item, index) => (
-                        <div key={index} className={`timeline-item ${item.side}`}>
-                            <div className="timeline-dot"></div>
-                            <div className="timeline-content">
-                                <h4>{item.description}</h4>
-                                <p className="location">{item.location}</p>
-                                <p className="year">{item.year}</p>
-                            </div>
-                        </div>
-                        ))}
-                </div>
-            </div>
 
         </main>
 

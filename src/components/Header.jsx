@@ -10,116 +10,189 @@ import '../assets/css/headers.css';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [position, setPosition] = useState({ 
+    const [position, setPosition] = useState({
         x: 20,
-        y: window.innerHeight - 80 
+        y: window.innerHeight - 80
     });
     const [isDragging, setIsDragging] = useState(false);
-    
+
+    const positionRef = useRef(position);
+    const percentRef = useRef({ x: 0, y: 0 });
     const offset = useRef({ x: 0, y: 0 });
+
     const dragStarted = useRef(false);
+    const isStopping = useRef(false);
+    const blockClicks = useRef(false); // ✅ NEW FIX
+
+    const dragThreshold = 6;
+
+    useEffect(() => {
+        positionRef.current = position;
+
+        percentRef.current = {
+            x: position.x / window.innerWidth,
+            y: position.y / window.innerHeight
+        };
+    }, [position]);
 
     const isBottom = position.y > window.innerHeight * 0.6;
 
-    const handleAction = () => {
-        if (!dragStarted.current) {
-            setIsMenuOpen(!isMenuOpen);
+    const getClientPos = (e) => {
+        if (e.touches) {
+            return {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+            };
         }
-    };
-
-    const startDrag = (clientX, clientY) => {
-        setIsDragging(true);
-        dragStarted.current = false;
-        offset.current = {
-            x: clientX - position.x,
-            y: clientY - position.y
+        return {
+            x: e.clientX,
+            y: e.clientY
         };
     };
 
-    const snapToNearestCorner = () => {
+    const handleAction = (e) => {
+        if (blockClicks.current) {
+            e.preventDefault();
+            return;
+        }
+        setIsMenuOpen(prev => !prev);
+    };
+
+    const startDrag = (e) => {
+        if (isMenuOpen) return;
+
+        const { x, y } = getClientPos(e);
+
+        setIsDragging(true);
+        dragStarted.current = false;
+        isStopping.current = false;
+
+        offset.current = {
+            x: x - positionRef.current.x,
+            y: y - positionRef.current.y
+        };
+    };
+
+    const snapToNearestCorner = (pos) => {
         const navWidth = 56;
         const buttonHeight = 56;
+
         const corners = [
-            { x: 20, y: 120 }, // top-left
-            { x: window.innerWidth - navWidth - 20, y: 120 }, // top-right
-            { x: 20, y: window.innerHeight - buttonHeight - 20 }, // bottom-left
-            { x: window.innerWidth - navWidth - 20, y: window.innerHeight - buttonHeight - 20 } // bottom-right
+            { x: 20, y: 120 },
+            { x: window.innerWidth - navWidth - 20, y: 120 },
+            { x: 20, y: window.innerHeight - buttonHeight - 20 },
+            { x: window.innerWidth - navWidth - 20, y: window.innerHeight - buttonHeight - 20 }
         ];
+
         const closest = corners.reduce((prev, curr) => {
-            const prevDist = Math.hypot(prev.x - position.x, prev.y - position.y);
-            const currDist = Math.hypot(curr.x - position.x, curr.y - position.y);
+            const prevDist = Math.hypot(prev.x - pos.x, prev.y - pos.y);
+            const currDist = Math.hypot(curr.x - pos.x, curr.y - pos.y);
             return currDist < prevDist ? curr : prev;
         });
+
+        positionRef.current = closest;
         setPosition(closest);
     };
 
-    // Drag logic
     useEffect(() => {
-        const handleMove = (clientX, clientY) => {
-            if (!isDragging) return;
-            dragStarted.current = true;
+        const handleMove = (e) => {
+            if (!isDragging || isStopping.current) return;
+
+            if (e.cancelable) e.preventDefault();
+
+            const { x, y } = getClientPos(e);
+
+            const dx = Math.abs(x - (positionRef.current.x + offset.current.x));
+            const dy = Math.abs(y - (positionRef.current.y + offset.current.y));
+
+            if (dx > dragThreshold || dy > dragThreshold) {
+                dragStarted.current = true;
+            }
 
             const navWidth = 56;
-            const menuHeight = 350;
             const buttonHeight = 60;
 
-            let newX = clientX - offset.current.x;
-            let newY = clientY - offset.current.y;
+            let newX = x - offset.current.x;
+            let newY = y - offset.current.y;
 
-            // Limit within screen
             newX = Math.max(0, Math.min(newX, window.innerWidth - navWidth));
             newY = Math.max(0, Math.min(newY, window.innerHeight - buttonHeight));
 
-            setPosition({ x: newX, y: newY });
-        };
+            const newPos = { x: newX, y: newY };
 
-        const onMouseMove = (e) => handleMove(e.clientX, e.clientY);
-        const onTouchMove = (e) => handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            positionRef.current = newPos;
+            setPosition(newPos);
+        };
 
         const stopDragging = () => {
-            if (dragStarted.current) snapToNearestCorner();
-            setTimeout(() => setIsDragging(false), 50);
+            if (!isDragging) return;
+
+            isStopping.current = true;
+
+            if (dragStarted.current) {
+                blockClicks.current = true; // ✅ BLOCK AFTER DRAG
+
+                setTimeout(() => {
+                    blockClicks.current = false;
+                }, 200); // 🔥 tweak if needed
+            }
+
+            const finalPos = positionRef.current;
+
+            if (dragStarted.current) {
+                snapToNearestCorner(finalPos);
+            }
+
+            dragStarted.current = false;
+
+            setTimeout(() => {
+                setIsDragging(false);
+                isStopping.current = false;
+            }, 60);
         };
 
-        if (isDragging) {
-            window.addEventListener('mousemove', onMouseMove);
-            window.addEventListener('mouseup', stopDragging);
-            window.addEventListener('touchmove', onTouchMove, { passive: false });
-            window.addEventListener('touchend', stopDragging);
-        }
+        window.addEventListener('mousemove', handleMove);
+        window.addEventListener('mouseup', stopDragging);
+
+        window.addEventListener('touchmove', handleMove, { passive: false });
+        window.addEventListener('touchend', stopDragging);
 
         return () => {
-            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mousemove', handleMove);
             window.removeEventListener('mouseup', stopDragging);
-            window.removeEventListener('touchmove', onTouchMove);
+            window.removeEventListener('touchmove', handleMove);
             window.removeEventListener('touchend', stopDragging);
         };
-    }, [isDragging, position]);
+    }, [isDragging]);
 
-    // Window resize logic
+    // ✅ RESPONSIVE RESIZE
     useEffect(() => {
         const handleResize = () => {
             const navWidth = 56;
             const buttonHeight = 56;
 
-            let x = Math.min(position.x, window.innerWidth - navWidth - 20);
-            let y = Math.min(position.y, window.innerHeight - buttonHeight - 20);
+            let newX = percentRef.current.x * window.innerWidth;
+            let newY = percentRef.current.y * window.innerHeight;
 
-            setPosition({ x, y });
-            snapToNearestCorner();
+            newX = Math.max(0, Math.min(newX, window.innerWidth - navWidth));
+            newY = Math.max(0, Math.min(newY, window.innerHeight - buttonHeight));
+
+            const newPos = { x: newX, y: newY };
+
+            positionRef.current = newPos;
+            setPosition(newPos);
         };
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, [position]);
+    }, []);
 
     return (
-        <header className="w-full h-[6rem] p-4 sticky top-0 flex flex-row items-center justify-between text-[#ffffffe5] bg-black z-[1000]">
+        <header className="w-full h-[6rem] p-4 sticky top-0 flex justify-between items-center text-[#ffffffe5] bg-black z-[1000]">
             <h4 className="font-bold">GTechnology</h4>
 
-            {/* Desktop Nav */}
-            <nav className="w-full gap-[5rem] flex flex-row items-center justify-end">
-                <ul className="w-full gap-[1.5rem] head-links flex flex-row flex-1 justify-center">
+            <nav className="w-full flex justify-end gap-[5rem] items-center">
+                <ul className="flex flex-1 justify-center gap-[1.5rem] head-links">
                     <li><Link to="/" className="nav-link">HOME</Link></li>
                     <li><Link to="/services" className="nav-link">SERVICES</Link></li>
                     <li><Link to="/about" className="nav-link">ABOUT</Link></li>
@@ -128,21 +201,21 @@ export default function Header() {
                     <li><Link to="/contact" className="nav-link">CONTACT</Link></li>
                 </ul>
 
-                <a href="https://www.facebook.com/profile.php?id=100045189956593" className="nav-fb-btn nav-fb-btn-pc flex flex-row justify-center items-center gap-2">
+                <a href="#" className="nav-fb-btn nav-fb-btn-pc flex gap-2 items-center">
                     <FaFacebook size={26}/>FACEBOOK PAGE
                 </a>
 
-                <a href="https://www.facebook.com/profile.php?id=100045189956593" className="nav-fb-btn nav-fb-btn-cp flex flex-row justify-center items-center rounded-full">
+                <a href="#" className="nav-fb-btn nav-fb-btn-cp flex rounded-full items-center">
                     <FaFacebook color="blue" size={34}/>
                 </a>
             </nav>
 
-            {/* Draggable Mobile Control Panel */}
+            {/* DRAG BUTTON */}
             <nav
                 id="nav-cp"
-                onMouseDown={(e) => startDrag(e.clientX, e.clientY)}
-                onTouchStart={(e) => startDrag(e.touches[0].clientX, e.touches[0].clientY)}
-                className={`fixed w-[3.5rem] h-[3.5rem] bg-[#f1f1f1] rounded-full shadow-md flex items-center justify-center z-[2000] transition-all ${isDragging ? 'shadow-2xl scale-105' : ''}`}
+                className={`fixed w-[3.5rem] h-[3.5rem] bg-[#f1f1f1] rounded-full shadow-md flex items-center justify-center z-[2000] ${
+                    isDragging ? 'scale-110 shadow-2xl' : ''
+                }`}
                 style={{
                     left: `${position.x}px`,
                     top: `${position.y}px`,
@@ -150,41 +223,42 @@ export default function Header() {
                 }}
             >
                 <button
-                    onMouseUp={handleAction}
-                    onTouchEnd={(e) => { e.preventDefault(); handleAction(); }}
+                    onMouseDown={startDrag}
+                    onTouchStart={startDrag}
+                    onClick={handleAction}
                     className="p-2"
                 >
                     <GiHamburgerMenu color="black" size={24} />
                 </button>
 
                 {isMenuOpen && (
-                    <ul className={`absolute left-0 w-full p-[1rem] gap-4 flex flex-col items-center bg-[#f1f1f1] rounded-full shadow-lg border border-gray-300
-                        ${isBottom ? 'bottom-[4rem]' : 'top-[4rem]'}
-                    `}>
-                        <li className="relative group flex justify-center">
-                            <Link to="/" onClick={() => setIsMenuOpen(false)}><FaHome size={24} color="black" /></Link>
-                            <span className="floating-label">HOME</span>
-                        </li>
-                        <li className="relative group flex justify-center">
-                            <Link to="/services" onClick={() => setIsMenuOpen(false)}><FaGears size={24} color="black" /></Link>
-                            <span className="floating-label">SERVICES</span>
-                        </li>
-                        <li className="relative group flex justify-center">
-                            <Link to="/about" onClick={() => setIsMenuOpen(false)}><IoIosInformationCircle size={24} color="black" /></Link>
-                            <span className="floating-label">ABOUT</span>
-                        </li>
-                        <li className="relative group flex justify-center">
-                            <Link to="/clients" onClick={() => setIsMenuOpen(false)}><FaHandshake size={24} color="black" /></Link>
-                            <span className="floating-label">CLIENTS</span>
-                        </li>
-                        <li className="relative group flex justify-center">
-                            <Link to="/team" onClick={() => setIsMenuOpen(false)}><RiTeamFill size={24} color="black" /></Link>
-                            <span className="floating-label">TEAM</span>
-                        </li>
-                        <li className="relative group flex justify-center">
-                            <Link to="/contact" onClick={() => setIsMenuOpen(false)}><FaPhoneSquare size={24} color="black" /></Link>
-                            <span className="floating-label">CONTACT</span>
-                        </li>
+                    <ul
+                        className={`absolute left-0 w-full p-[1rem] flex flex-col gap-4 items-center bg-[#f1f1f1] rounded-full shadow-lg border
+                        ${isBottom ? 'bottom-[4rem]' : 'top-[4rem]'}`}
+                    >
+                        {[
+                            { to: "/", icon: <FaHome size={28} /> },
+                            { to: "/services", icon: <FaGears size={28} /> },
+                            { to: "/about", icon: <IoIosInformationCircle size={28} /> },
+                            { to: "/clients", icon: <FaHandshake size={28} /> },
+                            { to: "/team", icon: <RiTeamFill size={28} /> },
+                            { to: "/contact", icon: <FaPhoneSquare size={28} /> }
+                        ].map((item, i) => (
+                            <li key={i}>
+                                <Link
+                                    to={item.to}
+                                    onClick={(e) => {
+                                        if (blockClicks.current) {
+                                            e.preventDefault();
+                                            return;
+                                        }
+                                        setIsMenuOpen(false);
+                                    }}
+                                >
+                                    {React.cloneElement(item.icon, { color: "black" })}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 )}
             </nav>
