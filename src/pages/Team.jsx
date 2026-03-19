@@ -134,6 +134,7 @@ export default function Team() {
             ))}
           </Carousel>
         </div>
+        
       </div>
     </div>
   );
