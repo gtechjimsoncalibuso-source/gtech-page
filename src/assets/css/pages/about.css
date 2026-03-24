@@ -8,18 +8,21 @@ body.about{
 }
 
 .ab-h{
-  background: linear-gradient(to right, rgb(29, 29, 29), rgb(116, 116, 116));
+  background: linear-gradient(to right, #22A570, #585858);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .ab-s3-c {
   background: linear-gradient(
     to right,
-    rgba(49, 128, 73, 1),
-    rgba(0, 160, 160, 1)
+    #22A570,
+    #156947
   );
 }
 
@@ -29,6 +32,8 @@ body.about{
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  
+
 }
 
 .ab-s3-c-h-c-h{
@@ -36,7 +41,8 @@ body.about{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: white
+  color: white;
+  
 }
 
 .ab-s3-c-h-c-l{
@@ -44,10 +50,14 @@ body.about{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: t
+  
+
 }
 
 .ab-s4-c2-l{
-  background: linear-gradient(to right, rgba(53, 53, 48, 0.27), rgba(53, 53, 48, 0.27));
+  background: white;
   color: rgb(0, 0, 0);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.14);
+  
+  
 }

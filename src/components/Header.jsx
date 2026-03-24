@@ -1,14 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaFacebook, FaHome, FaPhoneSquare, FaHandshake } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiTeamFill } from "react-icons/ri";
 import { IoIosInformationCircle } from "react-icons/io";
 import { FaGears } from "react-icons/fa6";
+ import logo from '../assets/images/logo.png';
 
 import '../assets/css/headers.css';
 
 export default function Header() {
+    const navigate = useNavigate();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [position, setPosition] = useState({
         x: 20,
@@ -22,9 +25,21 @@ export default function Header() {
 
     const dragStarted = useRef(false);
     const isStopping = useRef(false);
-    const blockClicks = useRef(false); // ✅ NEW FIX
+    const blockClicks = useRef(false);
 
     const dragThreshold = 6;
+
+    // ✅ SCROLL (WORKS ANYWHERE)
+    const scrollToSection = (id) => {
+        if (window.location.pathname !== "/") {
+            navigate("/", { state: { scrollTo: id } });
+        } else {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    };
 
     useEffect(() => {
         positionRef.current = position;
@@ -130,11 +145,11 @@ export default function Header() {
             isStopping.current = true;
 
             if (dragStarted.current) {
-                blockClicks.current = true; // ✅ BLOCK AFTER DRAG
+                blockClicks.current = true;
 
                 setTimeout(() => {
                     blockClicks.current = false;
-                }, 200); // 🔥 tweak if needed
+                }, 200);
             }
 
             const finalPos = positionRef.current;
@@ -165,7 +180,6 @@ export default function Header() {
         };
     }, [isDragging]);
 
-    // ✅ RESPONSIVE RESIZE
     useEffect(() => {
         const handleResize = () => {
             const navWidth = 56;
@@ -186,19 +200,33 @@ export default function Header() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
+    
     return (
-        <header className="w-full h-[6rem] p-4 sticky top-0 flex justify-between items-center text-[#ffffffe5] bg-black z-[1000]">
-            <h4 className="font-bold">GTechnology</h4>
+        <header className="w-full h-[4rem] sm:h-[4rem] md:h-[4rem] lg:h-[5rem] p-4 sticky top-0 flex justify-between items-center text-white bg-black/50 backdrop-blur-lg z-[1000]">
+            <img src={logo} alt="Logo" className="w-6 sm:w-6 md:w-8 lg:w-10 h-auto" />
+            <h5 className="font-bold font">Technology</h5>
+
 
             <nav className="w-full flex justify-end gap-[5rem] items-center">
                 <ul className="flex flex-1 justify-center gap-[1.5rem] head-links">
-                    <li><Link to="/" className="nav-link">HOME</Link></li>
+
+                    <li>
+                        <a onClick={() => scrollToSection("home")} className="nav-link cursor-pointer">
+                            HOME
+                        </a>
+                    </li>
+
                     <li><Link to="/services" className="nav-link">SERVICES</Link></li>
                     <li><Link to="/about" className="nav-link">ABOUT</Link></li>
                     <li><Link to="/clients" className="nav-link">CLIENTS</Link></li>
                     <li><Link to="/team" className="nav-link">TEAM</Link></li>
-                    <li><Link to="/contact" className="nav-link">CONTACT</Link></li>
+
+                    <li>
+                        <a onClick={() => scrollToSection("contact")} className="nav-link cursor-pointer">
+                            CONTACT
+                        </a>
+                    </li>
+
                 </ul>
 
                 <a href="#" className="nav-fb-btn nav-fb-btn-pc flex gap-2 items-center">
@@ -210,7 +238,7 @@ export default function Header() {
                 </a>
             </nav>
 
-            {/* DRAG BUTTON */}
+            {/* FLOATING MENU */}
             <nav
                 id="nav-cp"
                 className={`fixed w-[3.5rem] h-[3.5rem] bg-[#f1f1f1] rounded-full shadow-md flex items-center justify-center z-[2000] ${
@@ -237,26 +265,41 @@ export default function Header() {
                         ${isBottom ? 'bottom-[4rem]' : 'top-[4rem]'}`}
                     >
                         {[
-                            { to: "/", icon: <FaHome size={28} /> },
+                            { action: () => scrollToSection("home"), icon: <FaHome size={28} /> },
                             { to: "/services", icon: <FaGears size={28} /> },
                             { to: "/about", icon: <IoIosInformationCircle size={28} /> },
                             { to: "/clients", icon: <FaHandshake size={28} /> },
                             { to: "/team", icon: <RiTeamFill size={28} /> },
-                            { to: "/contact", icon: <FaPhoneSquare size={28} /> }
+                            { action: () => scrollToSection("contact"), icon: <FaPhoneSquare size={28} /> }
                         ].map((item, i) => (
                             <li key={i}>
-                                <Link
-                                    to={item.to}
-                                    onClick={(e) => {
-                                        if (blockClicks.current) {
-                                            e.preventDefault();
-                                            return;
-                                        }
-                                        setIsMenuOpen(false);
-                                    }}
-                                >
-                                    {React.cloneElement(item.icon, { color: "black" })}
-                                </Link>
+                                {item.action ? (
+                                    <button
+                                        onClick={(e) => {
+                                            if (blockClicks.current) {
+                                                e.preventDefault();
+                                                return;
+                                            }
+                                            item.action();
+                                            setIsMenuOpen(false);
+                                        }}
+                                    >
+                                        {React.cloneElement(item.icon, { color: "black" })}
+                                    </button>
+                                ) : (
+                                    <Link
+                                        to={item.to}
+                                        onClick={(e) => {
+                                            if (blockClicks.current) {
+                                                e.preventDefault();
+                                                return;
+                                            }
+                                            setIsMenuOpen(false);
+                                        }}
+                                    >
+                                        {React.cloneElement(item.icon, { color: "black" })}
+                                    </Link>
+                                )}
                             </li>
                         ))}
                     </ul>

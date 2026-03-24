@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 html, body{
     width: 100%;
     height: 100%;
@@ -16,8 +17,8 @@ body::-webkit-scrollbar {
 }
 
 header{
-  border-radius: 0 0 0.8rem 0.8rem;
-  border-bottom: 0.2rem solid #fbfffcd7;
+  border-radius: 0 0 0 0;
+  border-bottom: 0.01rem solid #fbfffc7a;
 }
 
 .nav-fb-btn {      
@@ -28,7 +29,7 @@ header{
   font-weight: 600;
   border-radius: 3rem;
   background: rgba(0, 17, 255, 0.89);
-  border: 0.1rem solid rgba(255, 255, 255, 0.73);
+
   cursor: pointer;
   transition: all 300ms ease;
   box-shadow: 0 0 0px #a25ff8; 
@@ -46,15 +47,28 @@ header{
 
 .nav-link {
   display: inline-block; 
-  font-size: calc(clamp(1.5rem, 2.5vw, 2.5rem) * 0.45);
-  color: #ffffffa6;
-  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: calc(clamp(1.5rem, 2.5vw, 2.6rem) * 0.45);
+  font-weight: 200;
+  color: #ffffff;
+  position: relative; 
+  transition: color 0.6s ease;
+  text-decoration: none; 
 }
 
-.nav-link:hover {
-  color: #ffffff;
-  text-decoration: underline;
-  transform: scale(1.2); 
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px; 
+  background: linear-gradient(90deg, #22A570, #006520); 
+  transform: scaleX(0); 
+  transform-origin: left; 
+  transition: transform 0.6s ease;
+}
+.nav-link:hover::after {
+  transform: scaleX(1); 
 }
 
 #nav-cp {

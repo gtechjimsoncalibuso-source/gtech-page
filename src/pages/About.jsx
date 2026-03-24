@@ -5,81 +5,84 @@ import '../assets/css/pages/about.css';
 import ab_c1 from '../assets/images/ab-c2.png';
 import ab_c11 from '../assets/images/ab-c11.png';
 import ab_c12 from '../assets/images/ab-c12.png';
+import { FaTimeline } from "react-icons/fa6";
+import { GrUserExpert } from "react-icons/gr";
 import '../css/About.css' 
+
 export default function about(){
     const projects = [
-        {
-        description: "Checking System at Rural Bank Cauayan",
-        location: "Cauayan City, Isabela",
-        year: "2010",
-        side: "left",
-        },
-        {
-        description: "Scholarship Matrix of CHED (Commission on Higher Education) Region II",
-        location: "Isabela",
-        year: "2010",
-        side: "right",
-        },
-        {
-        description: "Record Management System for Dayos Hospital",
-        location: "Roxas, Isabela",
-        year: "2011",
-        side: "left",
-        },
-        {
-        description: "Attendance Monitoring System of Isabela State University-Roxas and Cabagan Campus",
-        location: "Roxas & Cabagan, Isabela",
-        year: "2011 - Present",
-        side: "right",
-        },
-        {
-        description: "SARIAS (Student Automated Registration Information and Accounting System) for Isabela State University Roxas and Cabagan Campus",
-        location: "Roxas & Cabagan, Isabela",
-        year: "2012 - Present",
-        side: "left",
-        },
-        {
-        description: "Online Grading, inquiry and evaluation system for ISU Cabagan and Roxas Campus",
-        location: "Roxas & Cabagan, Isabela",
-        year: "2013",
-        side: "right",
-        },
-        {
-        description: "Automated Voting System for SSC/SBO of Isabela State University Roxas Campus",
-        location: "Roxas, Isabela",
-        year: "2014",
-        side: "left",
-        },
-        {
-        description: "Technical Activity Board System",
-        location: "Isabela",
-        year: "2014",
-        side: "right",
-        },
-        {
-        description: "Attendance Monitoring System for Isabela State University Cauayan City Campus",
-        location: "Cauayan City, Isabela",
-        year: "2014",
-        side: "left",
-        },
-        {
-        description: "Hardware Sales and Inventory System of RJU Hardware",
-        location: "Jones, Isabela",
-        year: "2016",
-        side: "right",
-        },
-        {
-        description: "Human Resource Management System with Payroll at Rural Bank Cauayan",
-        location: "Cauayan City, Isabela",
-        year: "2019 - Present",
-        side: "left",
-        },
-        {
-        description: "Computer Parts Sales and Inventroy System of Tech Buddy Cauayan",
-        location: "Cauayan City, Isabela",
-        year: "2020",
-        side: "right",
-        },
+       {
+      description: "Checking System at Rural Bank Cauayan",
+      location: "Cauayan City, Isabela",
+      year: "2010",
+      side: "left",
+    },
+    {
+      description: "Scholarship Matrix of CHED (Commission on Higher Education) Region II",
+      location: "Isabela",
+      year: "2010",
+      side: "right",
+    },
+    {
+      description: "Record Management System for Dayos Hospital",
+      location: "Roxas, Isabela",
+      year: "2011",
+      side: "left",
+    },
+    {
+      description: "Attendance Monitoring System of Isabela State University-Roxas and Cabagan Campus",
+      location: "Roxas & Cabagan, Isabela",
+      year: "2011 - Present",
+      side: "right",
+    },
+    {
+      description: "SARIAS (Student Automated Registration Information and Accounting System) for Isabela State University Roxas and Cabagan Campus",
+      location: "Roxas & Cabagan, Isabela",
+      year: "2012 - Present",
+      side: "left",
+    },
+     {
+      description: "Online Grading, inquiry and evaluation system for ISU Cabagan and Roxas Campus",
+      location: "Roxas & Cabagan, Isabela",
+      year: "2013",
+      side: "right",
+    },
+    {
+      description: "Automated Voting System for SSC/SBO of Isabela State University Roxas Campus",
+      location: "Roxas, Isabela",
+      year: "2014",
+      side: "left",
+    },
+    {
+      description: "Technical Activity Board System",
+      location: "Isabela",
+      year: "2014",
+      side: "right",
+    },
+    {
+      description: "Attendance Monitoring System for Isabela State University Cauayan City Campus",
+      location: "Cauayan City, Isabela",
+      year: "2014",
+      side: "left",
+    },
+    {
+      description: "Hardware Sales and Inventory System of RJU Hardware",
+      location: "Jones, Isabela",
+      year: "2016",
+      side: "right",
+    },
+    {
+      description: "Human Resource Management System with Payroll at Rural Bank Cauayan",
+      location: "Cauayan City, Isabela",
+      year: "2019 - Present",
+      side: "left",
+    },
+    {
+      description: "Computer Parts Sales and Inventroy System of Tech Buddy Cauayan",
+      location: "Cauayan City, Isabela",
+      year: "2020",
+      side: "right",
+    },
         
     ];
 
@@ -98,7 +101,7 @@ export default function about(){
         gap-x-[2rem] max-xl:gap-x-[1.5rem] max-lg:gap-x-[1rem] max-md:gap-x-[0.5rem] max-sm:gap-x-[0rem] 
         gap-y-[1.2rem] max-xl:gap-y-[1rem] max-lg:gap-y-[0.8rem] max-md:gap-y-[0.6rem] max-sm:gap-y-[0.4rem] 
         grid grid-cols-2 max-lg:grid-cols-1
-        place-content-center">
+        place-content-center ">
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
@@ -191,15 +194,15 @@ export default function about(){
                 grid grid-cols-2">
 
                     <div className="h-[full] col-span-2 row-span-3 rounded-[1rem] 
-                    bg-cover bg-center"
+                    bg-cover bg-center grayscale-[70%] hover:grayscale-0 duration-500"
                     style={{ backgroundImage: `url(${ab_c1})` }}></div>
 
                     <div className="h-[full] row-span-2 rounded-[1rem] 
-                    bg-cover bg-center"
+                    bg-cover bg-center grayscale-[70%] hover:grayscale-0 duration-500"
                     style={{ backgroundImage: `url(${ab_c11})` }}></div>
 
                     <div className="h-[h-full] row-span-2 rounded-[1rem] 
-                    bg-cover bg-center"
+                    bg-cover bg-center grayscale-[70%] hover:grayscale-0 duration-500"
                     style={{ backgroundImage: `url(${ab_c12})` }}></div>
                 </div>
 
@@ -207,7 +210,7 @@ export default function about(){
 
             <section className="w-full p-[6rem] max-xl:p-[5rem] max-lg:p-[4rem] max-md:p-[3rem] max-sm:p-[2rem]
             bg-[#003224]">
-                <h3 className='ab-s2-l text-[white] font-extralight'>
+                <h5 className='text-[white] font-extralight text-center'>
                     G. Technology is a freelance software developer named after its creator, Joel Maribbay 
                     Gumiran. In addition GTechnology is a group of professionals who work collaboratively to 
                     design, develop, and maintain software applications. The team typically consists of three 
@@ -219,41 +222,41 @@ export default function about(){
                     specifications and requirements of the project. They are skilled at troubleshooting and 
                     debugging software issues, and are committed to producing high-quality software 
                     products that are scalable, efficient, and secure. 
-                </h3>
+                </h5>
             </section>
 
             <section className='w-full px-[1rem]
             flex justify-center items-start'>
                 
                 <div className="ab-s3-c w-full 
-                p-x[10rem] py-[5rem] gap-[2rem] 
+                p-x[10rem] py-[1rem] gap-[2rem] 
                 rounded-[3rem]
                 flex flex-col items-center justify-center">
 
-                    <h4 className='ab-s3-c-h text-center font-semibold'>Career Highlights</h4>
+                    <h4 className='ab-s3-c-h text-center font-bold'>Career Highlights</h4>
 
-                    <div className="w-full gap-[3rem] px-[5rem]
+                    <div className="w-full gap-[2rem] px-[5rem]
                     grid grid-cols-4 max-lg:grid-cols-2">
                         
                         <div className="p-4
                         flex flex-col justify-center items-center">
-                            <h3 className='ab-s3-c-h-c-h text-center font-semibold'>10+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center'>Cities & Municipalities</h5>
+                            <h3 className='ab-s3-c-h-c-h text-center font-bold'>10+</h3>
+                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Cities & Municipalities</h5>
                         </div>
                         <div className="p-4
                         flex flex-col justify-center items-center">
-                            <h3 className='ab-s3-c-h-c-h text-center font-semibold'>20+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center'>Cities</h5>
+                            <h3 className='ab-s3-c-h-c-h text-center font-bold'>20+</h3>
+                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Cities</h5>
                         </div>
                         <div className="p-4
                         flex flex-col justify-center items-center">
-                            <h3 className='ab-s3-c-h-c-h text-center font-semibold'>30+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center'>Projects</h5>
+                            <h3 className='ab-s3-c-h-c-h text-center font-bold'>30+</h3>
+                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Projects</h5>
                         </div>
                         <div className="p-4
                         flex flex-col justify-center items-center">
-                            <h3 className='ab-s3-c-h-c-h text-center font-semibold'>16+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center'>Years of Experience</h5>
+                            <h3 className='ab-s3-c-h-c-h text-center font-bold'>16+</h3>
+                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Years of Experience</h5>
                         </div>
 
                     </div>
@@ -265,23 +268,22 @@ export default function about(){
             <section className="w-full gap-[2rem]
             flex flex-col items-center justify-center">
 
-                <div className="p-[0.5rem] max-xl:p-[0.4rem] max-lg:p-[0.3rem] max-md:p-[0.2rem]
+                <div className="p-[0.2rem] 
                 rounded-[2rem] gap-[1rem] max-lg:gap-[0.1rem]
                 flex flex-row items-center justify-center
-                bg-[#ffffffdc]
-                border-[0.2rem] border-[#818181b7]">
-                    <button className={`ab-s4-c-btn rounded-[2rem] px-[1rem] py-[0.5rem] font-semibold
-                    ${s4c === 0 ? 'bg-[green] text-white' : ''}`}
-                    onClick={() => setS4c(0)}>Specialization</button>
-                    <button className={`ab-s4-c-btn rounded-[2rem] px-[1rem] py-[0.5rem] font-semibold
-                    ${s4c === 1 ? 'bg-[green] text-white' : ''}`}
-                    onClick={() => setS4c(1)}>Project Timeline</button>
+                bg-[#ffffffdc] shadow-lg">
+                    <button className={`ab-s4-c-btn rounded-[2rem] px-[1rem] py-[0.5rem] font-semibold flex items-center gap-[.5rem]
+                    ${s4c === 0 ? 'bg-gradient-to-r from-[#22A570] to-[#4DAB6A]  text-white' : ''}`}
+                    onClick={() => setS4c(0)}><GrUserExpert />Specialization</button>
+                    <button className={`ab-s4-c-btn rounded-[2rem] px-[1rem] py-[0.5rem] font-semibold flex items-center gap-[.5rem]
+                    ${s4c === 1 ? 'bg-gradient-to-r from-[#22A570] to-[#4DAB6A]  text-white' : ''}`}
+                    onClick={() => setS4c(1)}> <FaTimeline />Project Timeline</button>
                 </div>
 
                 {s4c === 0 && spec}
                 {s4c === 1 && protim}
                 
-            </section>
+            </section>  
 
         </main>
 

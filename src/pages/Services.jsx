@@ -1,10 +1,51 @@
-
+import { VscVscode } from "react-icons/vsc";
+import { CiServer } from "react-icons/ci";
+import { CgWebsite } from "react-icons/cg";
+import { PiNetwork } from "react-icons/pi";
+import { MdOutlineVpnLock } from "react-icons/md";
+import { GiFirewall } from "react-icons/gi";
+import { IoIosLaptop } from "react-icons/io";
+import { BiCctv } from "react-icons/bi";
+import { LuBoxes } from "react-icons/lu";
+import { IoNewspaperOutline } from "react-icons/io5";
+import { FiBox } from "react-icons/fi";
+import { IoShieldOutline } from "react-icons/io5";
 import '../assets/css/pages/services.css'
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { FaCode } from "react-icons/fa"; // temporary
 
+import {  
+    leftTo,
+    rightTo,
+    bottomTo,
+    chars
+} from '../assets/gsap/services.js';
+
 export default function services(){
+
+    function elOnView(selector, callback) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+            if (entry.intersectionRatio >= 0.05) { // 5% visible
+                callback(entry.target);   // call your function
+                obs.unobserve(entry.target); // only once
+            }
+            });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll(selector).forEach(el => observer.observe(el));
+    }
+
+    function elOnHover(selector, callback) {
+        const elements = document.querySelectorAll(selector);
+
+        elements.forEach(el => {
+            el.addEventListener('mouseenter', () => callback(el));
+            el.addEventListener('touchstart', () => callback(el));
+        });
+    }
 
     useEffect(() => {
         document.body.className = 'services'; 
@@ -13,16 +54,65 @@ export default function services(){
         };
     }, []);
 
+    useEffect(() => {
+
+        const screenVW = window.innerWidth;
+        
+        if(screenVW <= 640) {
+
+            elOnView('.serv-s1-h', (el)=>chars(el, 0));
+            elOnView('.serv-s1-l', (el)=>chars(el, 0.5));
+            
+            elOnView('.serv-card-gr2-1', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-2', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-3', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-4', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-5', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-6', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-7', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-8', (el)=>rightTo(el, 0, 0));
+
+        } else if(screenVW <= 1023) {
+
+            elOnView('.serv-s1-h', (el)=>chars(el, 0.5));
+            elOnView('.serv-s1-l', (el)=>chars(el, 1));
+
+            elOnView('.serv-card-gr2-1', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-2', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-3', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-4', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-5', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-6', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-7', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-8', (el)=>rightTo(el, 0, 0));        
+
+        } else {
+
+            elOnView('.serv-s1-h', (el)=>chars(el, 0));
+            elOnView('.serv-s1-l', (el)=>chars(el, 0.5));
+
+            elOnView('.serv-card-gr2-1', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-2', (el)=>bottomTo(el, 0, 0));
+            elOnView('.serv-card-gr2-3', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-4', (el)=>leftTo(el, 0, 0));
+            elOnView('.serv-card-gr2-5', (el)=>bottomTo(el, 0, 0));
+            elOnView('.serv-card-gr2-6', (el)=>rightTo(el, 0, 0));
+            elOnView('.serv-card-gr2-7', (el)=>leftTo(el, 0, 0)); 
+            elOnView('.serv-card-gr2-8', (el)=>bottomTo(el, 0, 0));
+        }
+
+    }, []);
+
     return(
         <main className='w-screen h-contain p-4 gap-[5rem]
         flex flex-col items-center'>
 
-            <section className="w-full py-[4rem]
+            <section className="w-full py-[1rem]
             flex flex-col items-center
             text-center">
-                <h3 className='serv-h font-extrabold
+                <h3 className='serv-s1-h serv-h font-extrabold
                 text-3xl'>Services We Offer</h3>
-                <p className='serv-l'>G. Technology aimed to integrate technology to help humane society, which offers you satisfaction guaranteed and here are our services that we can offer.</p>
+                <p className='serv-s1-l serv-l px-[50px] sm:px-[50px] md:px-[100px] lg:px-[300px]:'>G. Technology aimed to integrate technology to help humane society, which offers you satisfaction guaranteed and here are our services that we can offer.</p>
             </section>
 
             <section className='w-full min-h-[40rem] h-contain 
@@ -33,99 +123,100 @@ export default function services(){
 
                 {/* <FaCode /> */}
 
-                <div className="serv-card-gr2 h-full row-span-2 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-1 serv-card-gr2 h-full row-span-2 p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem] rounded-[1rem]
                 flex flex-col items-center">
 
                     <div className="w-full
-                    flex-"><FaCode color="white" className='serv-card-icon' /></div>
+                    flex-"><VscVscode  className='serv-card-icon' /></div>
 
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">System Development</h3>
+                        <p className="serv-card-l ">Develop system software tailored based from client's business flow</p>
                     </div>
                 </div>
 
-                <div className="serv-card-gr2 h-full row-span-2 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-2 serv-card-gr2 h-full row-span-2 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
                 flex flex-col items-center">
 
                     <div className="w-full
-                    flex-"><FaCode color="white" className='serv-card-icon' /></div>
+                    flex-"><CgWebsite  className='serv-card-icon' /></div>
 
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">Website Development</h3>
+                        <p className="serv-card-l">Can develop secured and unbreachable websites both static and dynamic websites, for marketing and Web
+                application sites</p>
                     </div>
                 </div>
 
-                <div className="serv-card-gr2 h-full row-span-2 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-3 serv-card-gr2 h-full row-span-2 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
                 flex flex-col items-center ">
 
                     <div className="w-full
-                    flex-"><FaCode color="white" className='serv-card-icon' /></div>
+                    flex-"><CiServer  className='serv-card-icon' /></div>
 
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">Server Set up & Configuration</h3>
+                        <p className="serv-card-l">Build and Configure both cloud and physical servers alike with impregnable defenses against cyber
+                attacks</p>
                     </div>
                 </div>
 
-                <div className="serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-4 serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
                 flex flex-col items-center">
 
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">Network Set up and Configuration</h3>
+                        <p className="serv-card-l">Professionally configure's network to support impecable network communication</p>
                     </div>
 
                 </div>
 
-                <div className="serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-5 serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
                 flex flex-col items-center ">
 
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">VPN Setup and Configuration</h3>
+                        <p className="serv-card-l">Configure Virtual Private Network for maximum data privacy and security of your business from the internet</p>
                     </div>
                 </div>
 
-                <div className="serv-card-gr2 h-full row-span-2 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-6 serv-card-gr2 h-full row-span-2 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
                 flex flex-col items-center ">
 
                     <div className="w-full
-                    flex-"><FaCode color="white" className='serv-card-icon' /></div>
+                    flex-"><FaCode className='serv-card-icon' /></div>
 
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">Firewall and Security Setup and Configuration</h3>
+                        <p className="serv-card-l">Set up a premium security security and defense feature to prevent cyber attacks</p>
                     </div>
                 </div>
 
-                <div className="serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-7 serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
                 flex flex-col items-center ">
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">PC Repair and Installation</h3>
+                        <p className="serv-card-l">Professionally identify, troubleshoot and resolve problems and issues in a faulty computer</p>
                     </div>
                 </div>
 
-                <div className="serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
+                <div className="serv-card-gr2-8 serv-card-gr1 h-full row-span-1 rounded-[1rem] p-[3rem] max-lg:p-[1.5rem] gap-[2rem] max-lg:gap-[1rem]
                 flex flex-col items-center ">
 
                     <div className="w-full gap-[2rem] max-lg:gap-[1rem]
                     flex flex-col justify-center-center">
-                        <h className="serv-card-h text-start">Website Development</h>
-                        <h className="serv-card-l">Lorem ipsum dolor sit amet consectetur. Sit lobortis.</h>
+                        <h3 className="serv-card-h text-start">CCTV Installation</h3>
+                        <p className="serv-card-l">Install's CCTV systems for both home and business owners for surveillance and security purposes</p>
                     </div>
                 </div>
             </section>
-
         </main>
     )
 }

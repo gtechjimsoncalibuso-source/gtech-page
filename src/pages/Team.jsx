@@ -1,140 +1,121 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
-import '../css/team.css';
+import React, { useEffect, useRef } from "react";
+import { initCarouselAnimation } from "../assets/javascript/carousel-animations";
+import joel from "../assets/images/joel_gumiran.jpg";
+import mart from "../assets/images/martc.jpg";
+import philip from "../assets/images/philip.jpg";
+import don from "../assets/images/donc.jpg";
+import EastIcon from '@mui/icons-material/East';
+import WestIcon from '@mui/icons-material/West';
 
-import img1 from '../assets/images/joel_gumiranc.jpg';
-import img2 from '../assets/images/joel_gumiranc.jpg';
-import img3 from '../assets/images/joel_gumiranc.jpg';
-
-const teamData = [
-  { name: "John Doe", description: "Frontend Developer", image: img1 },
-  { name: "Jane Smith", description: "UI/UX Designer", image: img2 },
-  { name: "Mike Lee", description: "Backend Developer", image: img3 },
-  { name: "Sarah Kim", description: "Project Manager", image: img1 },
-  { name: "Alex Cruz", description: "Mobile Developer", image: img2 }
-];
-
-const MAX_VISIBILITY = 3;
-
-const Card = ({ name, description, image }) => (
-  <div className="card">
-    <img src={image} alt={name} className="card-image" />
-    <h3 className="card-name">{name}</h3>
-    <p className="card-desc">{description}</p>
-  </div>
-);
-
-const Carousel = ({ children }) => {
-  const count = React.Children.count(children);
-  const [active, setActive] = useState(0);
-
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+export default function Carousel() {
+  const galleryRef = useRef(null);
+  const cardsRef = useRef(null);
+  const dragProxyRef = useRef(null);
+  const nextRef = useRef(null);
+  const prevRef = useRef(null);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const cleanup = initCarouselAnimation(
+      galleryRef,
+      cardsRef,
+      dragProxyRef,
+      nextRef,
+      prevRef
+    );
+
+    return () => cleanup && cleanup();
   }, []);
 
-  const next = () => setActive((prev) => (prev + 1) % count);
-  const prev = () => setActive((prev) => (prev - 1 + count) % count);
+  const images = [joel, mart, philip, don];
 
-  const startX = useRef(null);
-
-  const handleTouchStart = (e) => {
-    startX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e) => {
-    if (startX.current === null) return;
-
-    const endX = e.changedTouches[0].clientX;
-    const diff = endX - startX.current;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        prev(); 
-      } else {
-        next(); 
-      }
-    }
-
-    startX.current = null;
-  };
+  const people = [
+    { name: "Joel Gumiran", role: "Fullstack Developer" },
+    { name: "Mart", role: "UI/UX Designer" },
+    { name: "Philip", role: "Frontend Developer" },
+    { name: "Don", role: "Backend Developer" },
+  ];
 
   return (
-    <div
-      className="carousel"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
-      <button className="nav left" onClick={prev}>
-        <TiChevronLeftOutline />
-      </button>
-
-      {React.Children.map(children, (child, i) => {
-        let offset = i - active;
-
-        if (offset > count / 2) offset -= count;
-        if (offset < -count / 2) offset += count;
-
-        return (
-          <div
-            className="card-container"
-            key={i}
-            style={{
-              transform: `
-                rotateY(${offset * (isMobile ? -30 : -50)}deg) 
-                scaleY(${1 - Math.abs(offset) * (isMobile ? 0.2 : 0.3)})
-                translateZ(${-Math.abs(offset) * (isMobile ? 5 : 20)}rem)
-                translateX(${offset * (isMobile ? 2 : 5)}rem) 
-              `,
-              filter: `blur(${Math.abs(offset) * (isMobile ? 0.5 : 1)}rem)`,
-              opacity: Math.abs(offset) > MAX_VISIBILITY ? 0 : 1,
-              display: Math.abs(offset) > MAX_VISIBILITY ? 'none' : 'block',
-              pointerEvents: offset === 0 ? 'auto' : 'none',
-            }}
-          >
-            {child}
-          </div>
-        );
-      })}
-      <button className="nav right" onClick={next}>
-        <TiChevronRightOutline />
-      </button>
-    </div>
-  );
-};
-
-export default function Team() {
-  useEffect(() => {
-    document.body.className = 'team';
-    return () => {
-      document.body.className = '';
-    };
-  }, []);
-
-  return (
-    <div className="team">
-      <div className="team-content">
-        <h1 className="team-title">We Are G.Technology</h1>
-        <h2 className="team-subtitle">
+    <div>
+      <div className="mt-[30px]">
+        <h1 className="text-center bg-gradient-to-r from-[#22A570] to-[#585858] 
+                         bg-clip-text text-transparent font-extrabold">
+          We Are G.Technology
+        </h1>
+        <h4 className="text-center bg-gradient-to-r from-[#22A570] to-[#585858] 
+                         bg-clip-text text-transparent">
           Scaling Businesses, Exceeding Standards
-        </h2>
+        </h4>
+      </div>
 
-        <div className="team-container">
-          <Carousel>
-            {teamData.map((member, i) => (
-              <Card
+      {/* ✅ FIXED: removed h-screen + negative margins */}
+      <div className="py-0 sm:py-0 md:py-10 lg:py-20 flex items-center justify-center">
+        <div
+          ref={galleryRef}
+          className="relative w-full max-w-6xl h-[500px] overflow-hidden mx-auto"
+        >
+          <ul
+            ref={cardsRef}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
+            {images.map((src, i) => (
+              <li
                 key={i}
-                name={member.name}
-                description={member.description}
-                image={member.image}
-              />
+                className="absolute top-1/2 left-1/2 
+                           -translate-x-1/2 -translate-y-1/2
+                           w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem]
+                           rounded-xl bg-center bg-cover bg-no-repeat shadow-xl overflow-hidden"
+                style={{ backgroundImage: `url(${src})` }}
+              >
+                <div className="absolute inset-0 bg-black/10"></div>
+
+                <div className="absolute bottom-0 left-0 w-full p-4 text-white z-10">
+                  <h2 className="text-lg sm:text-xl font-semibold">
+                    {people[i]?.name}
+                  </h2>
+                  <p className="text-sm opacity-80">
+                    {people[i]?.role}
+                  </p>
+                </div>
+              </li>
             ))}
-          </Carousel>
+          </ul>
+          {/* PREV */}
+            <button ref={nextRef} className="
+    hidden lg:flex
+    absolute left-5 sm:left-10 md:left-20 top-1/2 -translate-y-1/2
+    z-20
+    w-12 h-12
+    rounded-full
+    bg-black/40 backdrop-blur-md
+    border border-white/30
+    text-white
+    items-center justify-center
+    hover:bg-black/60 transition
+  "
+>
+  <WestIcon fontSize="small" />
+</button>
+
+{/* NEXT */}
+<button
+  ref={prevRef}
+  className="
+    hidden lg:flex
+    absolute right-5 sm:right-10 md:right-20 top-1/2 -translate-y-1/2
+    z-20
+    w-12 h-12
+    rounded-full
+    bg-black/40 backdrop-blur-md
+    border border-white/30
+    text-white
+    items-center justify-center
+    hover:bg-black/60 transition
+  "
+>
+  <EastIcon fontSize="small" />
+</button>
         </div>
-        
       </div>
     </div>
   );

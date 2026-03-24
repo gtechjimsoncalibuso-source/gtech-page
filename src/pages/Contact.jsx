@@ -1,26 +1,38 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useEffect, useRef, useState } from "react";
 
-import '../assets/css/pages/contact.css';
-
-export default function Contact(){
-
-  const leadRef = useRef(null);
+export default function Contact() {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    gsap.from(leadRef.current, {
-      duration: 0.5,
-      scale: 0,
-      ease: "elastic.out(1, 0.6)",
-      delay: 0.5
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // 30% visible
+      }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
   }, []);
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <h3 ref={leadRef} className="text-center text-xl">
-        Gsap test
-      </h3>
+    <div style={{ height: "200vh" }}>
+      <div
+        ref={ref}
+        style={{
+          marginTop: "100vh",
+          height: "200px",
+          background: isVisible ? "green" : "red",
+        }}
+      >
+        {isVisible ? "Visible 👀" : "Not visible ❌"}
+      </div>
     </div>
   );
 }
