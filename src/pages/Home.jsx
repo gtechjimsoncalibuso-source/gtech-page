@@ -172,7 +172,7 @@ export default function Home() {
                       gap-[2rem] max-lg:gap-[4rem] max-md:gap-[5rem]
                       px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
                       py-15 sm:py-20 md:py-25 lg:py-30 xl:py-40
-                      grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+                      grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-2">
                   <div className="home-s2-c1 flex flex-col items-center ">
                     <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
@@ -296,7 +296,7 @@ export default function Home() {
                  </h1>
                  
             <div className="grid 
-                  grid-cols-1 sm:grid-cols-2 md:grid-cols-4
+                  grid-cols-2 sm:grid-cols-2 md:grid-cols-4
                   gap-[2rem] max-md:gap-[3rem] ">
 
               <div className="home-s4-c1 font-light flex flex-col items-center text-white text-xl ">

@@ -168,7 +168,7 @@ export default function Clients() {
           Industries We Served
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
 
           <div className="client-industries cl-s2-c1 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
             <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">99</h3>
@@ -203,7 +203,7 @@ export default function Clients() {
         <div>
             <h5 className="text-center mb-[5rem]"></h5>
           </div>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6
+        <div className="grid grid-cols-8 max-sm:grid-cols-4 max-lg:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-7
                       gap-2 sm:gap-5 md:gap-4 lg:gap-6 justify-items-center">       
           {[c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24].map((img, i) => (
             <div key={i} className=" 

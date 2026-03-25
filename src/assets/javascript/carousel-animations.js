@@ -54,7 +54,7 @@ export function initCarouselAnimation(
           x: spacing,
           scale: screenWidth < 640 ? 0.85 : 0.7,
           opacity: 1,
-          zIndex: 5, 
+          zIndex: 5,
           pointerEvents: "none",
           duration: 0.5,
         });
