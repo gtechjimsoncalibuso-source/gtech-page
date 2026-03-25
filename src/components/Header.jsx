@@ -241,7 +241,7 @@ export default function Header() {
             {/* FLOATING MENU */}
             <nav
                 id="nav-cp"
-                className={`fixed w-[3.5rem] h-[3.5rem] bg-[#f1f1f1] rounded-full shadow-md flex items-center justify-center z-[2000] ${
+                className={`fixed w-[3.5rem] h-[3.5rem] bg-[#f1f1f1] rounded-full shadow-md flex items-center justify-center z-[9000] ${
                     isDragging ? 'scale-110 shadow-2xl' : ''
                 }`}
                 style={{
