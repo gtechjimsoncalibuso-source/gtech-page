@@ -99,6 +99,8 @@ export default function services(){
             elOnView('.serv-card-gr2-6', (el)=>rightTo(el, 0, 0));
             elOnView('.serv-card-gr2-7', (el)=>leftTo(el, 0, 0)); 
             elOnView('.serv-card-gr2-8', (el)=>bottomTo(el, 0, 0));
+
+    
         }
 
     }, []);

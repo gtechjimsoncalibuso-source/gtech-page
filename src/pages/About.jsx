@@ -9,6 +9,13 @@ import { FaTimeline } from "react-icons/fa6";
 import { GrUserExpert } from "react-icons/gr";
 import '../css/About.css' 
 
+import {
+  bottomTo,
+  rightTo,
+  leftTo,
+  btBackOut
+} from "../assets/gsap/about.js";
+
 export default function about(){
     const projects = [
        {
@@ -127,49 +134,49 @@ export default function about(){
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 Set up and Configured Server since 2012 using Microsoft and Linux Server.
             </h3>            
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 Set up and Configured Database Server since 2012 using MariaDB, MySQL Server, and Microsoft.
             </h3>            
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 Set up and Configured Web Server since 2012 using IIS, Apache.
             </h3>                  
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 Set up and install SSL Certificate for Security.
             </h3>         
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 PC Repair and Troubleshooting.
             </h3>         
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 Network set up and configuration. Designs local and wide area network. Managed and configured the network for five years using Mikrotik Switch and PFSense.
             </h3>            
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 CCTV Installation.
             </h3>            
 
             <h3 className="ab-s4-c2-l 
             p-[2rem] max-xl:p-[1.8rem] max-lg:p-[1..6rem] max-md:p-[1.4rem] max-sm:p-[1.2rem] 
-            rounded-[2rem] max-lg:rounded-[1rem]">
+            rounded-3xl">
                 Other Related Technological Services
             </h3>            
 
@@ -182,9 +189,9 @@ export default function about(){
         gap-[2.5rem] max-xl:gap-[2] max-lg:gap-[1.5] max-md:gap-[1] max-sm:gap-[0.5]">
             <h3 className="ab-s4-c3-c-h">GTechnology projects through the time</h3>
             <div className="timeline">
-                {projects.map((item, index) => (
+                {projects.map((item, index) => (    
                     <div key={index} className={`timeline-item ${item.side}`}>
-                        <div className="timeline-content">
+                        <div className='ab-s5-c timeline-content'>
                             <div className="timeline-dot"></div>
                             <h4 className="ab-s4-c3-c-h-ch">{item.description}</h4>
                             <p className="ab-s4-c3-c-h-cl location">{item.location}</p>
@@ -203,14 +210,73 @@ export default function about(){
         
         if(screenVW <= 640) {
 
-        } else if(screenVW <= 1023) {     
+            elOnView('.ab-s1-h', (el)=>bottomTo(el, 0));
+            elOnView('.ab-s1-c1', (el)=>bottomTo(el, 0.2));
+            elOnView('.ab-s1-c2', (el)=>bottomTo(el, 0.4));
+            elOnView('.ab-s1-c3', (el)=>bottomTo(el, 0.6));
 
+            elOnView('.ab-s3-h', (el)=>bottomTo(el, 0.0));
+            elOnView('.ab-s3-c1', (el)=>bottomTo(el, 0.2));
+            elOnView('.ab-s3-c2', (el)=>bottomTo(el, 0.4));
+            elOnView('.ab-s3-c3', (el)=>bottomTo(el, 0.6));
+            elOnView('.ab-s3-c4', (el)=>bottomTo(el, 0.8));
+            
+             if(s4c === 0) {
+                elOnView('.ab-s4-c2-l', (el)=>btBackOut(el, 0));
+            }
+
+            if(s4c === 1) {
+                elOnView('.timeline-item', (el)=>btBackOut(el, 0));
+            }
+
+        } else if(screenVW <= 1023) {
+
+            elOnView('.ab-s1-h', (el)=>bottomTo(el, 0));
+            elOnView('.ab-s1-c1', (el)=>btBackOut(el, 0.2));
+            elOnView('.ab-s1-c2', (el)=>btBackOut(el, 0.4));
+            elOnView('.ab-s1-c3', (el)=>btBackOut(el, 0.6));
+
+            elOnView('.ab-s3-h', (el)=>bottomTo(el, 0.0));
+            elOnView('.ab-s3-c1', (el)=>btBackOut(el, 0.2));
+            elOnView('.ab-s3-c2', (el)=>btBackOut(el, 0.4));
+            elOnView('.ab-s3-c3', (el)=>btBackOut(el, 0.6));
+            elOnView('.ab-s3-c4', (el)=>btBackOut(el, 0.8));
+
+             if(s4c === 0) {
+                elOnView('.ab-s4-c2-l', (el)=>btBackOut(el, 0));
+            }
+
+            if(s4c === 1) {
+                elOnView('.timeline-item', (el)=>btBackOut(el, 0));
+            }
+            
+
+        
         } else {
 
-            // elOnView('.serv-s1-h', (el)=>chars(el, 0));
+            elOnView('.ab-s1-h', (el)=>bottomTo(el, 0));
+            elOnView('.ab-s1-c1', (el)=>btBackOut(el, 0.2));
+            elOnView('.ab-s1-c2', (el)=>btBackOut(el, 0.4));
+            elOnView('.ab-s1-c3', (el)=>btBackOut(el, 0.6));
+
+            elOnView('.ab-s3-h', (el)=>bottomTo(el, 0.0));
+            elOnView('.ab-s3-c1', (el)=>btBackOut(el, 0.2));
+            elOnView('.ab-s3-c2', (el)=>btBackOut(el, 0.4));
+            elOnView('.ab-s3-c3', (el)=>btBackOut(el, 0.6));
+            elOnView('.ab-s3-c4', (el)=>btBackOut(el, 0.8));
+      
+
+            if(s4c === 0) {
+                elOnView('.ab-s4-c2-l', (el)=>btBackOut(el, 0));
+            }
+
+            if(s4c === 1) {
+                elOnView('.timeline-item', (el)=>btBackOut(el, 0));
+            }
+
         }
 
-    }, []);
+    }, [s4c]);
     
 
 
@@ -224,7 +290,7 @@ export default function about(){
             font-bold
             grid grid-cols-2 max-xl:grid-cols-1">
 
-                <h3 className="ab-h h-full w-full
+                <h3 className="ab-s1-h ab-h h-full w-full
                 col-span-1 max-xl:col-span-1
                 text-end max-xl:text-start
                 flex items-center justify-center max-xl:justify-start">About Us</h3>
@@ -233,16 +299,16 @@ export default function about(){
                 col-span-1 max-xl:col-span-1
                 grid grid-cols-2">
 
-                    <div className="h-[full] col-span-2 row-span-3 rounded-[1rem] 
-                    bg-cover bg-center grayscale-[70%] hover:grayscale-0 duration-500"
+                    <div className="ab-s1-c1 h-[full] col-span-2 row-span-3 rounded-xl
+                    bg-cover bg-center "
                     style={{ backgroundImage: `url(${ab_c1})` }}></div>
 
-                    <div className="h-[full] row-span-2 rounded-[1rem] 
-                    bg-cover bg-center grayscale-[70%] hover:grayscale-0 duration-500"
+                    <div className="ab-s1-c2 h-[full] row-span-2 rounded-xl
+                    bg-cover bg-center "
                     style={{ backgroundImage: `url(${ab_c11})` }}></div>
 
-                    <div className="h-[h-full] row-span-2 rounded-[1rem] 
-                    bg-cover bg-center grayscale-[70%] hover:grayscale-0 duration-500"
+                    <div className="ab-s1-c3 h-[h-full] row-span-2 rounded-xl
+                    bg-cover bg-center "
                     style={{ backgroundImage: `url(${ab_c12})` }}></div>
                 </div>
 
@@ -270,30 +336,30 @@ export default function about(){
                 
                 <div className="ab-s3-c w-full 
                 p-x[10rem] py-[1rem] gap-[2rem] 
-                rounded-[3rem]
-                flex flex-col items-center justify-center">
+                rounded-3xl
+                flex flex-col items-center justify-center mx-[0px] sm:mx-[0px] md:mx-[30px] lg:mx-[40px]">
 
-                    <h4 className='ab-s3-c-h text-center font-bold'>Career Highlights</h4>
+                    <h4 className='ab-s3-h ab-s3-c-h text-center font-bold'>Career Highlights</h4>
 
                     <div className="w-full gap-[2rem] px-[5rem]
                     grid grid-cols-4 max-lg:grid-cols-2">
                         
-                        <div className="p-4
+                        <div className="ab-s3-c1 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>10+</h3>
                             <h5 className='ab-s3-c-h-c-l text-center font-light'>Cities & Municipalities</h5>
                         </div>
-                        <div className="p-4
+                        <div className="ab-s3-c2 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>20+</h3>
                             <h5 className='ab-s3-c-h-c-l text-center font-light'>Cities</h5>
                         </div>
-                        <div className="p-4
+                        <div className="ab-s3-c3 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>30+</h3>
                             <h5 className='ab-s3-c-h-c-l text-center font-light'>Projects</h5>
                         </div>
-                        <div className="p-4
+                        <div className="ab-s3-c4 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>16+</h3>
                             <h5 className='ab-s3-c-h-c-l text-center font-light'>Years of Experience</h5>
@@ -309,7 +375,7 @@ export default function about(){
             flex flex-col items-center justify-center">
 
                 <div className="p-[0.2rem] 
-                rounded-[2rem] gap-[1rem] max-lg:gap-[0.1rem]
+                rounded-full gap-[1rem] max-lg:gap-[0.1rem]
                 flex flex-row items-center justify-center
                 bg-[#ffffffdc] shadow-lg">
                     <button className={`ab-s4-c-btn rounded-[2rem] px-[1rem] py-[0.5rem] font-semibold flex items-center gap-[.5rem]

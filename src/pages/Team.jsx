@@ -63,11 +63,11 @@ export default function Carousel() {
                 key={i}
                 className="absolute top-1/2 left-1/2 
                            -translate-x-1/2 -translate-y-1/2
-                           w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem]
-                           rounded-xl bg-center bg-cover bg-no-repeat shadow-xl overflow-hidden"
+                           w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[30rem]
+                           rounded-xl bg-center bg-cover bg-no-repeat overflow-hidden"
                 style={{ backgroundImage: `url(${src})` }}
               >
-                <div className="absolute inset-0 bg-black/10"></div>
+                <div className="absolute inset-0 bg-black/15"></div>
 
                 <div className="absolute bottom-0 left-0 w-full p-4 text-white z-10">
                   <h2 className="text-lg sm:text-xl font-semibold">

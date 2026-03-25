@@ -32,9 +32,81 @@ import cDoc3 from '../assets/images/client-meeting3.jpg'
 import cDoc4 from '../assets/images/client-meeting4.jpg'
 import "../assets/css/text.css";
 
+import {
+  bottomTo,
+  rightTo,
+  leftTo,
+  btBackOut,
+  duration
+} from "../assets/gsap/clients.js";
+
 export default function Clients() {
   const clientDocs = [cDoc1, cDoc2, cDoc3, cDoc4];
   const [selectedImage, setSelectedImage] = useState(null);
+
+  function elOnView(selector, callback) {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+        if (entry.intersectionRatio >= 0.05) { // 5% visible
+            callback(entry.target);   // call your function
+            obs.unobserve(entry.target); // only once
+        }
+        });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll(selector).forEach(el => observer.observe(el));
+  }
+
+  function elOnHover(selector, callback) {
+      const elements = document.querySelectorAll(selector);
+
+      elements.forEach(el => {
+          el.addEventListener('mouseenter', () => callback(el));
+          el.addEventListener('touchstart', () => callback(el));
+      });
+  }
+
+
+
+  useEffect(() => {
+
+    const screenVW = window.innerWidth;
+    
+    if(screenVW <= 640) {
+
+    } else if(screenVW <= 1023) {
+
+    
+      
+    } else {
+
+      elOnView('.cl-s1-h', (el)=>bottomTo(el, 0));
+
+      const container = document.querySelector('.cl-s1-c');
+      if (container) {
+        const children = container.children;
+        Array.from(children).forEach((el, i) => {
+          btBackOut(el, (i + 1) * 0.2); 
+        });
+      }
+
+
+      elOnView('.cl-s2-h', (el)=>bottomTo(el, 0));
+      elOnView('.cl-s2-c1', (el)=>btBackOut(el, 0.2));  
+      elOnView('.cl-s2-c2', (el)=>btBackOut(el, 0.4));
+      elOnView('.cl-s2-c3', (el)=>btBackOut(el, 0.6));
+      elOnView('.cl-s2-c4', (el)=>btBackOut(el, 0.8));
+      elOnView('.cl-s2-c5', (el)=>btBackOut(el, 1.0));
+
+      // elOnHover('.cl-s2-c5', (el)=>btBackOut(el, 1.0));
+
+
+      
+
+      
+    }
+
+  }, []);
 
   return (
     <section>
@@ -44,21 +116,21 @@ export default function Clients() {
                       grid grid-cols-1 md:grid-cols-[30%_70%] gap-6">
         
         <div className="border-r p-5 flex items-center justify-center text-center">
-          <h2 className="bg-gradient-to-r from-[#22A570] to-[#585858] 
+          <h2 className="cl-s1-h bg-gradient-to-r from-[#22A570] to-[#585858] 
                          bg-clip-text text-transparent leading-snug">
             Trusted by our Clients across Region 2
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
+        <div className="cl-s1-c grid grid-cols-2 md:grid-cols-4 gap-4 ">
           {clientDocs.map((img, i) => (
             <img 
               key={i} 
               src={img} 
               onClick={() => setSelectedImage(img)}
-              className="w-full h-[clamp(200px,40vw,320px)] object-cover rounded-2xl 
-              cursor-pointer transition duration-200 
-              grayscale hover:grayscale-0 active:scale-95"
+              className="client-image w-full h-[clamp(200px,40vw,320px)] object-cover rounded-2xl 
+              cursor-pointer 
+             "
             />
           ))}
 
@@ -92,33 +164,33 @@ export default function Clients() {
 
       {/* INDUSTRIES */}
       <div className="p-4 sm:p-6 md:p-10 lg:p-16 xl:p-20">
-        <h3 className="text-center mb-6 text-lg sm:text-xl md:text-2xl font-semibold">
+        <h3 className="cl-s2-h text-center mb-6 text-lg sm:text-xl md:text-2xl font-semibold">
           Industries We Served
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
 
-          <div className="rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="client-industries cl-s2-c1 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
             <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">99</h3>
             <p className="text-white text-xs sm:text-sm md:text-base">Education</p>
           </div>
 
-          <div className="rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="client-industries cl-s2-c2 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
             <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">120</h3>
             <p className="text-white text-xs sm:text-sm md:text-base">Banking</p>
           </div>
 
-          <div className="rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="client-industries cl-s2-c3 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
             <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">80</h3>
             <p className="text-white text-xs sm:text-sm md:text-base">Healthcare</p>
           </div>
 
-          <div className="rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="client-industries cl-s2-c4 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
             <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">65</h3>
             <p className="text-white text-xs sm:text-sm md:text-base">Retail</p>
           </div>                
 
-          <div className="rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="client-industries cl-s2-c5 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center ">
             <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">150</h3>
             <p className="text-white text-xs sm:text-sm md:text-base">Technology</p>
           </div>
@@ -131,20 +203,20 @@ export default function Clients() {
         <div>
             <h5 className="text-center mb-[5rem]"></h5>
           </div>
-        <div className="grid  sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6
                       gap-2 sm:gap-5 md:gap-4 lg:gap-6 justify-items-center">       
-                      {[c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24].map((img, i) => (
-                      <div key={i} className="
-            w-[clamp(60px,10vw,120px)]
-            sm:w-[clamp(70px,8vw,130px)]
-            md:w-[clamp(80px,6vw,140px)]">
-            <img 
-              src={img} 
-              alt={`client${i+1}`} 
-              className="w-full h-auto object-contain grayscale hover:grayscale-0 transition duration-300 hover:scale-120"
-            />
-          </div>
-         ))}
+          {[c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24].map((img, i) => (
+            <div key={i} className=" 
+              w-[clamp(60px,10vw,120px)]
+              sm:w-[clamp(70px,8vw,130px)]
+              md:w-[clamp(80px,6vw,140px)]">
+              <img 
+                src={img} 
+                alt={`client${i+1}`}
+                className="w-full h-auto object-contain grayscale hover:grayscale-0"
+              />
+            </div>
+          ))}
         </div>
       </div>
      
