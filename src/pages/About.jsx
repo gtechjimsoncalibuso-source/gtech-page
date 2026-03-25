@@ -86,6 +86,28 @@ export default function about(){
         
     ];
 
+    function elOnView(selector, callback) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+            if (entry.intersectionRatio >= 0.05) { // 5% visible
+                callback(entry.target);   // call your function
+                obs.unobserve(entry.target); // only once
+            }
+            });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll(selector).forEach(el => observer.observe(el));
+    }
+
+    function elOnHover(selector, callback) {
+        const elements = document.querySelectorAll(selector);
+
+        elements.forEach(el => {
+            el.addEventListener('mouseenter', () => callback(el));
+            el.addEventListener('touchstart', () => callback(el));
+        });
+    }
+
     const [s4c, setS4c] = useState(0);
 
     useEffect(() => {
@@ -173,7 +195,25 @@ export default function about(){
             </div>
         </div>
     );
+
+
+    useEffect(() => {
+
+        const screenVW = window.innerWidth;
+        
+        if(screenVW <= 640) {
+
+        } else if(screenVW <= 1023) {     
+
+        } else {
+
+            // elOnView('.serv-s1-h', (el)=>chars(el, 0));
+        }
+
+    }, []);
     
+
+
     return(
         <main className='w-screen h-contain gap-[5rem]
         flex flex-col items-center'>

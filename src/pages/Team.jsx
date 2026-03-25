@@ -48,7 +48,7 @@ export default function Carousel() {
         </h4>
       </div>
 
-      {/* ✅ FIXED: removed h-screen + negative margins */}
+      
       <div className="py-0 sm:py-0 md:py-10 lg:py-20 flex items-center justify-center">
         <div
           ref={galleryRef}
@@ -81,42 +81,32 @@ export default function Carousel() {
             ))}
           </ul>
           {/* PREV */}
-            <button ref={nextRef} className="
-    hidden lg:flex
-    absolute left-5 sm:left-10 md:left-20 top-1/2 -translate-y-1/2
-    z-20
-    w-12 h-12
-    rounded-full
-    bg-black/40 backdrop-blur-md
-    border border-white/30
-    text-white
-    items-center justify-center
-    hover:bg-black/60 transition
-  "
->
-  <WestIcon fontSize="small" />
-</button>
-
-{/* NEXT */}
-<button
-  ref={prevRef}
-  className="
-    hidden lg:flex
-    absolute right-5 sm:right-10 md:right-20 top-1/2 -translate-y-1/2
-    z-20
-    w-12 h-12
-    rounded-full
-    bg-black/40 backdrop-blur-md
-    border border-white/30
-    text-white
-    items-center justify-center
-    hover:bg-black/60 transition
-  "
->
-  <EastIcon fontSize="small" />
-</button>
-        </div>
-      </div>
-    </div>
+            <button ref={nextRef} className=" hidden lg:flex
+                                              absolute left-5 sm:left-10 md:left-20 top-1/2 -translate-y-1/2
+                                              z-20 w-12 h-12 rounded-full
+                                              bg-black/40 backdrop-blur-md
+                                              border border-white/30
+                                              text-white
+                                              items-center justify-center
+                                               hover:bg-black/60 transition">
+                                                <WestIcon fontSize="small" />
+                                                </button>
+          {/* NEXT */}
+            <button ref={prevRef} className="hidden lg:flex
+                                              absolute right-5 sm:right-10 md:right-20 top-1/2 -translate-y-1/2
+                                              z-20
+                                              w-12 h-12
+                                              rounded-full
+                                              bg-black/40 backdrop-blur-md
+                                              border border-white/30
+                                              text-white
+                                              items-center justify-center
+                                              hover:bg-black/60 transition
+                                            ">
+              <EastIcon fontSize="small" />
+            </button>
+                    </div>
+                  </div>
+                </div>
   );
 }

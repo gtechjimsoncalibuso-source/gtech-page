@@ -36,7 +36,7 @@ export function initCarouselAnimation(
           x: 0,
           scale: 1,
           opacity: 1,
-          zIndex: 10, // ✅ lowered
+          zIndex: 10, 
           pointerEvents: "auto",
           duration: 0.5,
         });
@@ -44,8 +44,8 @@ export function initCarouselAnimation(
         gsap.to(card, {
           x: -spacing,
           scale: screenWidth < 640 ? 0.85 : 0.7,
-          opacity: 0.6,
-          zIndex: 5, // ✅ lowered
+          opacity: 1,
+          zIndex: 5, 
           pointerEvents: "none",
           duration: 0.5,
         });
@@ -53,8 +53,8 @@ export function initCarouselAnimation(
         gsap.to(card, {
           x: spacing,
           scale: screenWidth < 640 ? 0.85 : 0.7,
-          opacity: 0.6,
-          zIndex: 5, // ✅ lowered
+          opacity: 1,
+          zIndex: 5, 
           pointerEvents: "none",
           duration: 0.5,
         });
