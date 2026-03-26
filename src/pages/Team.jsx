@@ -140,8 +140,8 @@ export default function Carousel() {
 
       <section className="w-full bg-[#DBFFE6]
       gap-[3rem]
-      py-[5rem]
-      px-[5rem]
+      py-[5rem] max-xl:py-[4rem] max-lg:py-[3rem] max-md:py-[2rem] max-sm:py-[1rem]
+      px-[5rem] max-xl:px-[4rem] max-lg:px-[3rem] max-md:px-[2rem] max-sm:px-[1rem]
       flex flex-col">
         <h4 className="t-s2-h font-medium">GTechnology 2026 Interns</h4>
         <div className="w-full

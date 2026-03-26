@@ -33,8 +33,8 @@ li{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.3);}
 
 /* TEAM */
 .t-s2-h{font-size: calc(clamp(1rem, 2.5vw, 2rem)*1);}
-.t-s2-c-h{font-size: calc(clamp(1.2rem, 2.5vw, 2.5rem)*0.6);}
-.t-s2-c-l{font-size: calc(clamp(1.2rem, 2.5vw, 2.5rem)*0.4);}
+.t-s2-c-h{font-size: calc(clamp(2rem, 2.5vw, 3rem)*0.7);}
+.t-s2-c-l{font-size: calc(clamp(2rem, 2.5vw, 3rem)*0.5);}   
 
 /* C */
 .asdasd{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*2);}
