@@ -25,11 +25,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Splide from '@splidejs/splide';
-// Splide: core carousel library used to create responsive carousels
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
-// AutoScroll: Splide extension that enables continuous automatic scrolling
-import '@splidejs/splide/css';
+import CarouselGSAP from '../components/CarouselGSAP';
 
 import {
   bottomTo,
@@ -41,7 +37,6 @@ import {
 export default function Home() {
   const location = useLocation();
     const navigate = useNavigate();
-     const splideRef = useRef(null);
 
     useEffect(() => {
         if (location.state?.scrollTo) {
@@ -187,34 +182,7 @@ export default function Home() {
     };
   }, []);
 
-   useEffect(() => {
-    // Initialize Splide when the DOM ref is available
-    if (splideRef.current) {
-      // Configuration: loop + free drag, responsive perPage, and AutoScroll
-      const splide = new Splide(splideRef.current, {
-        type: 'loop',
-        drag: 'free',
-        focus: 'center',
-        perPage: 4,
-        breakpoints: {
-          640: { perPage: 1 },
-          1024: { perPage: 2 },
-        },
-        autoScroll: {
-          speed: .5,
-        },
-      });
-
-      // Mount with AutoScroll extension — preferred API is to pass extensions
-      // to `mount({ AutoScroll })`. If that fails, fall back to plain mount.
-      try {
-        splide.mount({ AutoScroll });
-      } catch (e) {
-        // fallback to simple mount if extension registration fails
-        splide.mount();
-      }
-    }
-  }, []);
+  
 
   return (
     <div className="flex flex-col">
@@ -272,29 +240,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Splide Carousel for Products */}
-               
-                <div className="px-[10px] py-[60px] bg-white flex flex-col justify-center">
-                  <p className="text-center">hello sir gusto mo ba gumagalaw o yung di pindot nalang?</p> 
-
-                  <p className="text-center">hover = pause carousel || click button = stop carousel || click outside == resume carousel</p> 
-                  <div className="flex">
-                    
-                    <div ref={splideRef} className="splide w-full max-w-8xl">
-                      <div className="splide__track">
-                        <ul className="splide__list gap-[2rem]">
-                          <li className="splide__slide"><img src={banner1} alt="slide 1" className="w-full h-90 sm:h-90 md:h-100 lg:h-120 object-fit"/></li>
-                          <li className="splide__slide"><img src={banner2} alt="slide 2" className="w-full h-90 sm:h-90 md:h-100 lg:h-120  object-fit"/></li>
-                          <li className="splide__slide"><img src={banner3} alt="slide 3" className="w-full h-90 sm:h-90 md:h-100 lg:h-120  object-fit"/></li>
-                          <li className="splide__slide"><img src={banner4} alt="slide 2" className="w-full h-90 sm:h-90 md:h-100 lg:h-120  object-fit"/></li>
-                          <li className="splide__slide"><img src={banner5} alt="slide 3" className="w-full h-90 sm:h-90 md:h-100 lg:h-120  object-fit"/></li>
-                        </ul>
-                        
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
+                {/* GSAP Carousel for Products (replaces Splide) */}
+                <div className=" p-[50px] bg-[#DBFFE6] flex flex-col justify-center">
+                    <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
                 </div>
                   
                

@@ -22,6 +22,7 @@ import {
     bottomTo,
     chars
 } from '../assets/gsap/services.js';
+import { btBackOut } from "../assets/gsap/about.js";
 
 export default function services(){
 
@@ -72,6 +73,9 @@ export default function services(){
             elOnView('.serv-card-gr2-7', (el)=>leftTo(el, 0, 0));
             elOnView('.serv-card-gr2-8', (el)=>rightTo(el, 0, 0));
 
+            elOnView('.serv-s3h', (el)=>bottomTo(el, 0));
+            elOnView('.serv-s3l', (el)=>btBackOut(el, 0.4));
+
         } else if(screenVW <= 1023) {
 
             elOnView('.serv-s1-h', (el)=>chars(el, 0.5));
@@ -84,7 +88,10 @@ export default function services(){
             elOnView('.serv-card-gr2-5', (el)=>rightTo(el, 0, 0));
             elOnView('.serv-card-gr2-6', (el)=>leftTo(el, 0, 0));
             elOnView('.serv-card-gr2-7', (el)=>rightTo(el, 0, 0));
-            elOnView('.serv-card-gr2-8', (el)=>rightTo(el, 0, 0));        
+            elOnView('.serv-card-gr2-8', (el)=>rightTo(el, 0, 0));      
+
+            elOnView('.serv-s3h', (el)=>bottomTo(el, 0));
+            elOnView('.serv-s3l', (el)=>btBackOut(el, 0.4));  
 
         } else {
 
@@ -100,13 +107,15 @@ export default function services(){
             elOnView('.serv-card-gr2-7', (el)=>leftTo(el, 0, 0)); 
             elOnView('.serv-card-gr2-8', (el)=>bottomTo(el, 0, 0));
 
-    
+            elOnView('.serv-s3h', (el)=>bottomTo(el, 0));
+            elOnView('.serv-s3l', (el)=>btBackOut(el, 0.4));
+
         }
 
     }, []);
 
     return(
-        <main className='w-screen h-contain p-4 gap-[5rem]
+        <main className='w-screen h-contain py-4 gap-[3rem]
         flex flex-col items-center'>
 
             <section className="w-full py-[1rem]
@@ -218,6 +227,28 @@ export default function services(){
                         <p className="serv-card-l">Install's CCTV systems for both home and business owners for surveillance and security purposes</p>
                     </div>
                 </div>
+            </section>
+
+            <section className='w-full gap-[3rem] 
+            px-[2.5rem] max-lg:px-[2rem] max-md:px-[1.5rem] max-sm:px-[1rem]
+            flex justify-center items-center'>
+
+                <div className="w-full rounded-[2rem]
+                py-[3.5rem] max-lg:py-[3rem] max-md:py-[2.5rem] max-sm:py-[2rem]
+                px-[3rem] max-lg:px-[2.5rem] max-md:px-[2rem] max-sm:px-[1.5rem]
+                gap-[3.5rem]
+                flex flex-col justify-center items-center
+                bg-[#003224]">
+                    <h3 className="serv-s3h text-[#ffffffe5] text-center font-bold">We Also Offers:</h3>
+
+                    <div className="w-full gap-[2rem]
+                    grid grid-cols-3 place-items-center">
+                        <h5 className="serv-s3l text-center text-[#ffffffe5] font-medium">Book keeping</h5>
+                        <h5 className="serv-s3l text-center text-[#ffffffe5] font-medium">Tax consultation</h5>
+                        <h5 className="serv-s3l text-center text-[#ffffffe5] font-medium">Audits</h5>
+                    </div>
+                </div>
+
             </section>
         </main>
     )

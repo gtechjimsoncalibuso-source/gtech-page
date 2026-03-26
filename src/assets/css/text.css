@@ -37,6 +37,10 @@ li{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.3);}
 .t-s2-c-l{font-size: calc(clamp(1.5rem, 2.5vw, 3rem)*0.35);}   
 .t-s2-c-l2{font-size: calc(clamp(1.5rem, 2.5vw, 3rem)*0.4);}   
 
+.serv-s3h{font-size: calc(clamp(1.2rem, 2.5vw, 2.5rem)*1.2);}
+.serv-s3l{font-size: calc(clamp(1.2rem, 2.5vw, 2.5rem)*0.7);}
+
+
 /* C */
 .asdasd{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*2);}
 

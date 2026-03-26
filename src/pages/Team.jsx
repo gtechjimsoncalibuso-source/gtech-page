@@ -12,7 +12,7 @@ import eros from '../assets/interns/eros.png';
 import jim from '../assets/interns/jimson.jpg';
 import rov from '../assets/interns/rov.jpg';
 import jc from '../assets/interns/jc.jpg';
-import jm from '../assets/interns/jaemark.jpg';
+import jm from '../assets/interns/jaemark.png';
 import hv from '../assets/interns/harvy.png';
 
 import {
