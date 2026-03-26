@@ -171,39 +171,39 @@ export default function Home() {
                       gap-[2rem] max-lg:gap-[4rem] max-md:gap-[5rem]
                       px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
                       py-15 sm:py-20 md:py-25 lg:py-30 xl:py-40
-                      grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+                      grid grid-cols-4 max-lg:grid-cols-4 max-sm:grid-cols-4">
                   <div className="home-s2-c1 flex flex-col items-center ">
-                    <h2 className="font-extrabold  text-center 
+                    <h4 className="font-bold  text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           2010
-                    </h2>
+                    </h4>
                     <p className="text-white text-center font-extralight">Since</p>
                   </div>
                   <div className="home-s2-c2 flex flex-col items-center ">
-                    <h2 className="font-extrabold  text-center 
+                    <h4 className="font-bold  text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           10+
-                    </h2>
+                    </h4>
                     <p className="text-white text-center font-extralight">
                       Cities & <span className="block">Municipalities</span>
                     </p>
                   </div>
                   <div className="home-s2-c3 flex flex-col items-center ">
-                    <h2 className="font-extrabold text-center 
+                    <h4 className="font-bold text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           20+
-                    </h2>
+                    </h4>
                     <p className="text-white text-center font-extralight">Clients</p>
                   </div>
                   <div className="home-s2-c4 flex flex-col items-center ">
-                    <h2 className="font-extrabold text-center 
+                    <h4 className="font-bold text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           30+
-                    </h2>
+                    </h4>
                     <p className="text-white text-center font-extralight">Projects</p>
                   </div>
                 </div>

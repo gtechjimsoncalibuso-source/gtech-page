@@ -31,13 +31,13 @@ export default function Carousel() {
   const images = [joel, mart, philip, don];
   
   const interns_img = [joel, joel, joel, joel, joel, joel];
-  const interns_names = [
-    {name: 'Harver T. Agsalog', role: 'Panget'},
-    {name: 'Harver T. Agsalog', role: 'Panget'},
-    {name: 'Harver T. Agsalog', role: 'Panget'},
-    {name: 'Harver T. Agsalog', role: 'Panget'},
-    {name: 'Harver T. Agsalog', role: 'Panget'},
-    {name: 'Harver T. Agsalog', role: 'Panget'}
+  const interns = [
+    {name: 'Harvey T. Agsalog', role: 'Panget'},
+    {name: 'Harvey T. Agsalog', role: 'Panget'},
+    {name: 'Harvey T. Agsalog', role: 'Panget'},
+    {name: 'Harvey T. Agsalog', role: 'Panget'},
+    {name: 'Harvey T. Agsalog', role: 'Panget'},
+    {name: 'Harvey T. Agsalog', role: 'Panget'}
   ]
 
   const people = [
@@ -149,12 +149,17 @@ export default function Carousel() {
         grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2">
           {interns_img.map((src, i) => (
 
-          <div className="h-[30rem] rounded-[1rem]
-          flex flex-col items-center justify-center
-          bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${src})` }}>
-
-          </div>
+            <div
+              className="h-[30rem] rounded-[1rem] overflow-hidden
+              flex flex-col justify-end shadow-xl
+              bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${src})` }}
+            >
+              <div className="p-4 text-black">
+                <h4 className="">{interns[i]?.name}</h4>
+                <h5 className="">{interns[i]?.role}</h5>
+              </div>
+            </div>
 
           ))}
         </div>
