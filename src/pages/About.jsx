@@ -96,9 +96,9 @@ export default function about(){
     function elOnView(selector, callback) {
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
-            if (entry.intersectionRatio >= 0.05) { // 5% visible
-                callback(entry.target);   // call your function
-                obs.unobserve(entry.target); // only once
+            if (entry.intersectionRatio >= 0.05) { 
+                callback(entry.target);   
+                obs.unobserve(entry.target); 
             }
             });
         }, { threshold: 0.05 });

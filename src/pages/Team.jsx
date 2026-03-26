@@ -15,6 +15,12 @@ import jc from '../assets/interns/jc.jpg';
 import jm from '../assets/interns/jaemark.jpg';
 import hv from '../assets/interns/harvy.png';
 
+import {
+  bottomTo,
+  rightTo,
+  leftTo,
+  btBackOut
+} from "../assets/gsap/about.js";
 
 import '../assets/css/pages/team.css';
 
@@ -24,6 +30,28 @@ export default function Carousel() {
   const dragProxyRef = useRef(null);
   const nextRef = useRef(null);
   const prevRef = useRef(null);
+
+  function elOnView(selector, callback) {
+      const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+          if (entry.intersectionRatio >= 0.05) { 
+              callback(entry.target);   
+              obs.unobserve(entry.target); 
+          }
+          });
+      }, { threshold: 0.05 });
+
+      document.querySelectorAll(selector).forEach(el => observer.observe(el));
+  }
+
+  function elOnHover(selector, callback) {
+      const elements = document.querySelectorAll(selector);
+
+      elements.forEach(el => {
+          el.addEventListener('mouseenter', () => callback(el));
+          el.addEventListener('touchstart', () => callback(el));
+      });
+  }
 
   useEffect(() => {
     const cleanup = initCarouselAnimation(
@@ -45,7 +73,7 @@ export default function Carousel() {
     { name: "Tacang, Rodolfo ", role: "Corporate Secretary" },
     { name: "Vino, Apollo G. ", role: "Technical and IT Support" },
   ];
-  
+  ``
   const interns_img = [eros, jim, rov, jc, jm, hv];
   const interns = [
     {name: 'Ramirez, Eros Millard C.', role: 'Web Developer', school: "Saint Mary's University"},
@@ -61,6 +89,21 @@ export default function Carousel() {
       return () => {
       document.body.className = ''; 
       };
+  }, []);
+
+  useEffect(() => {
+    const screenVW = window.innerWidth;
+
+    elOnView('.t-s2-h', (el)=>bottomTo(el, 0));
+
+    const container = document.querySelector('.t-s2-c');
+    if (container) {
+      const children = container.children;
+      Array.from(children).forEach((el, i) => {
+        btBackOut(el, (i + 1) * 0.3); 
+      });
+    }
+    
   }, []);
 
   return (
@@ -153,13 +196,12 @@ export default function Carousel() {
       px-[5rem] max-xl:px-[4rem] max-lg:px-[3rem] max-md:px-[2rem] max-sm:px-[1rem]
       flex flex-col">
         <h4 className="t-s2-h font-medium">GTechnology 2026 Interns</h4>
-        <div className="w-full
+        <div className="t-s2-c w-full
         gap-[2.5rem]  max-sm:gap-[0.5rem] max-md:gap-[1rem] max-lg:gap-[1.5rem] max-xl:gap-[2rem]
         grid grid-cols-3">
           {interns_img.map((src, i) => (
 
-            <div
-              className="relative rounded-[1rem] overflow-hidden
+            <div className="relative rounded-[1rem] overflow-hidden
               h-[26rem] max-xl:h-[24rem] max-lg:h-[22rem] max-md:h-[20rem] max-sm:h-[18rem]
               shadow-xl bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${src})` }}
