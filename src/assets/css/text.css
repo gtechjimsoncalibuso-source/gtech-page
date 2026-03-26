@@ -31,6 +31,10 @@ li{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.3);}
 .ab-s4-c3-c-h-cl{font-size: calc(clamp(1.2rem, 2.5vw, 2rem)*0.6);}
 .ab-s4-c3-c-h-cp{font-size: calc(clamp(1.3rem, 2.5vw, 2.5rem)*0.4);}
 
+/* TEAM */
+.t-s2-h{font-size: calc(clamp(1rem, 2.5vw, 2rem)*1);}
+
+
 /* C */
 .asdasd{font-size: calc(clamp(2rem, 2.5vw, 3.5rem)*2);}
 

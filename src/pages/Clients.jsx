@@ -14,7 +14,7 @@ import c10 from '../assets/client-logo/client-10.png'
 import c11 from '../assets/client-logo/client-11.png'
 import c12 from '../assets/client-logo/client-12.png'
 import c13 from '../assets/client-logo/client-13.jpg'
-import c14 from '../assets/client-logo/client-14.jpg'
+import c14 from '../assets/client-logo/client-14.png'
 import c15 from '../assets/client-logo/client-15.png'
 import c16 from '../assets/client-logo/client-16.png'
 import c17 from '../assets/client-logo/client-17.png'
@@ -37,7 +37,7 @@ import {
   rightTo,
   leftTo,
   btBackOut,
-  duration
+  hover
 } from "../assets/gsap/clients.js";
 
 export default function Clients() {
@@ -98,8 +98,13 @@ export default function Clients() {
       elOnView('.cl-s2-c4', (el)=>btBackOut(el, 0.8));
       elOnView('.cl-s2-c5', (el)=>btBackOut(el, 1.0));
 
-      // elOnHover('.cl-s2-c5', (el)=>btBackOut(el, 1.0));
+      // Apply hover directly to industry cards
+      document.querySelectorAll('.client-industries').forEach((el) => hover(el));
 
+      // Apply hover to client images
+      document.querySelectorAll('.client-image').forEach((el) => hover(el));
+
+      document.querySelectorAll('.client-logos').forEach((el) => hover(el));
 
       
 
@@ -213,7 +218,7 @@ export default function Clients() {
               <img 
                 src={img} 
                 alt={`client${i+1}`}
-                className="w-full h-auto object-contain grayscale hover:grayscale-0"
+                className="client-logos w-full h-auto object-contain "
               />
             </div>
           ))}

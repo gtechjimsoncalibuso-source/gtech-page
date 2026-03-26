@@ -113,34 +113,29 @@ export const btBackOut = (target, delay = 0, scrtr = 0) => {
   );
 };
 
-// export const hover
-
-export const duration = (target) => {
+export const hover = (target, delay = 0) => {
   if (!target) return;
 
-  // set initial state
-  gsap.set(target, { grayscale: 1, scale: 1 });
-
   target.addEventListener("mouseenter", () => {
-    gsap.killTweensOf(target);
     gsap.to(target, { 
-      scale: 1.05, 
-      grayscale: 0,
+      scale: 1.1, 
       duration: 0.3,
-      ease: "power2.out"
+      ease: "power2.out",
+      overwrite: "auto"
     });
   });
 
   target.addEventListener("mouseleave", () => {
-    gsap.killTweensOf(target);
     gsap.to(target, { 
       scale: 1,
-      grayscale: 1,
       duration: 0.3,
-      ease: "power2.out"
+      ease: "power2.out",
+      overwrite: "auto"
     });
   });
 };
+
+
 
 
   

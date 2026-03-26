@@ -1,22 +1,5 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-
-// export const chars = (target, delay = 0) => {
-//   const element = typeof target === "string" ? document.querySelector(target) : target;
-//   if (!element) return;
-
-//   const split = SplitText.create(element, { type: "chars" });
-//   gsap.from(split.chars, {
-//     x: 150,
-//     opacity: ,
-//     duration: 0.5,
-//     delay,
-//     ease: "power4.out",
-//     stagger: 0.04,
-//   });
-// }
-
 
 export const leftTo = (target, delay =0, scrtr = 0) => {
     if(!target) return

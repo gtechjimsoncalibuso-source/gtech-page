@@ -158,9 +158,8 @@ export default function Home() {
      <div id="home" className=" flex justify-center items-center min-h-screen w-screen px-4 ">
       <img className="absolute top-0 left-0 w-full h-full -z-10 object-cover brightness-30" src={HomeBackground} alt="home-background"/>
       <h1 className="home-s1-h font-black text-center 
-                 text-2xl sm:text-3xl md:text-5xl lg:text-9xl xl:text-11xl
-                 bg-[radial-gradient(circle,_#c1c1c1_0%,_#22A570_60%,_#22A570_100%)]
-                 bg-clip-text text-transparent leading-snug">
+                 text-2xl sm:text-3xl md:text-5xl lg:text-9xl xl:text-11xl]
+                 bg-clip-text text-[#ffffffcc] leading-snug">
                   Provides digital solutions
                   <span className="block py-1 sm:py-2">for your</span>
                   <span className="block py-1 sm:py-2">Digital Challenges</span>
@@ -172,39 +171,39 @@ export default function Home() {
                       gap-[2rem] max-lg:gap-[4rem] max-md:gap-[5rem]
                       px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
                       py-15 sm:py-20 md:py-25 lg:py-30 xl:py-40
-                      grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-2">
+                      grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
                   <div className="home-s2-c1 flex flex-col items-center ">
-                    <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl text-center 
+                    <h2 className="font-extrabold  text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           2010
-                    </h1>
+                    </h2>
                     <p className="text-white text-center font-extralight">Since</p>
                   </div>
                   <div className="home-s2-c2 flex flex-col items-center ">
-                    <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl text-center 
+                    <h2 className="font-extrabold  text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           10+
-                    </h1>
+                    </h2>
                     <p className="text-white text-center font-extralight">
                       Cities & <span className="block">Municipalities</span>
                     </p>
                   </div>
                   <div className="home-s2-c3 flex flex-col items-center ">
-                    <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl text-center 
+                    <h2 className="font-extrabold text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           20+
-                    </h1>
+                    </h2>
                     <p className="text-white text-center font-extralight">Clients</p>
                   </div>
                   <div className="home-s2-c4 flex flex-col items-center ">
-                    <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl text-center 
+                    <h2 className="font-extrabold text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           30+
-                    </h1>
+                    </h2>
                     <p className="text-white text-center font-extralight">Projects</p>
                   </div>
                 </div>
