@@ -156,8 +156,8 @@ export default function Carousel() {
               style={{ backgroundImage: `url(${src})` }}
             >
               <div className="p-4 text-black">
-                <h4 className="">{interns[i]?.name}</h4>
-                <h5 className="">{interns[i]?.role}</h5>
+                <h4 className="t-s2-c-h font-normal">{interns[i]?.name}</h4>
+                <h5 className="t-s2-c-l font-light">{interns[i]?.role}</h5>
               </div>
             </div>
 

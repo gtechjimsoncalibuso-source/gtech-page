@@ -173,7 +173,7 @@ export default function Home() {
                       py-15 sm:py-20 md:py-25 lg:py-30 xl:py-40
                       grid grid-cols-4 max-lg:grid-cols-4 max-sm:grid-cols-4">
                   <div className="home-s2-c1 flex flex-col items-center ">
-                    <h4 className="font-bold  text-center 
+                    <h4 className="home-stats font-bold  text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           2010
@@ -181,7 +181,7 @@ export default function Home() {
                     <p className="text-white text-center font-extralight">Since</p>
                   </div>
                   <div className="home-s2-c2 flex flex-col items-center ">
-                    <h4 className="font-bold  text-center 
+                    <h4 className="home-stats font-bold  text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           10+
@@ -191,7 +191,7 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="home-s2-c3 flex flex-col items-center ">
-                    <h4 className="font-bold text-center 
+                    <h4 className="home-stats font-bold text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           20+
@@ -199,7 +199,7 @@ export default function Home() {
                     <p className="text-white text-center font-extralight">Clients</p>
                   </div>
                   <div className="home-s2-c4 flex flex-col items-center ">
-                    <h4 className="font-bold text-center 
+                    <h4 className="home-stats font-bold text-center 
                          bg-gradient-to-r from-[#22A570] to-[#FFFFFF] 
                          bg-clip-text text-transparent">
                           30+
