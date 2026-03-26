@@ -462,7 +462,7 @@ export default function Home() {
         <section id="contact" className="px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
         py-10 sm:py-10 md:py-10 lg:py-15 xl:py-15 bg-[#DBFFE6]"
         >
-          <h3 className="font-extrabold 
+          <h3 className="h-s7-h font-extrabold 
                    text-2xl sm:text-4xl md:text-5xl lg:text-6xl
                    bg-gradient-to-r from-[#22A570] to-[#585858] 
                    bg-clip-text text-transparent mb-3 text-center" >

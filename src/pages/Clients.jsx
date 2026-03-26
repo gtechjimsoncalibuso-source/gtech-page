@@ -74,9 +74,59 @@ export default function Clients() {
     
     if(screenVW <= 640) {
 
+      elOnView('.cl-s1-h', (el)=>bottomTo(el, 0));
+
+      const container = document.querySelector('.cl-s1-c');
+      if (container) {
+        const children = container.children;
+        Array.from(children).forEach((el, i) => {
+          btBackOut(el, (i + 1) * 0.2); 
+        });
+      }
+
+
+      elOnView('.cl-s2-h', (el)=>bottomTo(el, 0));
+      elOnView('.cl-s2-c1', (el)=>btBackOut(el, 0.2));  
+      elOnView('.cl-s2-c2', (el)=>btBackOut(el, 0.4));
+      elOnView('.cl-s2-c3', (el)=>btBackOut(el, 0.6));
+      elOnView('.cl-s2-c4', (el)=>btBackOut(el, 0.8));
+      elOnView('.cl-s2-c5', (el)=>btBackOut(el, 1.0));
+
+      // Apply hover directly to industry cards
+      document.querySelectorAll('.client-industries').forEach((el) => hover(el));
+
+      // Apply hover to client images
+      document.querySelectorAll('.client-image').forEach((el) => hover(el));
+
+      document.querySelectorAll('.client-logos').forEach((el) => hover(el));
+
     } else if(screenVW <= 1023) {
 
-    
+      elOnView('.cl-s1-h', (el)=>bottomTo(el, 0));
+
+      const container = document.querySelector('.cl-s1-c');
+      if (container) {
+        const children = container.children;
+        Array.from(children).forEach((el, i) => {
+          btBackOut(el, (i + 1) * 0.2); 
+        });
+      }
+
+
+      elOnView('.cl-s2-h', (el)=>bottomTo(el, 0));
+      elOnView('.cl-s2-c1', (el)=>btBackOut(el, 0.2));  
+      elOnView('.cl-s2-c2', (el)=>btBackOut(el, 0.4));
+      elOnView('.cl-s2-c3', (el)=>btBackOut(el, 0.6));
+      elOnView('.cl-s2-c4', (el)=>btBackOut(el, 0.8));
+      elOnView('.cl-s2-c5', (el)=>btBackOut(el, 1.0));
+
+      // Apply hover directly to industry cards
+      document.querySelectorAll('.client-industries').forEach((el) => hover(el));
+
+      // Apply hover to client images
+      document.querySelectorAll('.client-image').forEach((el) => hover(el));
+
+      document.querySelectorAll('.client-logos').forEach((el) => hover(el));
       
     } else {
 
@@ -213,12 +263,16 @@ export default function Clients() {
           {[c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24].map((img, i) => (
             <div key={i} className=" 
               w-[clamp(60px,10vw,120px)]
+              h-[clamp(60px,10vw,120px)]
               sm:w-[clamp(70px,8vw,130px)]
-              md:w-[clamp(80px,6vw,140px)]">
+              sm:h-[clamp(70px,8vw,130px)]
+              md:w-[clamp(80px,6vw,140px)]
+              md:h-[clamp(80px,6vw,140px)]
+              flex items-center justify-center">
               <img 
                 src={img} 
                 alt={`client${i+1}`}
-                className="client-logos w-full h-auto object-contain "
+                className="client-logos w-full h-full object-contain "
               />
             </div>
           ))}

@@ -2,11 +2,18 @@ import React, { useEffect, useRef } from "react";
 import { initCarouselAnimation } from "../assets/javascript/carousel-animations";
 import joel from "../assets/images/joel_gumiran.jpg";
 import mart from "../assets/images/martc.jpg";
-import apollo from "../assets/images/sir apollo.jpg";
+import apollo from "../assets/images/sir apollo.png";
 import philip from "../assets/images/philip.jpg";
 import don from "../assets/images/donc.jpg";
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
+
+import eros from '../assets/interns/eros.png';
+import jim from '../assets/interns/jimson.jpg';
+import rov from '../assets/interns/rov.jpg';
+import jc from '../assets/interns/jc.jpg';
+import jm from '../assets/interns/jaemark.jpg';
+import hv from '../assets/interns/harvy.png';
 
 
 import '../assets/css/pages/team.css';
@@ -32,21 +39,21 @@ export default function Carousel() {
 
   const images = [joel, mart, philip, don, apollo];
   const people = [
-    { name: "Joel Gumiran", role: "Fullstack Developer" },
-    { name: "Mart Silvestre", role: "Software Developer" },
-    { name: "Philip John Enrico L. Gonzales, CPA", role: "Accounting and Tax Consultant" },
-    { name: "Rodolfo Tacang", role: "Web Developer" },
-    { name: "Apollo G. Vino", role: "Technical and IT Support" },
+    { name: "Gumiran, Joel ", role: "CEO" },
+    { name: "Silvestre, Mart", role: "Vice President" },
+    { name: "Gonzales, Philip John Enrico L., CPA", role: "VP for Finance" },
+    { name: "Tacang, Rodolfo ", role: "Corporate Secretary" },
+    { name: "Vino, Apollo G. ", role: "Technical and IT Support" },
   ];
   
-  const interns_img = [joel, joel, joel, joel, joel, joel];
+  const interns_img = [eros, jim, rov, jc, jm, hv];
   const interns = [
-    {name: 'Harvey T. Agsalog', role: 'Web Developer', school: 'Isabela State University Cauayan City Campus'},
-    {name: 'Harvey T. Agsalog', role: 'Web Developer', school: "Saint Mary's University, Bayombong Campus"},
-    {name: 'Harvey T. Agsalog', role: 'Full Stack Developer', school: 'Isabela State University Cauayan City Campus'},
-    {name: 'Harvey T. Agsalog', role: 'Full Stack Developer', school: 'Isabela State University Cauayan City Campus'},
-    {name: 'Harvey T. Agsalog', role: 'App Developer', school: 'Isabela State University Cauayan City Campus'},
-    {name: 'Harvey T. Agsalog', role: 'Technical Writer', school: 'Isabela State University Cauayan City Campus'}
+    {name: 'Ramirez, Eros Millard C.', role: 'Web Developer', school: "Saint Mary's University"},
+    {name: 'Calibuso, Jimson Aaron A.', role: 'Web Developer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Domingo, Roever', role: 'Full Stack Developer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Chilagan, Jaycee G.', role: 'Full Stack Developer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Primero, Jaemark A.', role: 'Technical Writer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Agsalog, Harvy T.', role: 'App Developer', school: 'Isabela State University Cauayan City Campus'}
   ]
 
   useEffect(() => {
@@ -147,14 +154,13 @@ export default function Carousel() {
       flex flex-col">
         <h4 className="t-s2-h font-medium">GTechnology 2026 Interns</h4>
         <div className="w-full
-        gap-[5rem]
-        py-[2rem] max-xl:py-[1.8rem] max-lg:py-[1.6rem] max-md:py-[1.4rem] max-sm:py-[1.2rem]
-        px-[10rem] max-xl:px-[8rem] max-lg:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem]
-        grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2">
+        gap-[2.5rem]  max-sm:gap-[0.5rem] max-md:gap-[1rem] max-lg:gap-[1.5rem] max-xl:gap-[2rem]
+        grid grid-cols-3">
           {interns_img.map((src, i) => (
 
             <div
-              className="relative h-[20rem] rounded-[1rem] overflow-hidden
+              className="relative rounded-[1rem] overflow-hidden
+              h-[26rem] max-xl:h-[24rem] max-lg:h-[22rem] max-md:h-[20rem] max-sm:h-[18rem]
               shadow-xl bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${src})` }}
             >
@@ -166,6 +172,9 @@ export default function Carousel() {
                 <h4 className="t-s2-c-h font-normal drop-shadow-md">
                   {interns[i]?.name}
                 </h4>
+                <h5 className="t-s2-c-l2 font-light drop-shadow-sm">
+                  {interns[i]?.school}
+                </h5>
                 <h5 className="t-s2-c-l font-light drop-shadow-sm">
                   {interns[i]?.role}
                 </h5>
