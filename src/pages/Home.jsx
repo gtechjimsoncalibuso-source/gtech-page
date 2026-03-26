@@ -76,9 +76,30 @@ export default function Home() {
       elOnView('.home-s1-h', (el)=>bottomTo(el, 0)); //update
 
       elOnView('.home-s2-c1', (el)=>leftTo(el, 0));
-      elOnView('.home-s2-c2', (el)=>rightTo(el, 0));
-      elOnView('.home-s2-c3', (el)=>leftTo(el, 0));
+      elOnView('.home-s2-c2', (el)=>bottomTo(el, 0));
+      elOnView('.home-s2-c3', (el)=>bottomTo(el, 0));
       elOnView('.home-s2-c4', (el)=>rightTo(el, 0));
+
+      elOnView('.home-s1-h', (el)=>bottomTo(el, 0)); //update this
+
+      elOnView('.home-s3-c1', (el)=>leftTo(el, 0)); //img
+      elOnView('.home-s3-c2', (el)=>bottomTo(el, 0));
+      elOnView('.home-s3-c3', (el)=>bottomTo(el, 0));
+      elOnView('.home-s3-c4', (el)=>rightTo(el, 0)); //img
+      elOnView('.home-s3-c5', (el)=>leftTo(el, 0)); //img
+      elOnView('.home-s3-c6', (el)=>bottomTo(el, 0));
+
+      elOnView('.home-s4-c1', (el)=>leftTo(el, 0));
+      elOnView('.home-s4-c2', (el)=>rightTo(el, 0));
+      elOnView('.home-s4-c3', (el)=>leftTo(el, 0));
+      elOnView('.home-s4-c4', (el)=>rightTo(el, 0));
+
+      elOnView('.home-s5-c1', (el)=>leftTo(el, 0));
+      elOnView('.home-s5-c2', (el)=>bottomTo(el, 0));
+      elOnView('.home-s5-c3', (el)=>rightTo(el, 0));
+
+      elOnView('.home-s6-c1', (el)=>leftTo(el, 0));
+      elOnView('.home-s6-c2', (el)=>rightTo(el, 0));
 
 
     } else if(screenVW <= 1023) {

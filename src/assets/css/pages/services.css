@@ -20,9 +20,9 @@ body.services{
     width: var(--serv-ci);
     height: var(--serv-ci);
 }
-.serv-card-icon:hover{
+/* .serv-card-icon:hover{
    color:black;
-}
+} */
 
 .serv-card-gr1{
     background: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(228, 228, 228));
@@ -36,10 +36,10 @@ body.services{
     /* transition: all 0.3s ease; */
 }
 
-.serv-card-gr2:hover {
+/* .serv-card-gr2:hover {
     background: rgb(255, 255, 255); 
     color: black;
-}
+} */
 
 
 /* .serv-card-gr2, .serv-card-gr1{

@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { initCarouselAnimation } from "../assets/javascript/carousel-animations";
 import joel from "../assets/images/joel_gumiran.jpg";
 import mart from "../assets/images/martc.jpg";
+import apollo from "../assets/images/sir apollo.jpg";
 import philip from "../assets/images/philip.jpg";
 import don from "../assets/images/donc.jpg";
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
+
 
 import '../assets/css/pages/team.css';
 
@@ -28,24 +30,24 @@ export default function Carousel() {
     return () => cleanup && cleanup();
   }, []);
 
-  const images = [joel, mart, philip, don];
-  
-  const interns_img = [joel, joel, joel, joel, joel, joel];
-  const interns = [
-    {name: 'Harvey T. Agsalog', role: 'Panget'},
-    {name: 'Harvey T. Agsalog', role: 'Panget'},
-    {name: 'Harvey T. Agsalog', role: 'Panget'},
-    {name: 'Harvey T. Agsalog', role: 'Panget'},
-    {name: 'Harvey T. Agsalog', role: 'Panget'},
-    {name: 'Harvey T. Agsalog', role: 'Panget'}
-  ]
-
+  const images = [joel, mart, philip, don, apollo];
   const people = [
     { name: "Joel Gumiran", role: "Fullstack Developer" },
     { name: "Mart Silvestre", role: "Software Developer" },
-    { name: "Rodolfo Tacang", role: "Web Developer" },
     { name: "Philip John Enrico L. Gonzales, CPA", role: "Accounting and Tax Consultant" },
+    { name: "Rodolfo Tacang", role: "Web Developer" },
+    { name: "Apollo G. Vino", role: "Technical and IT Support" },
   ];
+  
+  const interns_img = [joel, joel, joel, joel, joel, joel];
+  const interns = [
+    {name: 'Harvey T. Agsalog', role: 'Web Developer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Harvey T. Agsalog', role: 'Web Developer', school: "Saint Mary's University, Bayombong Campus"},
+    {name: 'Harvey T. Agsalog', role: 'Full Stack Developer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Harvey T. Agsalog', role: 'Full Stack Developer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Harvey T. Agsalog', role: 'App Developer', school: 'Isabela State University Cauayan City Campus'},
+    {name: 'Harvey T. Agsalog', role: 'Technical Writer', school: 'Isabela State University Cauayan City Campus'}
+  ]
 
   useEffect(() => {
       document.body.className = 'team'; 
@@ -83,8 +85,8 @@ export default function Carousel() {
                 key={i}
                 className="absolute top-1/2 left-1/2 
                            -translate-x-1/2 -translate-y-1/2
-                           w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem]
-                            bg-center bg-cover bg-no-repeat shadow-xl overflow-hidden"
+                           w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[30rem]
+                            bg-center bg-cover bg-no-repeat shadow-xl overflow-hidden rounded-2xl"
                 style={{ backgroundImage: `url(${src})` }}
               >
                 <div className="absolute inset-0 bg-black/20 rounded"></div>
@@ -139,25 +141,34 @@ export default function Carousel() {
       </div>
 
       <section className="w-full bg-[#DBFFE6]
-      gap-[3rem]
-      py-[5rem] max-xl:py-[4rem] max-lg:py-[3rem] max-md:py-[2rem] max-sm:py-[1rem]
+      gap-[3rem] 
+      py-[5rem] max-xl:py-[4.5rem] max-lg:py-[4rem] max-md:py-[3.5rem] max-sm:py-[3rem]
       px-[5rem] max-xl:px-[4rem] max-lg:px-[3rem] max-md:px-[2rem] max-sm:px-[1rem]
       flex flex-col">
         <h4 className="t-s2-h font-medium">GTechnology 2026 Interns</h4>
         <div className="w-full
-        gap-[2rem]
+        gap-[5rem]
+        py-[2rem] max-xl:py-[1.8rem] max-lg:py-[1.6rem] max-md:py-[1.4rem] max-sm:py-[1.2rem]
+        px-[10rem] max-xl:px-[8rem] max-lg:px-[6rem] max-md:px-[4rem] max-sm:px-[2rem]
         grid grid-cols-3 max-sm:grid-cols-1 max-lg:grid-cols-2">
           {interns_img.map((src, i) => (
 
             <div
-              className="h-[30rem] rounded-[1rem] overflow-hidden
-              flex flex-col justify-end shadow-xl
-              bg-cover bg-center bg-no-repeat"
+              className="relative h-[20rem] rounded-[1rem] overflow-hidden
+              shadow-xl bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${src})` }}
             >
-              <div className="p-4 text-black">
-                <h4 className="t-s2-c-h font-normal">{interns[i]?.name}</h4>
-                <h5 className="t-s2-c-l font-light">{interns[i]?.role}</h5>
+              {/* gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+              {/* bottom text */}
+              <div className="absolute bottom-0 w-full p-4 text-white">
+                <h4 className="t-s2-c-h font-normal drop-shadow-md">
+                  {interns[i]?.name}
+                </h4>
+                <h5 className="t-s2-c-l font-light drop-shadow-sm">
+                  {interns[i]?.role}
+                </h5>
               </div>
             </div>
 
