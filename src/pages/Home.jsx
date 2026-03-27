@@ -189,14 +189,21 @@ export default function Home() {
      
      <div id="home" className=" flex justify-center items-center min-h-screen w-screen px-4 ">
       <img className="absolute top-0 left-0 w-full h-full -z-10 object-cover brightness-30" src={HomeBackground} alt="home-background"/>
-      <h1 className="home-s1-h font-black text-center 
+      {/* <h2 className="home-s1-h font-black text-center 
                  text-2xl sm:text-3xl md:text-5xl lg:text-9xl xl:text-11xl]
                  bg-clip-text text-[#ffffffcc] leading-snug">
                   Provides digital solutions
                   <span className="block py-1 sm:py-2">for your</span>
                   <span className="block py-1 sm:py-2">Digital Challenges</span>
-      </h1>
+                
+      </h2>  */}
+       
+        <div className="w-full max-w-[1200px] h-[500px]">
+            <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
+          
       </div>
+      </div>
+      
 
       {/* Small Stats */}
       <div className="bg-[#003224]
@@ -240,10 +247,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* GSAP Carousel for Products (replaces Splide) */}
+                {/* GSAP Carousel for Products (replaces Splide)
                 <div className=" p-[50px] bg-[#DBFFE6] flex flex-col justify-center">
                     <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
-                </div>
+                </div> */}
+                
                   
                
       
