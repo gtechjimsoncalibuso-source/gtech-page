@@ -23,6 +23,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import emailjs from "@emailjs/browser";
 import CarouselGSAP from '../components/CarouselGSAP';
 
 import {
@@ -97,10 +98,10 @@ export default function Home() {
       elOnView('.h-s1-h', (el)=>bottomTo(el, 0)); //update
       elOnView('.h-s1-c', (el)=>btBackOut(el, 0.3)); // update
 
-      elOnView('.home-s2-c1', (el)=>leftTo(el, 0));
-      elOnView('.home-s2-c2', (el)=>bottomTo(el, 0));
-      elOnView('.home-s2-c3', (el)=>bottomTo(el, 0));
-      elOnView('.home-s2-c4', (el)=>rightTo(el, 0));
+      elOnView('.home-s2-c1', (el)=>btBackOut(el, 0.2));
+      elOnView('.home-s2-c2', (el)=>btBackOut(el, 0.4));
+      elOnView('.home-s2-c3', (el)=>btBackOut(el, 0.6));
+      elOnView('.home-s2-c4', (el)=>btBackOut(el, 0.8));
 
       elOnView('.home-s3-c1', (el)=>leftTo(el, 0)); //img
       elOnView('.home-s3-c2', (el)=>bottomTo(el, 0));
@@ -109,10 +110,10 @@ export default function Home() {
       elOnView('.home-s3-c5', (el)=>leftTo(el, 0)); //img
       elOnView('.home-s3-c6', (el)=>bottomTo(el, 0));
 
-      elOnView('.home-s4-c1', (el)=>leftTo(el, 0));
-      elOnView('.home-s4-c2', (el)=>rightTo(el, 0));
-      elOnView('.home-s4-c3', (el)=>leftTo(el, 0));
-      elOnView('.home-s4-c4', (el)=>rightTo(el, 0));
+      elOnView('.home-s4-c1', (el)=>btBackOut(el, 0.2));
+      elOnView('.home-s4-c2', (el)=>btBackOut(el, 0.4));
+      elOnView('.home-s4-c3', (el)=>btBackOut(el, 0.6));
+      elOnView('.home-s4-c4', (el)=>btBackOut(el, 0.8));
 
       elOnView('.home-s5-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s5-c2', (el)=>bottomTo(el, 0));
@@ -127,10 +128,10 @@ export default function Home() {
       elOnView('.h-s1-h', (el)=>bottomTo(el, 0)); //update 
       elOnView('.h-s1-c', (el)=>btBackOut(el, 0.3)); // update
 
-      elOnView('.home-s2-c1', (el)=>leftTo(el, 0));
-      elOnView('.home-s2-c2', (el)=>rightTo(el, 0));
-      elOnView('.home-s2-c3', (el)=>leftTo(el, 0));
-      elOnView('.home-s2-c4', (el)=>rightTo(el, 0));
+      elOnView('.home-s2-c1', (el)=>btBackOut(el, 0));
+      elOnView('.home-s2-c2', (el)=>btBackOut(el, 0));
+      elOnView('.home-s2-c3', (el)=>btBackOut(el, 0));
+      elOnView('.home-s2-c4', (el)=>btBackOut(el, 0));
 
       elOnView('.home-s3-c1', (el)=>leftTo(el, 0)); //img
       elOnView('.home-s3-c2', (el)=>bottomTo(el, 0));
@@ -139,10 +140,10 @@ export default function Home() {
       elOnView('.home-s3-c5', (el)=>leftTo(el, 0)); //img
       elOnView('.home-s3-c6', (el)=>bottomTo(el, 0));
 
-      elOnView('.home-s4-c1', (el)=>bottomTo(el, 0.2));
-      elOnView('.home-s4-c2', (el)=>bottomTo(el, 0.4));
-      elOnView('.home-s4-c3', (el)=>bottomTo(el, 0.6));
-      elOnView('.home-s4-c4', (el)=>bottomTo(el, 0.8));
+      elOnView('.home-s4-c1', (el)=>btBackOut(el, 0.2));
+      elOnView('.home-s4-c2', (el)=>btBackOut(el, 0.4));
+      elOnView('.home-s4-c3', (el)=>btBackOut(el, 0.6));
+      elOnView('.home-s4-c4', (el)=>btBackOut(el, 0.8));
 
       elOnView('.home-s5-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s5-c2', (el)=>bottomTo(el, 0));
@@ -156,10 +157,10 @@ export default function Home() {
       elOnView('.h-s1-h', (el)=>bottomTo(el, 0)); // update
       elOnView('.h-s1-c', (el)=>btBackOut(el, 0.3)); // update
       
-      elOnView('.home-s2-c1', (el)=>leftTo(el, 0));
-      elOnView('.home-s2-c2', (el)=>bottomTo(el, 0));
-      elOnView('.home-s2-c3', (el)=>bottomTo(el, 0));
-      elOnView('.home-s2-c4', (el)=>rightTo(el, 0));
+      elOnView('.home-s2-c1', (el)=>btBackOut(el, 0));
+      elOnView('.home-s2-c2', (el)=>btBackOut(el, 0));
+      elOnView('.home-s2-c3', (el)=>btBackOut(el, 0));
+      elOnView('.home-s2-c4', (el)=>btBackOut(el, 0));
 
       elOnView('.home-s3-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s3-c2', (el)=>rightTo(el, 0));
@@ -168,10 +169,10 @@ export default function Home() {
       elOnView('.home-s3-c5', (el)=>leftTo(el, 0));
       elOnView('.home-s3-c6', (el)=>rightTo(el, 0));
 
-      elOnView('.home-s4-c1', (el)=>bottomTo(el, 0.2));
-      elOnView('.home-s4-c2', (el)=>bottomTo(el, 0.4));
-      elOnView('.home-s4-c3', (el)=>bottomTo(el, 0.6));
-      elOnView('.home-s4-c4', (el)=>bottomTo(el, 0.8));
+      elOnView('.home-s4-c1', (el)=>btBackOut(el, 0.2));
+      elOnView('.home-s4-c2', (el)=>btBackOut(el, 0.4));
+      elOnView('.home-s4-c3', (el)=>btBackOut(el, 0.6));
+      elOnView('.home-s4-c4', (el)=>btBackOut(el, 0.8));
 
       elOnView('.home-s5-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s5-c2', (el)=>bottomTo(el, 0));
@@ -197,30 +198,43 @@ export default function Home() {
     subject: "",
     message: "",
   });
+  const [isSending, setIsSending] = useState(false);
+  const [mailError, setMailError] = useState("");
+  const [mailSuccess, setMailSuccess] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSending(true);
+  setMailError("");
+  setMailSuccess("");
 
   emailjs
     .send(
       "service_a7qepb1",
       "template_db8ar3r",
       {
-        name: "",
-        subject: "",
-        message: "",
-        email: "",
+        name: form.name,
+        subject: form.subject,
+        message: form.message,
+        email: form.email,
       },
       "h1WdOKQLktBOAX8Ta"
     )
     .then((res) => {
       console.log("SUCCESS!", res.status, res.text);
+      setMailSuccess("Message sent successfully.");
+      setForm({ name: "", email: "", subject: "", message: "" });
     })
     .catch((err) => {
       console.log("FAILED...", err);
+      setMailError("Failed to send message. Please try again.");
+    })
+    .finally(() => {
+      setIsSending(false);
     });
 
   };
@@ -379,7 +393,7 @@ export default function Home() {
                  </h1>
                  
             <div className="grid 
-                  grid-cols-2 sm:grid-cols-2 md:grid-cols-4
+                  grid-cols-4
                   gap-[2rem] max-md:gap-[3rem] ">
 
               <div className="home-s4-c1 font-light flex flex-col items-center text-white text-xl ">
@@ -585,6 +599,8 @@ export default function Home() {
               >
                 <h3 className="text-xl font-bold">GET IN TOUCH</h3>
                 <p>Reach out with inquiries</p>
+                {mailError && <p className="text-sm text-red-600">{mailError}</p>}
+                {mailSuccess && <p className="text-sm text-green-700">{mailSuccess}</p>}
 
                 <TextField
                   name="name"
@@ -603,6 +619,7 @@ export default function Home() {
                 <TextField             
                 name="email"
                   label="Email"
+                  type="email"
                   value={form.email}
                   onChange={handleChange}
                   required
@@ -646,12 +663,13 @@ export default function Home() {
 
                 <Button
                       type="submit"
+                      disabled={isSending}
                       variant="contained"
                       sx={{
                         borderRadius: '25px',
                       }}
                     >
-                      Submit
+                      {isSending ? "Sending..." : "Submit"}
                 </Button>
 
               </form>
