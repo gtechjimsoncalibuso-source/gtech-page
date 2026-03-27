@@ -192,9 +192,9 @@ export default function Home() {
           Provides digital solutions for your Digital Challenges
         </h3> 
        
-        {/* <div className="h-s1-c w-full">
+        <div className="h-s1-c w-full">
             <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
-        </div> */}
+        </div>
       </div>
       
 
