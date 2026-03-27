@@ -201,7 +201,7 @@ export default function Carousel() {
         grid grid-cols-3">
           {interns_img.map((src, i) => (
 
-            <div className="relative rounded-[1rem] overflow-hidden
+            <div key={i} className="relative rounded-[1rem] overflow-hidden
               h-[26rem] max-xl:h-[24rem] max-lg:h-[22rem] max-md:h-[20rem] max-sm:h-[18rem]
               shadow-xl bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${src})` }}

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { initGallery } from '../javascript/gsap/gallery';
+import { initGallery } from '../assets/javascript/gallery';
 
 export default function CarouselGSAP({ banners = [], spacing = 0.1 }) {
   const containerRef = useRef(null);

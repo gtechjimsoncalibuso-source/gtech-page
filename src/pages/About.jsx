@@ -7,7 +7,8 @@ import ab_c11 from '../assets/images/ab-c11.png';
 import ab_c12 from '../assets/images/ab-c12.png';
 import { FaTimeline } from "react-icons/fa6";
 import { GrUserExpert } from "react-icons/gr";
-import '../css/About.css' 
+import '../css/About.css';
+import { useLocation } from "react-router-dom";
 
 import {
   bottomTo,
@@ -17,6 +18,14 @@ import {
 } from "../assets/gsap/about.js";
 
 export default function about(){
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+
     const projects = [
        {
       description: "Checking System at Rural Bank Cauayan",

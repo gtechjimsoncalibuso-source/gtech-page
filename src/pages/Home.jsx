@@ -12,8 +12,6 @@ import banner3 from '../assets/banners/3.png';
 import banner4 from '../assets/banners/4.png';
 import banner5 from '../assets/banners/5.png';
 
-
-
 import { IoLogoWindows } from "react-icons/io";
 import { IoLogoAndroid } from "react-icons/io";
 import { FaLinux } from "react-icons/fa";
@@ -32,6 +30,7 @@ import {
   rightTo,
   leftTo
 } from "../assets/gsap/home.js";
+import { btBackOut } from "../assets/gsap/clients.js";
 
 
 export default function Home() {
@@ -43,14 +42,14 @@ export default function Home() {
             const el = document.getElementById(location.state.scrollTo);
 
             if (el) {
-                setTimeout(() => {
-                    el.scrollIntoView({ behavior: "smooth" });
-                }, 100);
+              // give React/DOM more time to finish layout on mobile
+              setTimeout(() => {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }, 350);
             }
 
-           
             navigate(location.pathname, { replace: true, state: {} });
-        }
+          }
     }, [location, navigate]);
     
 
@@ -82,14 +81,13 @@ export default function Home() {
     
     if(screenVW <= 640) {
 
-      elOnView('.home-s1-h', (el)=>bottomTo(el, 0)); //update
+      elOnView('.h-s1-h', (el)=>bottomTo(el, 0)); //update
+      elOnView('.h-s1-c', (el)=>btBackOut(el, 0.3)); // update
 
       elOnView('.home-s2-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s2-c2', (el)=>bottomTo(el, 0));
       elOnView('.home-s2-c3', (el)=>bottomTo(el, 0));
       elOnView('.home-s2-c4', (el)=>rightTo(el, 0));
-
-      elOnView('.home-s1-h', (el)=>bottomTo(el, 0)); //update this
 
       elOnView('.home-s3-c1', (el)=>leftTo(el, 0)); //img
       elOnView('.home-s3-c2', (el)=>bottomTo(el, 0));
@@ -113,14 +111,13 @@ export default function Home() {
 
     } else if(screenVW <= 1023) {
 
-      elOnView('.home-s1-h', (el)=>bottomTo(el, 0)); //update 
+      elOnView('.h-s1-h', (el)=>bottomTo(el, 0)); //update 
+      elOnView('.h-s1-c', (el)=>btBackOut(el, 0.3)); // update
 
       elOnView('.home-s2-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s2-c2', (el)=>rightTo(el, 0));
       elOnView('.home-s2-c3', (el)=>leftTo(el, 0));
       elOnView('.home-s2-c4', (el)=>rightTo(el, 0));
-
-      elOnView('.home-s1-h', (el)=>bottomTo(el, 0)); //update this
 
       elOnView('.home-s3-c1', (el)=>leftTo(el, 0)); //img
       elOnView('.home-s3-c2', (el)=>bottomTo(el, 0));
@@ -143,14 +140,13 @@ export default function Home() {
 
     } else {
 
-      elOnView('.home-s1-h', (el)=>bottomTo(el, 0)); // update
+      elOnView('.h-s1-h', (el)=>bottomTo(el, 0)); // update
+      elOnView('.h-s1-c', (el)=>btBackOut(el, 0.3)); // update
       
       elOnView('.home-s2-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s2-c2', (el)=>bottomTo(el, 0));
       elOnView('.home-s2-c3', (el)=>bottomTo(el, 0));
       elOnView('.home-s2-c4', (el)=>rightTo(el, 0));
-
-      elOnView('.home-s3-h', (el)=>chars(el, 0)); // update
 
       elOnView('.home-s3-c1', (el)=>leftTo(el, 0));
       elOnView('.home-s3-c2', (el)=>rightTo(el, 0));
@@ -182,26 +178,23 @@ export default function Home() {
     };
   }, []);
 
-  
 
   return (
     <div className="flex flex-col">
      
-     <div id="home" className=" flex justify-center items-center min-h-screen w-screen px-4 ">
+     <div id="home" className=" flex flex-col justify-center items-center min-
+     p-[5rem] max-xl:p-[5rem] max-lg:p-[4rem] max-md:p-[2.5rem] max-sm:p-[2rem]
+     gap-[6rem] max-xl:gap-[3.5rem] max-lg:gap-[3rem] max-md:gap-[2.5rem] max-sm:gap-[2rem]
+     ">
       <img className="absolute top-0 left-0 w-full h-full -z-10 object-cover brightness-30" src={HomeBackground} alt="home-background"/>
-      {/* <h2 className="home-s1-h font-black text-center 
-                 text-2xl sm:text-3xl md:text-5xl lg:text-9xl xl:text-11xl]
-                 bg-clip-text text-[#ffffffcc] leading-snug">
-                  Provides digital solutions
-                  <span className="block py-1 sm:py-2">for your</span>
-                  <span className="block py-1 sm:py-2">Digital Challenges</span>
-                
-      </h2>  */}
+        <h3 className="h-s1-h font-black text-center 
+          bg-clip-text text-[rgba(255,255,255,0.8)] leading-snug">
+          Provides digital solutions for your Digital Challenges
+        </h3> 
        
-        <div className="w-full max-w-[1200px] h-[500px]">
+        <div className="h-s1-c w-full">
             <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
-          
-      </div>
+        </div>
       </div>
       
 
@@ -510,16 +503,16 @@ export default function Home() {
               <div className="grid grid-cols-2 max-lg:grid-cols-1 ">
               <ul className="py-2 sm:py-2 md:py-2 lg:py-5 xl-py5">
                 <p className="font-medium text-base">Phone</p>
-                <li className="font-light">+63 997 225 7554</li>
-                <li className="font-light">+63 997 225 7554</li>
-                <li className="font-light">+63 997 225 7554</li>
+                <li className="font-light">0995 880 4502</li>
+                <li className="font-light">0997 225 7554</li>
+                <li className="font-light">0966 534 2216</li>
               </ul>
               <ul className="py-2 sm:py-2 md:py-2 lg:py-5 xl-py5">
                 <p className="font-medium text-base">Email</p>
+                <li className="font-light">gtechnologyorg2023@gmail.com</li>
                 <li className="font-light">rodolfotacang@g-technology.org</li>
-                <li className="font-light">rodolfotacang@g-technology.org</li>
-                <li className="font-light">rodolfotacang@g-technology.org</li>
-                <li className="font-light">rodolfotacang@g-technology.org</li>
+                <li className="font-light">mart.silvestre@g-technology.org</li>
+                <li className="font-light">joel.gumiran@g-technology.org</li>
               </ul>
               </div>
              
@@ -544,7 +537,8 @@ export default function Home() {
               flex flex-col gap-4
               rounded-b-2xl rounded-t-none      
               max-lg:rounded-b-2xl max-lg:rounded-t-none
-              lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */">
+              lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */
+              ">
                 <h3 className="text-lg md:text-xl lg:text-2xl font-bold">GET IN TOUCH</h3>
                 <p className="text-sm md:text-base lg:text-lg">Reach out with inquiries</p>
 
