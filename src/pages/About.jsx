@@ -356,12 +356,12 @@ export default function about(){
                         <div className="ab-s3-c1 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>10+</h3>
-                            <p className='ab-s3-c-h-c-l text-center font-light'>Cities & Municipalities</p>
+                            <p className='ab-s3-c-h-c-l text-center font-light'>Localities</p>
                         </div>
                         <div className="ab-s3-c2 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>20+</h3>
-                            <p className='ab-s3-c-h-c-l text-center font-light'>Cities</p>
+                            <p className='ab-s3-c-h-c-l text-center font-light'>Clients</p>
                         </div>
                         <div className="ab-s3-c3 p-4
                         flex flex-col justify-center items-center">
@@ -371,7 +371,7 @@ export default function about(){
                         <div className="ab-s3-c4 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>16+</h3>
-                            <p className='ab-s3-c-h-c-l text-center font-light'>Years of Experience</p>
+                            <p className='ab-s3-c-h-c-l text-center font-light'>Years </p>
                         </div>
 
                     </div>
