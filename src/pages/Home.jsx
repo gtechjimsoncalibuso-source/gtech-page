@@ -193,7 +193,7 @@ export default function Home() {
         </h3> 
        
         <div className="h-s1-c w-full">
-            <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
+            <CarouselGSAP  banners={[banner1, banner2, banner3, banner4, banner5]} />
         </div>
       </div>
       
