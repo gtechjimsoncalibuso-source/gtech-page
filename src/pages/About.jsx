@@ -344,34 +344,34 @@ export default function about(){
             flex justify-center items-start'>
                 
                 <div className="ab-s3-c w-full 
-                p-x[10rem] py-[1rem] gap-[2rem] 
+                py-[.5rem] sm:py-[.5rem] md:py-[2rem] lg:py-[3rem] gap-[2rem] 
                 rounded-3xl
                 flex flex-col items-center justify-center mx-[0px] sm:mx-[0px] md:mx-[30px] lg:mx-[40px]">
 
                     <h4 className='ab-s3-h ab-s3-c-h text-center font-bold'>Career Highlights</h4>
 
-                    <div className="w-full gap-[2rem] px-[5rem]
-                    grid grid-cols-4 max-lg:grid-cols-2">
+                    <div className="w-full gap-[.5rem] sm:gap-[1rem] lg:gap-[2rem] px-[.1   rem]
+                    grid grid-cols-4 max-lg:grid-cols-4">
                         
                         <div className="ab-s3-c1 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>10+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Cities & Municipalities</h5>
+                            <p className='ab-s3-c-h-c-l text-center font-light'>Cities & Municipalities</p>
                         </div>
                         <div className="ab-s3-c2 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>20+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Cities</h5>
+                            <p className='ab-s3-c-h-c-l text-center font-light'>Cities</p>
                         </div>
                         <div className="ab-s3-c3 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>30+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Projects</h5>
+                            <p className='ab-s3-c-h-c-l text-center font-light'>Projects</p>
                         </div>
                         <div className="ab-s3-c4 p-4
                         flex flex-col justify-center items-center">
                             <h3 className='ab-s3-c-h-c-h text-center font-bold'>16+</h3>
-                            <h5 className='ab-s3-c-h-c-l text-center font-light'>Years of Experience</h5>
+                            <p className='ab-s3-c-h-c-l text-center font-light'>Years of Experience</p>
                         </div>
 
                     </div>

@@ -329,34 +329,34 @@ export default function Home() {
         
         <div className=" bg-[#318049]
          px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
-                      py-15 sm:py-20 md:py-25 lg:py-30 xl:py-40
+                      py-15 sm:py-20 md:py-25 lg:py-27 xl:py-30
         max-lg:p-[4rem] max-md:p-[2rem] ">
-                <h1 className="text-center
-                 text-sm sm:text-lg md:text-xl lg:text-2xl
+                <h3 className="text-center
+                 text-sm sm:text-sm md:text-xl lg:text-2xl
                  mb-10 text-white"> Software Compatibility
-                 </h1>
+                 </h3>
                  
             <div className="grid 
-                  grid-cols-2 sm:grid-cols-2 md:grid-cols-4
+                  grid-cols-4 sm:grid-cols-4 md:grid-cols-4
                   gap-[2rem] max-md:gap-[3rem] ">
 
               <div className="home-s4-c1 font-light flex flex-col items-center text-white text-xl ">
-                <IoLogoWindows className="text-6xl sm:text-8xl md:text-10xl" />
+                <IoLogoWindows className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">Windows</p>
               </div>      
 
               <div className="home-s4-c2 font-light flex flex-col items-center text-white text-xl">
-                <IoLogoAndroid className="text-6xl sm:text-8xl md:text-10xl" />
+                <IoLogoAndroid className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">Android</p>
                 </div>
 
               <div className="home-s4-c3 font-light flex flex-col items-center text-white text-xl">
-                <FaLinux className="text-6xl sm:text-8xl md:text-10xl" />
+                <FaLinux className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">Linux</p>
               </div>
 
               <div className="home-s4-c4 font-light flex flex-col items-center text-white text-xl">
-                <FaApple className="text-6xl sm:text-8xl md:text-10xl" />
+                <FaApple className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">MacOS</p>
               </div>
           </div>
