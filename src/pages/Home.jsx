@@ -192,9 +192,9 @@ export default function Home() {
           Provides digital solutions for your Digital Challenges
         </h3> 
        
-        <div className="h-s1-c w-full">
+        {/* <div className="h-s1-c w-full">
             <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
-        </div>
+        </div> */}
       </div>
       
 
@@ -521,17 +521,17 @@ export default function Home() {
                 <li className="font-light">76 Quezon St, Cauayan City, Isabela</li>
               </ul>
               <div className="map-container" >
-                        <iframe className="rounded-lg"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.106146795899!2d121.7671125!3d16.9346553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338551006981c9c9%3A0xb9b92b1d33a65975!2sG%20TECHNOLOGY%20BUSINESS%20SOLUTIONS%2C%20INC.!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph"
-                        width="100%"
-                        height="150"
-                        
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="G TECHNOLOGY BUSINESS SOLUTIONS Map"
-                        ></iframe>
-                        </div>
+                <iframe className="rounded-lg"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.106146795899!2d121.7671125!3d16.9346553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x338551006981c9c9%3A0xb9b92b1d33a65975!2sG%20TECHNOLOGY%20BUSINESS%20SOLUTIONS%2C%20INC.!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph"
+                width="100%"
+                height="150"
+                
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="G TECHNOLOGY BUSINESS SOLUTIONS Map"
+                ></iframe>
+              </div>
             </div>
               <form action="https://api.web3forms.com/submit" method="POST" className=" bg-[#DEDEE0]  max-lg:order-2 p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
               flex flex-col gap-4
