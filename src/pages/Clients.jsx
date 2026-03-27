@@ -166,7 +166,7 @@ export default function Clients() {
   return (
     <section>
       {/* TOP GRID */}
-      <div className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20
+      <div id="clients" className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20
                       py-4 sm:py-10 md:py-20 lg:py-30 xl:py-40
                       grid grid-cols-1 md:grid-cols-[30%_70%] gap-6">
         
@@ -223,32 +223,29 @@ export default function Clients() {
           Industries We Served
         </h3>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-1 sm:gap-1 md:gap-5 lg:gap-6">
 
           <div className="client-industries cl-s2-c1 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
-            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">99</h3>
+            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">10</h3>
             <p className="text-white text-xs sm:text-sm md:text-base">Education</p>
           </div>
 
           <div className="client-industries cl-s2-c2 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
-            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">120</h3>
-            <p className="text-white text-xs sm:text-sm md:text-base">Banking</p>
+            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">10</h3>
+            <p className="text-white text-xs sm:text-sm md:text-base">Cooperation</p>
           </div>
 
           <div className="client-industries cl-s2-c3 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
-            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">80</h3>
+            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">10</h3>
             <p className="text-white text-xs sm:text-sm md:text-base">Healthcare</p>
           </div>
 
           <div className="client-industries cl-s2-c4 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center  ">
-            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">65</h3>
-            <p className="text-white text-xs sm:text-sm md:text-base">Retail</p>
+            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">10</h3>
+            <p className="text-white text-xs sm:text-sm md:text-base">Others</p>
           </div>                
 
-          <div className="client-industries cl-s2-c5 rounded-xl bg-gradient-to-r from-[#22A570] to-[#737373] flex flex-col items-center justify-center h-[70px] sm:h-[80px] md:h-[100px] px-2 sm:px-3 md:px-4 text-center ">
-            <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl">150</h3>
-            <p className="text-white text-xs sm:text-sm md:text-base">Technology</p>
-          </div>
+          
 
         </div>
       </div>

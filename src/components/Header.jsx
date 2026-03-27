@@ -40,6 +40,7 @@ export default function Header() {
             }
         }
     };
+   
 
     useEffect(() => {
         positionRef.current = position;
@@ -216,10 +217,10 @@ export default function Header() {
                         </a>
                     </li>
 
-                    <li><Link to="/services" className="nav-link">SERVICES</Link></li>
-                    <li><Link to="/about" className="nav-link">ABOUT</Link></li>
-                    <li><Link to="/clients" className="nav-link">CLIENTS</Link></li>
-                    <li><Link to="/team" className="nav-link">TEAM</Link></li>
+                    <li><Link to="/services#services" className="nav-link">SERVICES</Link></li>
+                    <li><Link to="/about#about" className="nav-link">ABOUT</Link></li>
+                    <li><Link to="/clients#clients" className="nav-link">CLIENTS</Link></li>
+                    <li><Link to="/team#team" className="nav-link">TEAM</Link></li>
 
                     <li>
                         <a onClick={() => scrollToSection("contact")} className="nav-link cursor-pointer">
@@ -229,11 +230,11 @@ export default function Header() {
 
                 </ul>
 
-                <a href="#" className="nav-fb-btn nav-fb-btn-pc flex gap-2 items-center">
+                <a target="_blank" href="https://www.facebook.com/profile.php?id=100045189956593" className="nav-fb-btn nav-fb-btn-pc flex gap-2 items-center">
                     <FaFacebook size={26}/>FACEBOOK PAGE
                 </a>
 
-                <a href="#" className="nav-fb-btn nav-fb-btn-cp flex rounded-full items-center">
+                <a target="_blank" href="https://www.facebook.com/profile.php?id=100045189956593" className="nav-fb-btn nav-fb-btn-cp flex rounded-full items-center">
                     <FaFacebook color="blue" size={34}/>
                 </a>
             </nav>
@@ -261,18 +262,18 @@ export default function Header() {
 
                 {isMenuOpen && (
                     <ul
-                        className={`absolute left-0 w-full p-[1rem] flex flex-col gap-4 items-center bg-[#f1f1f1] rounded-full shadow-lg border
+                        className={`absolute left-0 w-full p-[1rem] flex flex-col gap-4 items-center bg-[#f1f1f1] rounded-full shadow-lg 
                         ${isBottom ? 'bottom-[4rem]' : 'top-[4rem]'}`}
                     >
                         {[
-                            { action: () => scrollToSection("home"), icon: <FaHome size={28} /> },
-                            { to: "/services", icon: <FaGears size={28} /> },
-                            { to: "/about", icon: <IoIosInformationCircle size={28} /> },
-                            { to: "/clients", icon: <FaHandshake size={28} /> },
-                            { to: "/team", icon: <RiTeamFill size={28} /> },
+                            { action: () => scrollToSection("home"), icon: <FaHome size={28} />},
+                            { to: "/services#services", icon: <FaGears size={28} /> },
+                            { to: "/about#about", icon: <IoIosInformationCircle size={28} />},
+                            { to: "/clients#clients", icon: <FaHandshake size={28} /> },
+                            { to: "/team#team", icon: <RiTeamFill size={28} /> },
                             { action: () => scrollToSection("contact"), icon: <FaPhoneSquare size={28} /> }
                         ].map((item, i) => (
-                            <li key={i}>
+                            <li key={i} className="relative group">
                                 {item.action ? (
                                     <button
                                         onClick={(e) => {
@@ -283,8 +284,10 @@ export default function Header() {
                                             item.action();
                                             setIsMenuOpen(false);
                                         }}
+                                        className="relative"
                                     >
-                                        {React.cloneElement(item.icon, { color: "black" })}
+                                        {React.cloneElement(item.icon, { color: item.color || 'black' })}
+                                      
                                     </button>
                                 ) : (
                                     <Link
@@ -296,8 +299,10 @@ export default function Header() {
                                             }
                                             setIsMenuOpen(false);
                                         }}
+                                        className="relative"
                                     >
-                                        {React.cloneElement(item.icon, { color: "black" })}
+                                        {React.cloneElement(item.icon, { color: item.color || 'black' })}
+                                        
                                     </Link>
                                 )}
                             </li>

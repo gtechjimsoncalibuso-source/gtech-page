@@ -293,7 +293,7 @@ export default function about(){
         <main className='w-screen h-contain gap-[5rem]
         flex flex-col items-center'>
 
-            <section className="w-full
+            <section id="about" className="w-full
             p-[3rem]
             gap-[1rem]
             font-bold

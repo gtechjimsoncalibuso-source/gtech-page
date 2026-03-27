@@ -107,7 +107,7 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div className="bg-[#003224] not-[]:py-[2rem]">
+    <div id="team" className="bg-[#003224] not-[]:py-[2rem]">
       <div className="py-[2rem]">
         <h1 className="text-center bg-gradient-to-r from-[#22A570] to-[#ffffff] 
                          bg-clip-text text-transparent font-extrabold ">

@@ -118,7 +118,7 @@ export default function services(){
         <main className='w-screen h-contain py-4 gap-[3rem]
         flex flex-col items-center'>
 
-            <section className="w-full py-[1rem]
+            <section id="services" className="w-full py-[1rem]
             flex flex-col items-center
             text-center">
                 <h3 className='serv-s1-h serv-h font-extrabold

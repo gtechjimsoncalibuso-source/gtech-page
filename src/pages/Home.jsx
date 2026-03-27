@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // ✅ ADDED
 import "../assets/css/text.css";
 import CardImage from '../assets/images/Card.png';
@@ -6,11 +6,11 @@ import LaptopImage from '../assets/images/laptop-mockup.png';
 import PhoneImage from '../assets/images/phone-mockup.png';
 import ShieldImage from '../assets/images/shield.png';
 import HomeBackground from '../assets/images/homepage.jpg';
-import banner1 from '../assets/banners/1.png';
-import banner2 from '../assets/banners/2.png';
-import banner3 from '../assets/banners/3.png';
-import banner4 from '../assets/banners/4.png';
-import banner5 from '../assets/banners/5.png';
+import banner6 from '../assets/banners/6.png';
+import banner7 from '../assets/banners/7.png';
+import banner8 from '../assets/banners/8.png';
+import banner9 from '../assets/banners/9.png';
+import banner10 from '../assets/banners/10.png';
 
 import { IoLogoWindows } from "react-icons/io";
 import { IoLogoAndroid } from "react-icons/io";
@@ -37,20 +37,33 @@ export default function Home() {
   const location = useLocation();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (location.state?.scrollTo) {
-            const el = document.getElementById(location.state.scrollTo);
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+        const id = location.state.scrollTo;
+
+        const scrollToEl = () => {
+            const el = document.getElementById(id);
 
             if (el) {
-              // give React/DOM more time to finish layout on mobile
-              setTimeout(() => {
-                el.scrollIntoView({ behavior: "smooth", block: "start" });
-              }, 350);
-            }
+                const yOffset = -90; // match header height
+                const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-            navigate(location.pathname, { replace: true, state: {} });
-          }
-    }, [location, navigate]);
+                window.scrollTo({
+                    top: y,
+                    behavior: "smooth"
+                });
+            } else {
+                // retry until element exists (better than fixed timeout)
+                setTimeout(scrollToEl, 200);
+            }
+        };
+
+        // slight delay for mobile rendering
+        setTimeout(scrollToEl, 300);
+
+        navigate(location.pathname, { replace: true, state: {} });
+    }
+}, [location, navigate]);
     
 
   function elOnView(selector, callback) {
@@ -178,6 +191,39 @@ export default function Home() {
     };
   }, []);
 
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+
+  emailjs
+    .send(
+      "service_a7qepb1",
+      "template_db8ar3r",
+      {
+        name: "",
+        subject: "",
+        message: "",
+        email: "",
+      },
+      "h1WdOKQLktBOAX8Ta"
+    )
+    .then((res) => {
+      console.log("SUCCESS!", res.status, res.text);
+    })
+    .catch((err) => {
+      console.log("FAILED...", err);
+    });
+
+  };
 
   return (
     <div className="flex flex-col">
@@ -193,13 +239,13 @@ export default function Home() {
         </h3> 
        
         <div className="h-s1-c w-full">
-            <CarouselGSAP  banners={[banner1, banner2, banner3, banner4, banner5]} />
+            <CarouselGSAP  banners={[banner6, banner7, banner8, banner9, banner10]} />
         </div>
       </div>
       
 
       {/* Small Stats */}
-      <div className="bg-[#003224]
+      <div className="bg-[#003224] 
                       gap-[2rem] max-lg:gap-[4rem] max-md:gap-[5rem]
                       px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
                       py-15 sm:py-20 md:py-25 lg:py-30 xl:py-40
@@ -245,10 +291,6 @@ export default function Home() {
                     <CarouselGSAP   banners={[banner1, banner2, banner3, banner4, banner5]} />
                 </div> */}
                 
-                  
-               
-      
-
       <div className=" bg-[#DBFFE6]
       px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
         py-10 sm:py-15 md:py-20 lg:py-25 xl:py-30">
@@ -329,34 +371,34 @@ export default function Home() {
         
         <div className=" bg-[#318049]
          px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
-                      py-15 sm:py-20 md:py-25 lg:py-27 xl:py-30
+                      py-15 sm:py-20 md:py-25 lg:py-30 xl:py-40
         max-lg:p-[4rem] max-md:p-[2rem] ">
-                <h3 className="text-center
-                 text-sm sm:text-sm md:text-xl lg:text-2xl
+                <h1 className="text-center
+                 text-sm sm:text-lg md:text-xl lg:text-2xl
                  mb-10 text-white"> Software Compatibility
-                 </h3>
+                 </h1>
                  
             <div className="grid 
-                  grid-cols-4 sm:grid-cols-4 md:grid-cols-4
+                  grid-cols-2 sm:grid-cols-2 md:grid-cols-4
                   gap-[2rem] max-md:gap-[3rem] ">
 
               <div className="home-s4-c1 font-light flex flex-col items-center text-white text-xl ">
-                <IoLogoWindows className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
+                <IoLogoWindows className="text-6xl sm:text-8xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">Windows</p>
               </div>      
 
               <div className="home-s4-c2 font-light flex flex-col items-center text-white text-xl">
-                <IoLogoAndroid className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
+                <IoLogoAndroid className="text-6xl sm:text-8xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">Android</p>
                 </div>
 
               <div className="home-s4-c3 font-light flex flex-col items-center text-white text-xl">
-                <FaLinux className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
+                <FaLinux className="text-6xl sm:text-8xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">Linux</p>
               </div>
 
               <div className="home-s4-c4 font-light flex flex-col items-center text-white text-xl">
-                <FaApple className="text-4xl sm:text-4xl md:text-7xl md:text-10xl" />
+                <FaApple className="text-6xl sm:text-8xl md:text-10xl" />
                 <p className="text-sm sm:text-lg md:text-xl">MacOS</p>
               </div>
           </div>
@@ -533,43 +575,55 @@ export default function Home() {
                 ></iframe>
               </div>
             </div>
-              <form action="https://api.web3forms.com/submit" method="POST" className=" bg-[#DEDEE0]  max-lg:order-2 p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
-              flex flex-col gap-4
-              rounded-b-2xl rounded-t-none      
-              max-lg:rounded-b-2xl max-lg:rounded-t-none
-              lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */
-              ">
-                <h3 className="text-lg md:text-xl lg:text-2xl font-bold">GET IN TOUCH</h3>
-                <p className="text-sm md:text-base lg:text-lg">Reach out with inquiries</p>
+              <form
+                onSubmit={handleSubmit}
+                className="bg-[#DEDEE0] p-5 sm:p-10 flex flex-col gap-4 rounded-2xl"
+              >
+                <h3 className="text-xl font-bold">GET IN TOUCH</h3>
+                <p>Reach out with inquiries</p>
 
-                <div className="flex flex-col w-full">
-                  <label className="mb-1 text-[calc(clamp(1.6rem,2.5vw,2.5rem)*0.4)] font-medium">
-                  Full Name*
-                  </label>
-                  <TextField fullWidth required sx={{ "& .MuiOutlinedInput-root": { borderRadius: "25px", height: "40px" } }} />
-                </div>
-                <div className="flex flex-col w-full">
-                  <label className="mb-1 text-[calc(clamp(1.6rem,2.5vw,2.5rem)*0.4)] font-medium">
-                  Email*
-                  </label>
-                  <TextField fullWidth required sx={{ "& .MuiOutlinedInput-root": { borderRadius: "25px", height: "40px" } }} />
-                </div>
-                <div className="flex flex-col w-full">
-                  <label className="mb-1 text-[calc(clamp(1.6rem,2.5vw,2.5rem)*0.4)] font-medium">
-                  Subject*
-                  </label>
-                  <TextField fullWidth required sx={{ "& .MuiOutlinedInput-root": { borderRadius: "25px", height: "40px" } }} />
-                </div>
-                <div className="flex flex-col w-full">
-                  <label className="mb-1 text-[calc(clamp(1.6rem,2.5vw,2.5rem)*0.4)] font-medium">
-                   Message*
-                  </label>
-                  <TextField fullWidth required multiline rows={4} sx={{ "& .MuiOutlinedInput-root": { borderRadius: "25px" } }}/>
-                </div>
-                <Button variant="contained" sx={{ borderRadius: "25px", height: "40px", margin: "15px 0px" }}>
+                <TextField
+                  name="name"
+                  label="Full Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  fullWidth
+                />
+
+                <TextField
+                  name="email"
+                  label="Email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  fullWidth
+                />
+
+                <TextField
+                  name="subject"
+                  label="Subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  required
+                  fullWidth
+                />
+
+                <TextField
+                  name="message"
+                  label="Message"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                  fullWidth
+                  multiline
+                  rows={4}
+                />
+
+                <Button type="submit" variant="contained">
                   Submit
                 </Button>
-            </form>
+              </form>
 
             </div>
         </section>
