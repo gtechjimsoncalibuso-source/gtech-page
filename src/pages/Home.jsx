@@ -577,7 +577,11 @@ export default function Home() {
             </div>
               <form
                 onSubmit={handleSubmit}
-                className="bg-[#DEDEE0] p-5 sm:p-10 flex flex-col gap-4 rounded-2xl"
+                className="bg-[#DEDEE0] p-5 sm:p-10 flex flex-col gap-4 
+                rounded-b-2xl rounded-t-none        /* mobile (1 col) */
+                    max-lg:rounded-b-2xl max-lg:rounded-t-none
+                    lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */
+"
               >
                 <h3 className="text-xl font-bold">GET IN TOUCH</h3>
                 <p>Reach out with inquiries</p>
@@ -589,15 +593,25 @@ export default function Home() {
                   onChange={handleChange}
                   required
                   fullWidth
+                  sx={{
+                        '& .MuiOutlinedInput-root': {
+                          borderRadius: '25px',
+                        },
+                      }}
                 />
 
-                <TextField
-                  name="email"
+                <TextField             
+                name="email"
                   label="Email"
                   value={form.email}
                   onChange={handleChange}
                   required
                   fullWidth
+                   sx={{
+                        '& .MuiOutlinedInput-root': {
+                          borderRadius: '25px',
+                        },
+                      }}
                 />
 
                 <TextField
@@ -607,6 +621,11 @@ export default function Home() {
                   onChange={handleChange}
                   required
                   fullWidth
+                   sx={{
+                        '& .MuiOutlinedInput-root': {
+                          borderRadius: '25px',
+                        },
+                      }}
                 />
 
                 <TextField
@@ -618,11 +637,23 @@ export default function Home() {
                   fullWidth
                   multiline
                   rows={4}
+                   sx={{
+                        '& .MuiOutlinedInput-root': {
+                          borderRadius: '25px',
+                        },
+                      }}
                 />
 
-                <Button type="submit" variant="contained">
-                  Submit
+                <Button
+                      type="submit"
+                      variant="contained"
+                      sx={{
+                        borderRadius: '25px',
+                      }}
+                    >
+                      Submit
                 </Button>
+
               </form>
 
             </div>
