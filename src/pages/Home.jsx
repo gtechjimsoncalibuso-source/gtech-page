@@ -533,7 +533,7 @@ export default function Home() {
                         ></iframe>
                         </div>
             </div>
-              <form className=" bg-[#DEDEE0]  max-lg:order-2 p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
+              <form action="https://api.web3forms.com/submit" method="POST" className=" bg-[#DEDEE0]  max-lg:order-2 p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
               flex flex-col gap-4
               rounded-b-2xl rounded-t-none      
               max-lg:rounded-b-2xl max-lg:rounded-t-none
