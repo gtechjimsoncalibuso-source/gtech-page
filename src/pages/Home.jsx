@@ -212,17 +212,27 @@ export default function Home() {
   setMailError("");
   setMailSuccess("");
 
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  if (!serviceId || !templateId || !publicKey) {
+    setMailError("Mail is not configured. Set VITE_EMAILJS_* in .env and restart the dev server.");
+    setIsSending(false);
+    return;
+  }
+
   emailjs
     .send(
-      "service_a7qepb1",
-      "template_db8ar3r",
+      serviceId,
+      templateId,
       {
         name: form.name,
         subject: form.subject,
         message: form.message,
         email: form.email,
       },
-      "h1WdOKQLktBOAX8Ta"
+      publicKey
     )
     .then((res) => {
       console.log("SUCCESS!", res.status, res.text);
