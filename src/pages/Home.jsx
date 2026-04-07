@@ -252,7 +252,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
      
-     <div id="home" className=" flex flex-col justify-center items-center min-
+     <div id="home" className=" flex flex-col justify-center items-center scroll-mt-[80px]
      p-[5rem] max-xl:p-[5rem] max-lg:p-[4rem] max-md:p-[2.5rem] max-sm:p-[2rem]
      gap-[6rem] max-xl:gap-[3.5rem] max-lg:gap-[3rem] max-md:gap-[2.5rem] max-sm:gap-[2rem]
      ">
@@ -547,23 +547,24 @@ export default function Home() {
 
         </div>
         <section id="contact" className="px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
-        py-10 sm:py-10 md:py-10 lg:py-15 xl:py-15 bg-[#DBFFE6]"
+        py-10 sm:py-10 md:py-10 lg:py-15 xl:py-15 bg-[#DBFFE6] "
         >
           <h3 className="h-s7-h font-extrabold 
                    text-2xl sm:text-4xl md:text-5xl lg:text-6xl
                    bg-gradient-to-r from-[#22A570] to-[#585858] 
-                   bg-clip-text text-transparent mb-3 text-center" >
+                   bg-clip-text text-transparent mb-3 text-center " >
                   Let's Connect</h3>
           <div className="grid grid-cols-2 max-lg:grid-cols-1  ">
             <div className="
-  bg-[#003224] 
-  p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
-  text-white text-sm
+                          bg-[#003224] 
+                          p-5 sm:p-15 md:p-15 lg:p-15 xl:p-15 
+                          text-white text-sm
 
-  rounded-t-2xl rounded-b-none        /* mobile (1 col) */
-  max-lg:rounded-t-2xl max-lg:rounded-b-none
-  lg:rounded-l-2xl lg:rounded-r-none  /* desktop (2 col) */
-">
+                          rounded-t-2xl rounded-b-none        /* mobile (1 col) */
+                          max-lg:rounded-t-2xl max-lg:rounded-b-none
+                          lg:rounded-l-2xl lg:rounded-r-none  /* desktop (2 col) */
+                         
+                        ">
               <h3>We’re here to connect and assist you</h3>
 
               <div className="grid grid-cols-2 max-lg:grid-cols-1 ">
@@ -601,11 +602,11 @@ export default function Home() {
             </div>
               <form
                 onSubmit={handleSubmit}
-                className="bg-[#DEDEE0] p-5 sm:p-10 flex flex-col gap-4 
-                rounded-b-2xl rounded-t-none        /* mobile (1 col) */
+                className="bg-[#f5f5f5] p-5 sm:p-10 flex flex-col gap-4 
+                rounded-b-2xl rounded-t-none      /* mobile (1 col) */
                     max-lg:rounded-b-2xl max-lg:rounded-t-none
-                    lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */
-"
+                    lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */ "
+                    
               >
                 <h3 className="text-xl font-bold">GET IN TOUCH</h3>
                 <p>Reach out with inquiries</p>

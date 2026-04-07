@@ -10,6 +10,7 @@ import Services from './pages/Services.jsx'
 import About from './pages/About.jsx'
 import Clients from './pages/Clients.jsx'
 import Team from './pages/Team.jsx'
+import Products from './pages/Products.jsx'
 // import Contact from './pages/Contact.jsx'
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/team" element={<Team />} />

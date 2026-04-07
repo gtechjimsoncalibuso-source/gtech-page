@@ -166,7 +166,7 @@ export default function Clients() {
   return (
     <section>
       {/* TOP GRID */}
-      <div id="clients" className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20
+      <div id="clients" className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 scroll-mt-[80px]
                       py-4 sm:py-10 md:py-20 lg:py-30 xl:py-40
                       grid grid-cols-1 md:grid-cols-[30%_70%] gap-6">
         

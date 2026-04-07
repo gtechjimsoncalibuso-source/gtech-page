@@ -94,6 +94,9 @@ export default function Carousel() {
   useEffect(() => {
     const screenVW = window.innerWidth;
 
+    elOnView('.s1-h1', (el)=>bottomTo(el, 0));
+    elOnView('.s1-h2', (el)=>bottomTo(el, 0.3));
+
     elOnView('.t-s2-h', (el)=>bottomTo(el, 0));
 
     const container = document.querySelector('.t-s2-c');
@@ -107,13 +110,13 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div id="team" className="bg-[#003224] not-[]:py-[2rem]">
+    <div id="team" className="bg-[#003224] not-[]:py-[2rem] scroll-mt-[80px]">
       <div className="py-[2rem]">
-        <h1 className="text-center bg-gradient-to-r from-[#22A570] to-[#ffffff] 
+        <h1 className="s1-h1 text-center bg-gradient-to-r from-[#22A570] to-[#ffffff] 
                          bg-clip-text text-transparent font-extrabold ">
           We Are G.Technology
         </h1>
-        <h4 className="text-center bg-gradient-to-r from-[#22A570] to-[#ffffff] 
+        <h4 className="s1-h2 text-center bg-gradient-to-r from-[#22A570] to-[#ffffff] 
                          bg-clip-text text-transparent">
           Scaling Businesses, Exceeding Standards
         </h4>

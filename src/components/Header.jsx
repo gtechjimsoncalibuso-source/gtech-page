@@ -217,10 +217,11 @@ export default function Header() {
                         </a>
                     </li>
 
-                    <li><Link to="/services#services" className="nav-link">SERVICES</Link></li>
-                    <li><Link to="/about#about" className="nav-link">ABOUT</Link></li>
-                    <li><Link to="/clients#clients" className="nav-link">CLIENTS</Link></li>
-                    <li><Link to="/team#team" className="nav-link">TEAM</Link></li>
+                    <li><Link to="/services" className="nav-link">SERVICES</Link></li>
+                    <li><Link to="/products" className="nav-link">PRODUCTS</Link></li>
+                    <li><Link to="/about" className="nav-link">ABOUT</Link></li>
+                    <li><Link to="/clients" className="nav-link">CLIENTS</Link></li>
+                    <li><Link to="/team" className="nav-link">TEAM</Link></li>
 
                     <li>
                         <a onClick={() => scrollToSection("contact")} className="nav-link cursor-pointer">

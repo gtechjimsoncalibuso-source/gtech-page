@@ -286,14 +286,13 @@ export default function about(){
         }
 
     }, [s4c]);
-    
 
 
     return(
         <main className='w-screen h-contain gap-[5rem]
         flex flex-col items-center'>
 
-            <section id="about" className="w-full
+            <section id="about" className="w-full scroll-mt-[80px]
             p-[3rem]
             gap-[1rem]
             font-bold
