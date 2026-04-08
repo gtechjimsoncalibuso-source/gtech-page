@@ -546,7 +546,7 @@ export default function Home() {
         </div>
 
         </div>
-        <section id="contact" className="px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30
+        <section id="contact" className="px-10 sm:px-15 md:px-20 lg:px-25 xl:px-30 scroll-mt-[80px]
         py-10 sm:py-10 md:py-10 lg:py-15 xl:py-15 bg-[#DBFFE6] "
         >
           <h3 className="h-s7-h font-extrabold 

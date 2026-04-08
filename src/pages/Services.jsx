@@ -22,6 +22,7 @@ import {
     bottomTo,
     chars
 } from '../assets/gsap/services.js';
+
 import { btBackOut } from "../assets/gsap/about.js";
 
 export default function services(){

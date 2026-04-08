@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { RiTeamFill } from "react-icons/ri";
 import { IoIosInformationCircle } from "react-icons/io";
 import { FaGears } from "react-icons/fa6";
+import { AiFillProduct } from "react-icons/ai";
  import logo from '../assets/images/logo.png';
 
 import '../assets/css/headers.css';
@@ -269,6 +270,7 @@ export default function Header() {
                         {[
                             { action: () => scrollToSection("home"), icon: <FaHome size={28} />},
                             { to: "/services#services", icon: <FaGears size={28} /> },
+                            { to: "/products#products", icon: <AiFillProduct  size={28} /> },
                             { to: "/about#about", icon: <IoIosInformationCircle size={28} />},
                             { to: "/clients#clients", icon: <FaHandshake size={28} /> },
                             { to: "/team#team", icon: <RiTeamFill size={28} /> },

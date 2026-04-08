@@ -289,7 +289,7 @@ export default function about(){
 
 
     return(
-        <main className='w-screen h-contain gap-[5rem]
+        <main className='w-screen h-contain gap-[5rem] scroll-mt-[80px]
         flex flex-col items-center'>
 
             <section id="about" className="w-full scroll-mt-[80px]

@@ -11,7 +11,13 @@ import About from './pages/About.jsx'
 import Clients from './pages/Clients.jsx'
 import Team from './pages/Team.jsx'
 import Products from './pages/Products.jsx'
-// import Contact from './pages/Contact.jsx'
+
+import Gwise from './pages/products/Gwise.jsx';
+import Accounting from './pages/products/Accounting.jsx';
+import Payroll from './pages/products/Payroll.jsx';
+import Sales from './pages/products/Sales.jsx';
+import Enrollment from './pages/products/Enrollment.jsx';
+
 
 export default function App() {
 
@@ -26,7 +32,13 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/team" element={<Team />} />
-        {/* <Route path="/contact" element={<Contact />} /> */}
+
+        <Route path="/gwise" element={<Gwise />} />
+        <Route path="/accounting" element={<Accounting />} />
+        <Route path="/payroll" element={<Payroll />} />
+        <Route path="/sales" element={<Sales />} />
+        <Route path="/enrollment" element={<Enrollment />} />
+
       </Routes>
       <Copyright></Copyright>
     </BrowserRouter>
