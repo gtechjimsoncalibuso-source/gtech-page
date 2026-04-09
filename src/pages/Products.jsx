@@ -9,8 +9,7 @@ import banner10 from '../assets/banners/10.png';
 import {  
     leftTo,
     rightTo,
-    bottomTo,
-    chars
+    bottomTo
 } from '../assets/gsap/services.js';
 
 

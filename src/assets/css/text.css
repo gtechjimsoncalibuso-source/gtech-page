@@ -51,7 +51,7 @@ li{font-size: calc(clamp(1.6rem, 2.5vw, 2.5rem)*0.3);}
 .home-stats{font-size: calc(clamp(1.2rem, 2.5vw, 2.5rem)*1);}
 
 /* Products */
-.pro-s1h{font-size: calc(clamp(1.5rem, 2.5vw, 2.5rem)*0.95);}
+.pro-s1h{font-size: calc(clamp(1.5rem, 2.5vw, 2.5rem)*1.2);}
 .pro-s1l{font-size: calc(clamp(1.2rem, 2.5vw, 2.5rem)*0.55);}
 
 .pro-s2h{font-size: calc(clamp(1.5rem, 2.5vw, 2.5rem)*0.75);}

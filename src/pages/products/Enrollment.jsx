@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import emailjs from "@emailjs/browser";
-import GwiseImg from '../../assets/products/emrolment.png'
+import GwiseImg from '../../assets/products/Payroll System.png'
 
 import { useEffect, useRef, useState } from 'react';
 
@@ -17,7 +17,7 @@ import {
 } from '../../assets/gsap/services.js';
 
 
-export default function Enrollment(){
+export default function Gwise() {
 
     function elOnView(selector, callback) {
         const observer = new IntersectionObserver((entries, obs) => {
@@ -43,39 +43,68 @@ export default function Enrollment(){
 
     useEffect(() => {
 
-        elOnView('.pro-s1h', el => bottomTo(el, 0));
-        elOnView('.pro-s1l', el => bottomTo(el, 0.3));
+        // elOnView('.pro-s1h', el => bottomTo(el, 0));
+        // elOnView('.pro-s1l', el => bottomTo(el, 0.3));
 
-        elOnView('.pro-s1i', el => bottomTo(el, 0.1));
+        // elOnView('.pro-s1i', el => bottomTo(el, 0.1));
 
     }, []);
 
     return(
-        <main className='w-screen h-contain py-4 gap-[3rem]
+        <main className='w-screen h-contain gap-[3rem]
         flex flex-col items-center'>
 
-            <section id="services" className="w-full py-[1rem] scroll-mt-[80px]
-            flex flex-col items-center
-            text-center">
-                
-                <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2
-                items-center justify-center p-[50px]">
-                    <div className='p-[10px] sm:p-[10px] md:p-[20px] lg:p-[40px] xl:p-[50px] '>
-                        <h5 className='pro-s1h  font-extrabold  mb-[20px] '>
-                        Enrollment System</h5>
-                    <p className='pro-s1l'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, sint porro 
-                        necessitatibus quaerat molestias soluta praesentium iste velit doloribus veniam 
-                        tempora laudantium nisi eos ad at cum labore aliquid magnam aspernatur distinctio 
-                        nesciunt nemo quae. Mollitia voluptatibus veniam cupiditate quo excepturi alias 
-                        nihil officia nobis! Asperiores, eius voluptatum! Porro, amet!  
-                    </p>
-                    </div> 
-                    <img className="pro-s1i w-full h-auto rounded-lg " src={GwiseImg} />
-                </div>
+            <section id="services" className="relative w-full py-[1rem] scroll-mt-[80px] 
+            flex flex-col items-center text-center bg-cover bg-center" 
+            style={{ backgroundImage: `url(${GwiseImg})` }}>
+                <div className="absolute inset-0 bg-black/15 pointer-events-none" />
 
-              
+                <div className="relative z-10 
+                grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 
+                items-stretch justify-center p-[3.5rem]">
+                    <div className='bg-[#f5f5f5] rounded-t-[1.5rem] lg:rounded-t-none lg:rounded-l-[1.5rem] h-full
+                    p-[1.5rem] sm:p-[2rem] md:p-[2.5rem] lg:p-[3rem] xl:p-[3.5rem]'>
+                        <h5 className='pro-s1h  font-extrabold  mb-[20px] '>    
+                        Enrollment System</h5>
+                        <p className='pro-s1l'>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, sint porro 
+                            necessitatibus quaerat molestias soluta praesentium iste velit doloribus veniam 
+                            tempora laudantium nisi eos ad at cum labore aliquid magnam aspernatur distinctio 
+                            nesciunt nemo quae. Mollitia voluptatibus veniam cupiditate quo excepturi alias 
+                            nihil officia nobis! Asperiores, eius voluptatum! Porro, amet!  
+                        </p>
+                    </div> 
+                    <div className="bg-[#f5f5f5]
+                    rounded-b-[1.5rem]
+                    lg:rounded-bl-none lg:rounded-r-[1.5rem]
+                    h-full w-auto
+                    p-[1.5rem] sm:p-[2rem] md:p-[2.5rem] lg:p-[3rem] xl:p-[3.5rem]
+                    flex items-center">
+                        <img className="pro-s1i w-full h-full object-cover rounded-[1rem]" src={GwiseImg} />
+                    </div>
+                    
+                </div>
             </section>
+
+            <section className='flex   gap-[1rem] p-[30px]'>
+                <div>
+                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
+                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
+                </div>
+                <div>
+                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
+                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
+                </div>
+                <div>
+                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
+                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
+                </div>
+                <div>
+                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
+                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
+                </div>
+            </section>
+
 
             <section id="contact" className="w-full bg-[#DBFFE6] py-12 lg:py-16">
             <div className="w-[90%] mx-auto px-5">
