@@ -6,7 +6,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import emailjs from "@emailjs/browser";
-import GwiseImg from '../../assets/products/Payroll System.png'
+
+
+import GwiseImg from '../../assets/banners/sub/6.png';
 
 import { useEffect, useRef, useState } from 'react';
 
