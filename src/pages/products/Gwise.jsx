@@ -13,10 +13,15 @@ import Payroll from '../../assets/banners/sub/8.png';
 import Sales from '../../assets/banners/sub/9.png';
 import Enroll from '../../assets/banners/sub/10.png';
 
+import banner6 from '../../assets/banners/6.png';
+import banner7 from '../../assets/banners/7.png';
+import banner8 from '../../assets/banners/8.png';
+import banner9 from '../../assets/banners/9.png';
+import banner10 from '../../assets/banners/10.png';
+
 import { useEffect, useRef } from 'react';
 
 import Splide from "@splidejs/splide";
-import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/splide/css";
 
 import {  
@@ -35,36 +40,33 @@ export default function Gwise() {
         type: 'loop',
         drag: 'free',
         focus: 'center',
-        perPage: 3,
-        gap: '1rem',
+        perPage: 5,
+        gap: '2rem',
 
         breakpoints: {
             1024: {
-            perPage: 2,
-            gap: '1rem',
+            perPage: 5,
+            gap: '1.5rem',
             },
             768: {
-            perPage: 2,
-            gap: '0.75rem',
+            perPage: 4,
+            gap: '1rem',
             },
             640: {
-            perPage: 1,
-            gap: '0rem',
+            perPage: 3,
+            gap: '0.5rem',
             },
         },
 
         arrows: true,
         pagination: false,
 
-        autoScroll: {
-            speed: 1,
-            pauseOnHover: true,
-            pauseOnFocus: false,
-        },
         });
 
+        splide.mount();
 
-        splide.mount({ AutoScroll });
+
+        
 
         return () => {
             splide.destroy();
@@ -291,38 +293,28 @@ export default function Gwise() {
                         <ul className="splide__list">
 
                             <li className="splide__slide">
-                                <img className="
-                                w-full max-md:w-[23rem] max-sm:w-[18rem]
-                                h-[20rem] max-xl:h-[15rem] max-lg:h-[12.5rem] max-md:h-[10rem]
-                                object-cover rounded-lg" src={GwiseImg} />
+                                <img src={banner6} alt="Accounting"
+                                className="w-full h-full object-cover rounded-xl "/>  
                             </li>
 
                             <li className="splide__slide">
-                                <img className="
-                                w-full max-md:w-[23rem] max-sm:w-[18rem]
-                                h-[20rem] max-xl:h-[15rem] max-lg:h-[12.5rem] max-md:h-[10rem]
-                                object-cover rounded-lg" src={Accounting} />
+                                <img src={banner7} alt="Accounting"
+                                className="w-full h-full object-cover rounded-xl "/>  
                             </li>
 
                             <li className="splide__slide">
-                                <img className="
-                                w-full max-md:w-[23rem] max-sm:w-[18rem]
-                                h-[20rem] max-xl:h-[15rem] max-lg:h-[12.5rem] max-md:h-[10rem]
-                                object-cover rounded-lg" src={Payroll} />
+                                <img src={banner8} alt="Accounting"
+                                className="w-full h-full object-cover rounded-xl "/>  
                             </li>
 
                             <li className="splide__slide">
-                                <img className="
-                                w-full max-md:w-[23rem] max-sm:w-[18rem]
-                                h-[20rem] max-xl:h-[15rem] max-lg:h-[12.5rem] max-md:h-[10rem]
-                                object-cover rounded-lg" src={Sales} />
+                                <img src={banner9} alt="Accounting"
+                                className="w-full h-full object-cover rounded-xl "/>  
                             </li>
 
                             <li className="splide__slide">
-                                <img className="
-                                w-full max-md:w-[25rem] max-sm:w-[20rem]
-                                h-[20rem] max-xl:h-[15rem] max-lg:h-[12.5rem] max-md:h-[10rem]
-                                object-cover rounded-lg" src={Enroll} />
+                                <img src={banner10} alt="Accounting"
+                                className="w-full h-full object-cover rounded-xl "/>  
                             </li>
 
                         </ul>

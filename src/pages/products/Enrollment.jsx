@@ -6,9 +6,23 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import emailjs from "@emailjs/browser";
-import GwiseImg from '../../assets/products/Payroll System.png'
 
-import { useEffect, useRef, useState } from 'react';
+import GwiseImg from '../../assets/banners/sub/6.png';
+import Accounting from '../../assets/banners/sub/7.png';
+import Payroll from '../../assets/banners/sub/8.png';
+import Sales from '../../assets/banners/sub/9.png';
+import Enroll from '../../assets/banners/sub/10.png';
+
+import banner6 from '../../assets/banners/6.png';
+import banner7 from '../../assets/banners/7.png';
+import banner8 from '../../assets/banners/8.png';
+import banner9 from '../../assets/banners/9.png';
+import banner10 from '../../assets/banners/10.png';
+
+import { useEffect, useRef } from 'react';
+
+import Splide from "@splidejs/splide";
+import "@splidejs/splide/css";
 
 import {  
     leftTo,
@@ -18,6 +32,47 @@ import {
 
 
 export default function Gwise() {
+
+    const splideRef = useRef(null);
+
+    useEffect(() => {
+      const splide = new Splide(splideRef.current, {
+        type: 'loop',
+        drag: 'free',
+        focus: 'center',
+        perPage: 3,
+        gap: '1rem',
+
+        breakpoints: {
+            1024: {
+            perPage: 2,
+            gap: '1rem',
+            },
+            768: {
+            perPage: 2,
+            gap: '0.75rem',
+            },
+            640: {
+            perPage: 1,
+            gap: '0rem',
+            },
+        },
+
+        arrows: true,
+        pagination: false,
+
+        });
+
+        splide.mount();
+
+
+        
+
+        return () => {
+            splide.destroy();
+        };
+    }, []);
+
 
     function elOnView(selector, callback) {
         const observer = new IntersectionObserver((entries, obs) => {
@@ -41,37 +96,27 @@ export default function Gwise() {
         });
     }
 
-    useEffect(() => {
-
-        // elOnView('.pro-s1h', el => bottomTo(el, 0));
-        // elOnView('.pro-s1l', el => bottomTo(el, 0.3));
-
-        // elOnView('.pro-s1i', el => bottomTo(el, 0.1));
-
-    }, []);
-
     return(
         <main className='w-screen h-contain gap-[3rem]
         flex flex-col items-center'>
 
-            <section id="services" className="relative w-full py-[1rem] scroll-mt-[80px] 
+            <section id="services" className="relative w-full 
+            p-[1rem] scroll-mt-[80px] 
             flex flex-col items-center text-center bg-cover bg-center" 
             style={{ backgroundImage: `url(${GwiseImg})` }}>
                 <div className="absolute inset-0 bg-black/15 pointer-events-none" />
 
                 <div className="relative z-10 
                 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 
-                items-stretch justify-center p-[3.5rem]">
+                items-stretch justify-center 
+                p-[2.5rem] max-xl:p-[2rem] max-lg:p-[1.5rem] max-md:p-[1rem] max-sm:p-[0.5rem]">
                     <div className='bg-[#f5f5f5] rounded-t-[1.5rem] lg:rounded-t-none lg:rounded-l-[1.5rem] h-full
                     p-[1.5rem] sm:p-[2rem] md:p-[2.5rem] lg:p-[3rem] xl:p-[3.5rem]'>
                         <h5 className='pro-s1h  font-extrabold  mb-[20px] '>    
-                        Enrollment System</h5>
+                        Gwise For Multi Purpose Cooperative</h5>
                         <p className='pro-s1l'>
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, sint porro 
                             necessitatibus quaerat molestias soluta praesentium iste velit doloribus veniam 
-                            tempora laudantium nisi eos ad at cum labore aliquid magnam aspernatur distinctio 
-                            nesciunt nemo quae. Mollitia voluptatibus veniam cupiditate quo excepturi alias 
-                            nihil officia nobis! Asperiores, eius voluptatum! Porro, amet!  
                         </p>
                     </div> 
                     <div className="bg-[#f5f5f5]
@@ -83,25 +128,6 @@ export default function Gwise() {
                         <img className="pro-s1i w-full h-full object-cover rounded-[1rem]" src={GwiseImg} />
                     </div>
                     
-                </div>
-            </section>
-
-            <section className='flex   gap-[1rem] p-[30px]'>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
-                </div>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
-                </div>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
-                </div>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
                 </div>
             </section>
 
@@ -259,6 +285,38 @@ export default function Gwise() {
 
             </div>
             </section>
+
+
+            <section className="w-full px-[2rem] h-screen overflow-hidden">
+                <div className="splide" ref={splideRef}>
+                    <div className="splide__track h-full">
+                        <ul className="splide__list h-full">
+
+                            <li
+                            className="splide__slide h-full w-100px rounded-lg bg-cover bg-center"
+                            style={{ backgroundImage: `url(${banner6})` }}>
+                            </li>
+
+                            <li
+                            className="splide__slide h-full w-full rounded-lg bg-cover bg-center"
+                            style={{ backgroundImage: `url(${banner7})` }}>
+                            </li>
+
+                            <li
+                            className="splide__slide h-full w-full rounded-lg bg-cover bg-center"
+                            style={{ backgroundImage: `url(${banner8})` }}>
+                            </li>
+
+                            <li
+                            className="splide__slide h-full w-full rounded-lg bg-cover bg-center"
+                            style={{ backgroundImage: `url(${banner9})` }}>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             
         </main>
     );

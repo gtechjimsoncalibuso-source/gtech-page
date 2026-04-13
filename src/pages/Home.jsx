@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // ✅ ADDED
+import { useLocation, useNavigate } from "react-router-dom"; 
 import "../assets/css/text.css";
 import CardImage from '../assets/images/Card.png';
 import LaptopImage from '../assets/images/laptop-mockup.png';
@@ -207,45 +207,45 @@ export default function Home() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSending(true);
-  setMailError("");
-  setMailSuccess("");
+    e.preventDefault();
+    setIsSending(true);
+    setMailError("");
+    setMailSuccess("");
 
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-  if (!serviceId || !templateId || !publicKey) {
-    setMailError("Mail is not configured. Set VITE_EMAILJS_* in .env and restart the dev server.");
-    setIsSending(false);
-    return;
-  }
-
-  emailjs
-    .send(
-      serviceId,
-      templateId,
-      {
-        name: form.name,
-        subject: form.subject,
-        message: form.message,
-        email: form.email,
-      },
-      publicKey
-    )
-    .then((res) => {
-      console.log("SUCCESS!", res.status, res.text);
-      setMailSuccess("Message sent successfully.");
-      setForm({ name: "", email: "", subject: "", message: "" });
-    })
-    .catch((err) => {
-      console.log("FAILED...", err);
-      setMailError("Failed to send message. Please try again.");
-    })
-    .finally(() => {
+    if (!serviceId || !templateId || !publicKey) {
+      setMailError("Mail is not configured. Set VITE_EMAILJS_* in .env and restart the dev server.");
       setIsSending(false);
-    });
+      return;
+    }
+
+    emailjs
+      .send(
+        serviceId,
+        templateId,
+        {
+          name: form.name,
+          subject: form.subject,
+          message: form.message,
+          email: form.email,
+        },
+        publicKey
+      )
+      .then((res) => {
+        console.log("SUCCESS!", res.status, res.text);
+        setMailSuccess("Message sent successfully.");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      })
+      .catch((err) => {
+        console.log("FAILED...", err);
+        setMailError("Failed to send message. Please try again.");
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
 
   };
 
