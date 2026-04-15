@@ -6,9 +6,24 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import emailjs from "@emailjs/browser";
-import GwiseImg from '../../assets/products/Payroll System.png'
+
+import GwiseImg from '../../assets/banners/sub/6.png';
+import Accounting from '../../assets/banners/sub/7.png';
+import Payroll from '../../assets/banners/sub/8.png';
+import Sales from '../../assets/banners/sub/9.png';
+import Enroll from '../../assets/banners/sub/10.png';
+
+import banner6 from '../../assets/banners/6.png';
+import banner7 from '../../assets/banners/7.png';
+import banner8 from '../../assets/banners/8.png';
+import banner9 from '../../assets/banners/9.png';
+import banner10 from '../../assets/banners/10.png';
 
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import Splide from "@splidejs/splide";
+import "@splidejs/splide/css";
 
 import {  
     leftTo,
@@ -18,6 +33,47 @@ import {
 
 
 export default function Gwise() {
+
+    const splideRef = useRef(null);
+
+    useEffect(() => {
+      const splide = new Splide(splideRef.current, {
+        type: 'loop',
+        drag: 'free',
+        focus: 'center',
+        perPage: 5,
+        gap: '2rem',
+
+        breakpoints: {
+            1024: {
+            perPage: 5,
+            gap: '1.5rem',
+            },
+            768: {
+            perPage: 4,
+            gap: '1rem',
+            },
+            640: {
+            perPage: 3,
+            gap: '0.5rem',
+            },
+        },
+
+        arrows: true,
+        pagination: false,
+
+        });
+
+        splide.mount();
+
+
+        
+
+        return () => {
+            splide.destroy();
+        };
+    }, []);
+
 
     function elOnView(selector, callback) {
         const observer = new IntersectionObserver((entries, obs) => {
@@ -41,27 +97,77 @@ export default function Gwise() {
         });
     }
 
-    useEffect(() => {
+    const [form, setForm] = useState({
+        name: "",
+        email: "",
+        subject: "Gwise Subscription Inquiry",
+        message: "",
+    });
+    const [isSending, setIsSending] = useState(false);
+    const [mailError, setMailError] = useState("");
+    const [mailSuccess, setMailSuccess] = useState("");
 
-        // elOnView('.pro-s1h', el => bottomTo(el, 0));
-        // elOnView('.pro-s1l', el => bottomTo(el, 0.3));
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
 
-        // elOnView('.pro-s1i', el => bottomTo(el, 0.1));
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSending(true);
+        setMailError("");
+        setMailSuccess("");
 
-    }, []);
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        if (!serviceId || !templateId || !publicKey) {
+        setMailError("Mail is not configured. Set VITE_EMAILJS_* in .env and restart the dev server.");
+        setIsSending(false);
+        return;
+        }
+
+        emailjs
+        .send(
+            serviceId,
+            templateId,
+            {
+            name: form.name,
+            subject: form.subject,
+            message: form.message,
+            email: form.email,
+            },
+            publicKey
+        )
+        .then((res) => {
+            console.log("SUCCESS!", res.status, res.text);
+            setMailSuccess("Message sent successfully.");
+            setForm({ name: "", email: "", subject: "", message: "" });
+        })
+        .catch((err) => {
+            console.log("FAILED...", err);
+            setMailError("Failed to send message. Please try again.");
+        })
+        .finally(() => {
+            setIsSending(false);
+        });
+
+    };
 
     return(
         <main className='w-screen h-contain gap-[3rem]
         flex flex-col items-center'>
 
-            <section id="services" className="relative w-full py-[1rem] scroll-mt-[80px] 
+            <section id="services" className="relative w-full 
+            p-[1rem] scroll-mt-[80px] 
             flex flex-col items-center text-center bg-cover bg-center" 
             style={{ backgroundImage: `url(${GwiseImg})` }}>
                 <div className="absolute inset-0 bg-black/15 pointer-events-none" />
 
                 <div className="relative z-10 
                 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 
-                items-stretch justify-center p-[3.5rem]">
+                items-stretch justify-center 
+                p-[2.5rem] max-xl:p-[2rem] max-lg:p-[1.5rem] max-md:p-[1rem] max-sm:p-[0.5rem]">
                     <div className='bg-[#f5f5f5] rounded-t-[1.5rem] lg:rounded-t-none lg:rounded-l-[1.5rem] h-full
                     p-[1.5rem] sm:p-[2rem] md:p-[2.5rem] lg:p-[3rem] xl:p-[3.5rem]'>
                         <h5 className='pro-s1h  font-extrabold  mb-[20px] '>    
@@ -69,9 +175,6 @@ export default function Gwise() {
                         <p className='pro-s1l'>
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, sint porro 
                             necessitatibus quaerat molestias soluta praesentium iste velit doloribus veniam 
-                            tempora laudantium nisi eos ad at cum labore aliquid magnam aspernatur distinctio 
-                            nesciunt nemo quae. Mollitia voluptatibus veniam cupiditate quo excepturi alias 
-                            nihil officia nobis! Asperiores, eius voluptatum! Porro, amet!  
                         </p>
                     </div> 
                     <div className="bg-[#f5f5f5]
@@ -80,28 +183,9 @@ export default function Gwise() {
                     h-full w-auto
                     p-[1.5rem] sm:p-[2rem] md:p-[2.5rem] lg:p-[3rem] xl:p-[3.5rem]
                     flex items-center">
-                        <img className="pro-s1i w-full h-full object-cover rounded-[1rem]" src={GwiseImg} />
+                        <img className="pro-s1i w-full h-full object-cover rounded-[1rem]" src={Accounting} />
                     </div>
                     
-                </div>
-            </section>
-
-            <section className='flex   gap-[1rem] p-[30px]'>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
-                </div>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
-                </div>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
-                </div>
-                <div>
-                    <img className="pro-s1i w-full h-full object-cover rounded-lg" src={GwiseImg} />
-                    <p className='pro-s2l'>Lorem ipsum, dolor sit amet</p>
                 </div>
             </section>
 
@@ -164,93 +248,89 @@ export default function Gwise() {
 
                 {/* RIGHT PANEL (FORM) */}
                 <form
-                    className="
-                    bg-[#f9f9f9]
-                    p-6 sm:p-10
-                    flex flex-col gap-5
-                "
+                    onSubmit={handleSubmit}
+                    className="bg-[#f5f5f5] p-5 sm:p-10 flex flex-col gap-4 
+                    rounded-b-2xl rounded-t-none      /* mobile (1 col) */
+                        max-lg:rounded-b-2xl max-lg:rounded-t-none
+                        lg:rounded-r-2xl lg:rounded-l-none  /* desktop (2 col) */ "
+                        
                 >
-
-                    <div className="mb-2">
-                    <h3 className="pro-s2h text-2xl font-bold text-gray-800">
-                        Get in Touch
-                    </h3>
-                    <p className="pro-s2l text-gray-500 text-sm">
-                        Reach out with inquiries
-                    </p>
-                    </div>
+                    <h3 className="text-xl font-bold">GET IN TOUCH</h3>
+                    <p>Reach out with inquiries</p>
+                    {mailError && <p className="text-sm text-red-600">{mailError}</p>}
+                    {mailSuccess && <p className="text-sm text-green-700">{mailSuccess}</p>}
 
                     <TextField
                     name="name"
                     label="Full Name"
+                    value={form.name}
+                    onChange={handleChange}
                     required
                     fullWidth
                     sx={{
-                        '& .MuiOutlinedInput-root': {
-                        borderRadius: '25px',
-                        backgroundColor: '#fff'
-                        },
-                    }}
+                            '& .MuiOutlinedInput-root': {
+                            borderRadius: '25px',
+                            },
+                        }}
                     />
 
-                    <TextField
-                    className='pro-s2l'
+                    <TextField             
                     name="email"
                     label="Email"
                     type="email"
+                    value={form.email}
+                    onChange={handleChange}
                     required
                     fullWidth
                     sx={{
-                        '& .MuiOutlinedInput-root': {
-                        borderRadius: '25px',
-                        backgroundColor: '#fff'
-                        },
-                    }}
+                            '& .MuiOutlinedInput-root': {
+                            borderRadius: '25px',
+                            },
+                        }}
                     />
 
                     <TextField
-                    className='pro-s2l'
                     name="subject"
                     label="Subject"
+                    value={form.subject}
+                    onChange={handleChange}
                     required
                     fullWidth
-                    sx={{
-                        '& .MuiOutlinedInput-root': {
-                        borderRadius: '25px',
-                        backgroundColor: '#fff'
-                        },
+                    InputProps={{
+                        readOnly: true,
                     }}
+                    sx={{
+                            '& .MuiOutlinedInput-root': {
+                            borderRadius: '25px',
+                            },
+                        }}
                     />
 
                     <TextField
-                    className='pro-s2l'
                     name="message"
                     label="Message"
+                    value={form.message}
+                    onChange={handleChange}
                     required
                     fullWidth
                     multiline
                     rows={4}
                     sx={{
-                        '& .MuiOutlinedInput-root': {
-                        borderRadius: '20px',
-                        backgroundColor: '#fff'
-                        },
-                    }}
+                            '& .MuiOutlinedInput-root': {
+                            borderRadius: '25px',
+                            },
+                        }}
                     />
 
                     <Button
-                    className='pro-s2s'
-                    type="submit"
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                        borderRadius: '25px',
-                        padding: '10px',
-                        fontWeight: 'bold',
-                        textTransform: 'none'
-                    }}
-                    >
-                    Send Message
+                        type="submit"
+                        disabled={isSending}
+                        variant="contained"
+                        sx={{
+                            borderRadius: '25px',
+                        }}
+                        >
+                        {isSending ? "Sending..." : "Submit"}
                     </Button>
 
                 </form>
@@ -259,6 +339,53 @@ export default function Gwise() {
 
             </div>
             </section>
+
+
+            <section className="w-full px-[2rem]">
+                <div className="splide" ref={splideRef}>
+                    <div className="splide__track">
+                        <ul className="splide__list">
+
+                            <li className="splide__slide">
+                                <Link to="/gwise" className="block w-full h-full" aria-label="Gwise">
+                                    <img src={banner6} alt="Gwise"
+                                    className="w-full h-full object-cover rounded-xl "/>  
+                                </Link>
+                            </li>
+
+                            <li className="splide__slide">
+                                <Link to="/accounting" className="block w-full h-full" aria-label="Accounting">
+                                    <img src={banner7} alt="Accounting"
+                                    className="w-full h-full object-cover rounded-xl "/>  
+                                </Link>
+                            </li>
+
+                            <li className="splide__slide">
+                                <Link to="/payroll" className="block w-full h-full" aria-label="Payroll">
+                                    <img src={banner8} alt="Payroll"
+                                    className="w-full h-full object-cover rounded-xl "/>  
+                                </Link>
+                            </li>
+
+                            <li className="splide__slide">
+                                <Link to="/sales" className="block w-full h-full" aria-label="Sales">
+                                    <img src={banner9} alt="Sales"
+                                    className="w-full h-full object-cover rounded-xl "/>  
+                                </Link>
+                            </li>
+
+                            <li className="splide__slide">
+                                <Link to="/enrollment" className="block w-full h-full" aria-label="Enrollment">
+                                    <img src={banner10} alt="Enrollment"
+                                    className="w-full h-full object-cover rounded-xl "/>  
+                                </Link>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             
         </main>
     );
