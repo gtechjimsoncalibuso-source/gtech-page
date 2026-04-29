@@ -239,7 +239,7 @@ export default function services(){
                 px-[3rem] max-lg:px-[2.5rem] max-md:px-[2rem] max-sm:px-[1.5rem]
                 gap-[3.5rem]
                 flex flex-col justify-center items-center
-                bg-[#003224]">
+                bg-[#009A4B]">
                     <h3 className="serv-s3h text-[#ffffffe5] text-center font-bold">We Also Offers:</h3>
 
                     <div className="w-full gap-[2rem]

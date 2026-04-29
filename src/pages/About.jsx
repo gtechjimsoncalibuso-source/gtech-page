@@ -229,6 +229,12 @@ export default function about(){
             elOnView('.ab-s3-c2', (el)=>bottomTo(el, 0.4));
             elOnView('.ab-s3-c3', (el)=>bottomTo(el, 0.6));
             elOnView('.ab-s3-c4', (el)=>bottomTo(el, 0.8));
+            elOnView('.ab-s3-c3', (el)=>bottomTo(el, 0.6));
+
+            elOnView('.vismis-c1', (el)=>btBackOut(el, 0));
+            elOnView('.vismis-c2', (el)=>btBackOut(el, 0));
+
+
             
              if(s4c === 0) {
                 elOnView('.ab-s4-c2-l', (el)=>btBackOut(el, 0));
@@ -250,6 +256,9 @@ export default function about(){
             elOnView('.ab-s3-c2', (el)=>btBackOut(el, 0.4));
             elOnView('.ab-s3-c3', (el)=>btBackOut(el, 0.6));
             elOnView('.ab-s3-c4', (el)=>btBackOut(el, 0.8));
+
+            elOnView('.vismis-c1', (el)=>btBackOut(el, 0));
+            elOnView('.vismis-c2', (el)=>btBackOut(el, 0.3));
 
              if(s4c === 0) {
                 elOnView('.ab-s4-c2-l', (el)=>btBackOut(el, 0));
@@ -273,7 +282,9 @@ export default function about(){
             elOnView('.ab-s3-c2', (el)=>btBackOut(el, 0.4));
             elOnView('.ab-s3-c3', (el)=>btBackOut(el, 0.6));
             elOnView('.ab-s3-c4', (el)=>btBackOut(el, 0.8));
-      
+
+            elOnView('.vismis-c1', (el)=>btBackOut(el, 0));
+            elOnView('.vismis-c2', (el)=>btBackOut(el, 0.3));
 
             if(s4c === 0) {
                 elOnView('.ab-s4-c2-l', (el)=>btBackOut(el, 0));
@@ -339,17 +350,17 @@ export default function about(){
                 </h5>
             </section>
 
-            <section className='w-full px-[1rem]
+            <section className='w-full px-[4rem]
             flex justify-center items-start'>
                 
-                <div className="ab-s3-c w-full 
-                py-[.5rem] sm:py-[.5rem] md:py-[2rem] lg:py-[3rem] gap-[2rem] 
+                <div className="w-full bg-[#009A4B]
+                py-[0.5rem] sm:py-[0.5rem] md:py-[2rem] lg:py-[3rem] gap-[0rem] 
                 rounded-3xl
-                flex flex-col items-center justify-center mx-[0px] sm:mx-[0px] md:mx-[30px] lg:mx-[40px]">
+                flex flex-col items-center justify-center">
 
                     <h4 className='ab-s3-h ab-s3-c-h text-center font-bold'>Career Highlights</h4>
 
-                    <div className="w-full gap-[.5rem] sm:gap-[1rem] lg:gap-[2rem] px-[.1   rem]
+                    <div className="w-full gap-[.5rem] sm:gap-[1rem] lg:gap-[2rem] px-[0.1rem]
                     grid grid-cols-4 max-lg:grid-cols-4">
                         
                         <div className="ab-s3-c1 p-4
@@ -376,6 +387,45 @@ export default function about(){
                     </div>
 
                 </div>
+
+            </section>
+
+            <section className="w-full gap-[2rem]
+            px-[4rem]
+            grid grid-cols-2 max-lg:grid-cols-1">
+
+                <card className="min-h-[10rem] vismis-c1
+                px-[2rem] max-lg:px-[1.5rem] max-md:px-[1rem] max-sm:px-[0.5rem]
+                py-[0.6rem] max-lg:py-[0.4rem] max-md:py-[0.2rem] max-sm:py-[0rem]
+                flex flex-col items-center justify-center
+                bg-[#ffffffe7] shadow-lg
+                rounded-[2rem]
+                ">
+                    <h4 className="vismis-h
+                    text-center
+                    font-bold">VISION</h4>
+                    <p className="vismis-p text-center">
+                        G. Technology, often known as IT developers, 
+                        is recognized for assisting the humane society 
+                        worldwide and internationally.
+                    </p>
+                </card>
+
+                <card className="min-h-[10rem] vismis-c2
+                px-[2rem] max-lg:px-[1.5rem] max-md:px-[1rem] max-sm:px-[0.5rem]
+                py-[0.6rem] max-lg:py-[0.4rem] max-md:py-[0.2rem] max-sm:py-[0rem]
+                flex flex-col items-center justify-center
+                bg-[#ffffffe7] shadow-lg
+                rounded-[2rem]
+                ">
+                    <h4 className="vismis-h
+                    text-center
+                    font-bold">MISSION</h4>
+                    <p className="vismis-p text-center">
+                        G. Technology combines technology through 
+                        producing software for the community, worldwide, 
+                        and internationally.</p>
+                </card>
 
             </section>
 
